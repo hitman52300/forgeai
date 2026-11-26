@@ -1,0 +1,11 @@
+.venv/
+.env
+.env.*
+!.env.example
+data/
+artifacts/
+*.exe
+.git/
+__pycache__/
+tests/
+docs/
