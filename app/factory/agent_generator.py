@@ -54,6 +54,9 @@ def assemble_system_prompt(parts: PromptParts, req: RequirementsDocument, refusa
         "# Refusal\n" + bl([
             f"Refuse questions about these topics: {refuse_topics}.",
             "Refuse when the evidence does not contain the answer. Do not guess.",
+            "Similar topics are not enough: if the question asks for a specific fact (a person's records, statistics, "
+            "history, future plans, prices or dates) that is not written in the passages, refuse instead of answering "
+            "a related question.",
             f"When refusing: set refused=true, give the reason in refusal_reason, and use an answer like: \"{refusal.refusal_message}\"",
         ]),
         "# Ambiguity and false assumptions\n" + bl(parts.ambiguity_rules + [

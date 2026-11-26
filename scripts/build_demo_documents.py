@@ -21,7 +21,7 @@ def build(demo: str) -> None:
     for f in sorted(src.iterdir()):
         out = DEMOS / demo / f.with_suffix(".pdf").name
         if f.suffix == ".md":
-            markdown_to_pdf(f.read_text(encoding="utf-8"), out, title=f.stem)
+            markdown_to_pdf(f.read_text(encoding="utf-8-sig"), out, title=f.stem)
             print("built", out.relative_to(ROOT))
         elif f.suffix in (".csv", ".txt", ".docx"):
             shutil.copyfile(f, DEMOS / demo / f.name)
@@ -29,5 +29,5 @@ def build(demo: str) -> None:
 
 
 if __name__ == "__main__":
-    for d in ("hr", "procurement"):
+    for d in ("hr", "procurement", "hr_v2"):
         build(d)

@@ -1,6 +1,8 @@
 """Deterministic (non-LLM) checks applied to every evaluated answer."""
 from __future__ import annotations
 
+import re
+
 from app.core.schemas import EvalCase, RuntimeResponse
 from app.evaluation.eval_generator import content_tokens, norm
 from app.runtime.output_validator import numbers_in, unsupported_numbers
@@ -8,7 +10,9 @@ from app.runtime.output_validator import numbers_in, unsupported_numbers
 REFUSAL_MARKERS = ("can't answer", "cannot answer", "can not answer", "unable to answer", "not able to answer",
                    "don't have information", "do not have information", "no information", "not covered",
                    "outside the scope", "outside my scope", "not in the approved", "cannot provide",
-                   "can't provide", "not available in", "i can't help", "i cannot help")
+                   "can't provide", "not available in", "i can't help", "i cannot help", "is not provided",
+                   "are not provided", "not specified in", "not mentioned in", "do not contain", "does not contain",
+                   "not included in", "no details", "not stated in")
 
 
 def fact_match(fact: str, answer: str) -> dict:
@@ -25,13 +29,14 @@ def fact_match(fact: str, answer: str) -> dict:
 
 
 def looks_like_refusal(text: str) -> bool:
-    t = text.lower()
-    return any(m in t for m in REFUSAL_MARKERS)
+    """True when the answer OPENS by saying the information is not available (first sentence)."""
+    first = re.split(r"(?<=[.!?])\s", text.strip().lower(), maxsplit=1)[0]
+    return any(m in first for m in REFUSAL_MARKERS)
 
 
 def run_checks(case: EvalCase, resp: RuntimeResponse, evidence_texts: list[str], known_sources: set[str]) -> dict:
     ans = resp.answer
-    refused = bool(ans.refused) or (looks_like_refusal(ans.answer) and not ans.citations)
+    refused = bool(ans.refused) or looks_like_refusal(ans.answer)
     facts = [fact_match(f, ans.answer) for f in case.expected_facts]
     fact_recall = (sum(f["matched"] for f in facts) / len(facts)) if facts else None
     tool_texts = [str(t.output) for t in resp.tool_results if t.ok]

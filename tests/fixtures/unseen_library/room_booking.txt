@@ -1,0 +1,13 @@
+GREENFIELD COMMUNITY LIBRARY - STUDY ROOM BOOKING (fictional)
+
+1. ROOMS
+The library has 3 study rooms. Room A seats 4 people, Room B seats 6 people and Room C seats 10 people and has a projector.
+
+2. BOOKING
+Study rooms can be booked by members only, through the library website or at the front desk, up to 7 days in advance. A booking lasts a maximum of 2 hours. Each member may hold at most 2 bookings per week.
+
+3. CANCELLATION
+Bookings must be cancelled at least 1 hour before the start time. A member who does not show up 3 times in a month loses booking rights for the following month.
+
+4. OPENING HOURS
+Study rooms are available from 9:00 to 20:00 on weekdays and from 10:00 to 17:00 on Saturdays. The library is closed on Sundays.

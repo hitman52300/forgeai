@@ -56,8 +56,8 @@ def classify(case: EvalCase, checks: dict, metrics: dict[str, MetricScore], judg
                 cats.append(FailureCategory.prompt_defect)
             why.append(f"edge-case behaviour not met: {judge.get('behavior_reason', '')[:150]}")
 
-    needs_calc = any(k in case.question.lower() for k in ("total", "calculate", "how many days", "sum", "difference",
-                                                          "cost of", "multiply"))
+    needs_calc = any(k in case.question.lower() for k in ("calculate", "total cost", "sum of", "difference between",
+                                                          "multiply", "in total"))
     if needs_calc and "calculator" in agent_tools and "calculator" not in checks["tool_calls"] and \
             FailureCategory.prompt_defect in cats:
         cats.append(FailureCategory.tool_defect)

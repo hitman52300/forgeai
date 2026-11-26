@@ -110,7 +110,7 @@ class GenConfig:
     seed: int = 7
     answerable_share: float = 0.45
     out_of_scope_share: float = 0.25
-    oos_max_similarity: float = 0.55
+    oos_max_similarity: float = 0.5
     min_chunk_chars: int = 160
 
 

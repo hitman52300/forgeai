@@ -120,7 +120,7 @@ def run_loop(*, run_id: str, agent: AgentDefinition, req: RequirementsDocument, 
         elif not improved and gain < MIN_IMPROVEMENT:
             decision, reason = "stop", f"no measurable improvement (pass rate change {gain:+.1%})"
         elif last:
-            decision, reason = "stop", "maximum of three optimisation iterations completed"
+            decision, reason = "stop", f"maximum of {max_iterations} optimisation iteration(s) completed"
         else:
             decision, reason = "continue", f"improved by {gain:+.1%}; failures remain"
         rec = IterationRecord(
@@ -146,8 +146,8 @@ def run_loop(*, run_id: str, agent: AgentDefinition, req: RequirementsDocument, 
             out.stop_reason = reason
             break
     else:
-        out.stop_reason = out.stop_reason or "maximum of three optimisation iterations completed"
+        out.stop_reason = out.stop_reason or f"maximum of {max_iterations} optimisation iteration(s) completed"
     if not out.stop_reason:
-        out.stop_reason = "maximum of three optimisation iterations completed"
+        out.stop_reason = f"maximum of {max_iterations} optimisation iteration(s) completed"
     out.best_version = best_agent.version
     return out

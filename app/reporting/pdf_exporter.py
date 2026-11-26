@@ -4,6 +4,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+from reportlab import rl_config
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -11,6 +12,7 @@ from reportlab.lib.units import mm
 from reportlab.platypus import (Image, PageBreak, Paragraph, Preformatted, SimpleDocTemplate, Spacer, Table,
                                 TableStyle)
 
+rl_config.invariant = 1  # deterministic PDFs: same input -> same bytes (needed for hash-based change detection)
 NAVY = colors.HexColor("#1b2a41")
 GREY = colors.HexColor("#d5d9e0")
 
