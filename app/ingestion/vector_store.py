@@ -13,7 +13,14 @@ from app.ingestion.embeddings import get_embedder
 
 @lru_cache
 def get_client() -> chromadb.ClientAPI:
+    """CHROMA_MODE=local: persistent ChromaDB on disk (default).
+    CHROMA_MODE=cloud: hosted Chroma Cloud (CHROMA_TENANT, CHROMA_DATABASE, CHROMA_API_KEY), so a stateless
+    backend container keeps its vectors across restarts."""
     s = get_settings()
+    if s.chroma_mode == "cloud":
+        if not (s.chroma_api_key and s.chroma_tenant and s.chroma_database):
+            raise RuntimeError("CHROMA_MODE=cloud needs CHROMA_TENANT, CHROMA_DATABASE and CHROMA_API_KEY in .env")
+        return chromadb.CloudClient(tenant=s.chroma_tenant, database=s.chroma_database, api_key=s.chroma_api_key)
     path = s.path(s.chroma_dir)
     path.mkdir(parents=True, exist_ok=True)
     return chromadb.PersistentClient(path=str(path), settings=chromadb.Settings(anonymized_telemetry=False))

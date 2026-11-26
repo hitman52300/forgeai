@@ -49,6 +49,10 @@ class Settings(BaseSettings):
     # embeddings / vectors
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     chroma_dir: str = "data/chroma"
+    chroma_mode: str = "local"  # local | cloud
+    chroma_tenant: str = ""
+    chroma_database: str = ""
+    chroma_api_key: str = ""
 
     # storage
     storage_backend: str = "supabase"
