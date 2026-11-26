@@ -1,0 +1,143 @@
+{
+  "topics": [
+    {
+      "topic": "Leave Policies",
+      "status": "unsupported",
+      "evidence": [
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0006",
+          "location": "p.3",
+          "score": 0.7496,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, IMPORTANT DISCLAIMER] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 3"
+        },
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0000",
+          "location": "p.1",
+          "score": 0.7481,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 1"
+        }
+      ],
+      "rationale": "none of the passages contain concrete facts about the topic 0 of 6 retrieved passages contain usable facts. Missing: leave amounts, benefits, timelines, and procedures. [no retrieved passage contains concrete facts about the topic]",
+      "retrieval_max_score": 0.7496,
+      "llm_status": "unsupported"
+    },
+    {
+      "topic": "Benefits",
+      "status": "unsupported",
+      "evidence": [
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0006",
+          "location": "p.3",
+          "score": 0.7759,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, IMPORTANT DISCLAIMER] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 3"
+        },
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0000",
+          "location": "p.1",
+          "score": 0.7757,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 1"
+        }
+      ],
+      "rationale": "None of the passages contain concrete facts about the Benefits topic. They only mention the topic's name or provide general information about the handbook's structure. 0 of 6 retrieved passages contain usable facts. Missing: Benefits and Reimbursements details, Safety and Support Needs, Internet and Mobile Reimbursements specifics. [no retrieved passage contains concrete facts about the topic]",
+      "retrieval_max_score": 0.7759,
+      "llm_status": "unsupported"
+    },
+    {
+      "topic": "Termination",
+      "status": "unsupported",
+      "evidence": [
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0006",
+          "location": "p.3",
+          "score": 0.7448,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, IMPORTANT DISCLAIMER] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 3"
+        },
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0000",
+          "location": "p.1",
+          "score": 0.7302,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 1"
+        }
+      ],
+      "rationale": "None of the passages contain concrete facts about the termination topic. 0 of 6 retrieved passages contain usable facts. Missing: termination procedures, conditions, and records. [no retrieved passage contains concrete facts about the topic]",
+      "retrieval_max_score": 0.7448,
+      "llm_status": "unsupported"
+    },
+    {
+      "topic": "Recruitment",
+      "status": "supported",
+      "evidence": [
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0065",
+          "location": "p.8",
+          "score": 0.7512,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, 10.3 Training] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 8"
+        },
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0019",
+          "location": "p.4",
+          "score": 0.664,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, 3.2 Late arrival] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 4"
+        },
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0052",
+          "location": "p.7",
+          "score": 0.6333,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, 8.3 What to include] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 7\n•  Any immediate safety or support needs."
+        }
+      ],
+      "rationale": "Passages E2, E4, and E6 contain relevant information about training, late arrival, and what to include in the policy, respectively. Passages E1 and E5 do not provide concrete facts about the topic. Passage E3 only contains a disclaimer and does not provide any relevant information. 3 of 6 retrieved passages contain usable facts. Missing: procedures, conditions, records.",
+      "retrieval_max_score": 0.7692,
+      "llm_status": "supported"
+    },
+    {
+      "topic": "Compensation",
+      "status": "partially_supported",
+      "evidence": [
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0030",
+          "location": "p.5",
+          "score": 0.6445,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, 5. Compensation and Payroll] 5. Compensation and Payroll"
+        }
+      ],
+      "rationale": "Only passage E6 provides concrete facts about compensation. The other passages only mention the topic's name or are about other topics. 1 of 6 retrieved passages contain usable facts. Missing: Work policies, procedures, and specific conditions related to compensation.",
+      "retrieval_max_score": 0.746,
+      "llm_status": "supported"
+    },
+    {
+      "topic": "Disciplinary Actions",
+      "status": "unsupported",
+      "evidence": [
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0006",
+          "location": "p.3",
+          "score": 0.7625,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf, IMPORTANT DISCLAIMER] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 3"
+        },
+        {
+          "source_filename": "Sample_HR_Policy_Handbook.pdf",
+          "chunk_id": "fbb73df84d81-0000",
+          "location": "p.1",
+          "score": 0.7566,
+          "excerpt": "[Sample_HR_Policy_Handbook.pdf] SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 1"
+        }
+      ],
+      "rationale": "none of the passages contain concrete facts about disciplinary actions 0 of 6 retrieved passages contain usable facts. Missing: disciplinary actions procedures, disciplinary actions records, disciplinary actions conditions. [no retrieved passage contains concrete facts about the topic]",
+      "retrieval_max_score": 0.7625,
+      "llm_status": "unsupported"
+    }
+  ],
+  "generated_at": "2026-11-26T22:24:38.925410+00:00"
+}

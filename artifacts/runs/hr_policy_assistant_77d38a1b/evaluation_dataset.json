@@ -1,0 +1,755 @@
+{
+  "dataset_id": "66168dda-d6d6-40fa-9dc9-700095e36d55",
+  "run_id": "77d38a1b-6835-4a04-9d6e-fab3682fbaba",
+  "version": 1,
+  "cases": [
+    {
+      "test_id": "ANS-001",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should be included in a report about an incident?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "A description of what happened and when.",
+        "The people involved and any witnesses, if known.",
+        "Relevant messages, documents, or other supporting information."
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage provides a list of items that should be included in a report about an incident, directly answering the question about what to include in such a report.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0054"
+      ],
+      "fact_verification": [
+        {
+          "fact": "A description of what happened and when.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "The people involved and any witnesses, if known.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Relevant messages, documents, or other supporting information.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-002",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What are the conditions for requesting parental leave?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "as per applicable law and",
+        "company policy"
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The passage mentions that parental leave is governed by both applicable law and company policy, providing the conditions for requesting this type of leave.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0026"
+      ],
+      "fact_verification": [
+        {
+          "fact": "as per applicable law and",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "company policy",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-003",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should feedback be focused on in the employee goals?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "work outcomes"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage states that feedback should be 'focused on work outcomes', which directly answers the question about what feedback should be centered on in the context of employee goals.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0066"
+      ],
+      "fact_verification": [
+        {
+          "fact": "work outcomes",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-004",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should employees do if they have questions about conflicting policies?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "contact Human Resources (HR)"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage states that if there are conflicting policies, employees should contact HR for clarification, which directly answers the question about what to do in such a situation.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0010"
+      ],
+      "fact_verification": [
+        {
+          "fact": "contact Human Resources (HR)",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-005",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What is the standard working schedule for Monday to Friday?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "Monday to Friday",
+        "9:30 a.m. to 6:00 p.m.",
+        "60-minute meal break"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The question asks about the standard working schedule, which is directly addressed in the passage with specific times and a meal break duration.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0014"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Monday to Friday",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "9:30 a.m. to 6:00 p.m.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "60-minute meal break",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-006",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What steps should a manager take when a team member's performance does not meet expectations?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "communicate the concern",
+        "clarify expected improvements",
+        "provide reasonable guidance"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage outlines the steps a manager should take when addressing performance concerns, including communication, clarification, and guidance. The question directly relates to these steps and can be answered using the exact phrases provided in the passage.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0069"
+      ],
+      "fact_verification": [
+        {
+          "fact": "communicate the concern",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "clarify expected improvements",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "provide reasonable guidance",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-007",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What are the expectations for professional conduct in the company?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "Employees are expected to act honestly",
+        "respectfully",
+        "and professionally"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage outlines expectations for professional conduct, including honesty, respect, and professionalism. The question asks about these expectations without directly quoting the passage, making it suitable for an audience of employees and HR staff.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0046"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Employees are expected to act honestly",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "respectfully",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "and professionally",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-008",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "How many days do regular employees have to report a payslip error?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "30 calendar days"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage specifies that regular employees have 30 calendar days to report a payslip error, which is a straightforward factual question about the policy duration.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0083"
+      ],
+      "fact_verification": [
+        {
+          "fact": "30 calendar days",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-009",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "Does the company have a policy for carry-forward or leave-encashment?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "carry-forward",
+        "encashment"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage states that the sample policy does not specify a carry-forward or leave-encashment entitlement, indicating that the company does not have such a policy. The question directly addresses this information without quoting the exact wording.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0031"
+      ],
+      "fact_verification": [
+        {
+          "fact": "carry-forward",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "encashment",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "MUL-010",
+      "category": "answerable",
+      "subtype": "multi_evidence",
+      "question": "What is the consequence if an employee fails to provide the required notice period as stated in the handbook, and where can they find more information about this?",
+      "expected_behavior": "Combine evidence from both sources and cite them.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "Resignation, Notice Period and Exit",
+        "12. Resignation, Notice Period and Exit",
+        "Policy Ownership and Review",
+        "14. Policy Ownership and Review"
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires knowledge from both sections. Fact from A is about resignation, notice period and exit, and fact from B is about policy ownership and review. The question asks about the consequence of failing to provide the required notice period and where to find more information, which can be answered by referencing both sections.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0006",
+        "fbb73df84d81-0086"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Resignation, Notice Period and Exit",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "12. Resignation, Notice Period and Exit",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Policy Ownership and Review",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "14. Policy Ownership and Review",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "MUL-011",
+      "category": "answerable",
+      "subtype": "multi_evidence",
+      "question": "What is the maximum amount eligible roles can claim for approved business-related internet or mobile expenses, and what is the deadline for submitting claims?",
+      "expected_behavior": "Combine evidence from both sources and cite them.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "approved business-related internet or mobile expenses up to the limit communicated by Finance.",
+        "Claims must include valid receipts and be submitted within 30 days of the expense.",
+        "The sample policy covers eligible roles and approved business-related expenses, subject to limits and receipts."
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires understanding both the reimbursement limit and the submission deadline mentioned in Passage A, and the coverage of eligible roles and expenses mentioned in Passage B.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0042",
+        "fbb73df84d81-0084"
+      ],
+      "fact_verification": [
+        {
+          "fact": "approved business-related internet or mobile expenses up to the limit communicated by Finance.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Claims must include valid receipts and be submitted within 30 days of the expense.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "The sample policy covers eligible roles and approved business-related expenses, subject to limits and receipts.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "MUL-012",
+      "category": "answerable",
+      "subtype": "multi_evidence",
+      "question": "What is the consequence for repeated lateness, and what is the notification procedure for illness or emergencies, according to the HR Policy Handbook?",
+      "expected_behavior": "Combine evidence from both sources and cite them.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "Repeated lateness may lead to a discussion with the manager and HR.",
+        "Employees who expect to arrive late should notify their manager as early as possible.",
+        "If an employee cannot attend work due to illness or an emergency, they should notify their manager before the scheduled start time where reasonably possible."
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires combining information from both passages to fully answer, including the consequence for repeated lateness from Passage A and the notification procedure for illness or emergencies from Passage B.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0019",
+        "fbb73df84d81-0021"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Repeated lateness may lead to a discussion with the manager and HR.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Employees who expect to arrive late should notify their manager as early as possible.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "If an employee cannot attend work due to illness or an emergency, they should notify their manager before the scheduled start time where reasonably possible.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-013",
+      "category": "edge_case",
+      "subtype": "false_premise",
+      "question": "According to the HR Policy Handbook, interns, contractors, consultants, and temporary workers are not covered by any agreements, only full-time and part-time employees are covered by the sample rules.",
+      "expected_behavior": "Point out that the assumption is incorrect and give the correct information with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "Interns, contractors, consultants, and temporary workers may be covered by separate agreements."
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question assumes that interns, contractors, consultants, and temporary workers are not covered by any agreements, which contradicts the passage. The correct answer should highlight the fact that these groups may be covered by separate agreements, not that they are not covered at all.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0009"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Interns, contractors, consultants, and temporary workers may be covered by separate agreements.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-014",
+      "category": "edge_case",
+      "subtype": "ambiguous",
+      "question": "What should an employee do if they suspect their salary has been incorrectly calculated and they want to verify the information?",
+      "expected_behavior": "Ask a clarifying question or explain the possible interpretations instead of guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question is designed to be vague and could be interpreted in multiple ways. It asks about verifying salary discrepancies, which is a common issue, but it does not specify the preferred method or channel. The correct_facts ensure that the answer includes the key points from the passage about how to raise the issue.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0036"
+      ],
+      "fact_verification": [
+        {
+          "fact": "include the relevant pay period",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "a clear description",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-015",
+      "category": "edge_case",
+      "subtype": "incomplete",
+      "question": "What categories of information are typically included in an employee's payslip?",
+      "expected_behavior": "Ask for the missing detail or answer for the documented cases, without guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question is designed to test the assistant's understanding of the key categories of information typically included in a payslip. The correct answer should mention all the categories listed in the passage, but the question does not specify which categories are included, thus requiring the assistant to provide a comprehensive list.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0035"
+      ],
+      "fact_verification": [
+        {
+          "fact": "payslips may include earnings, deductions, employer contributions, and net pay.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-016",
+      "category": "edge_case",
+      "subtype": "paraphrased",
+      "question": "Could you explain what this handbook is intended to do for employees of Sample Company?",
+      "expected_behavior": "Answer correctly from the documents despite the different wording, with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "This handbook summarises example workplace policies for Sample Company.",
+        "It is designed to help employees"
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question requires the assistant to understand and rephrase the main purpose of the handbook as stated in the passage. It tests comprehension and the ability to restate the core message in a different way.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0008"
+      ],
+      "fact_verification": [
+        {
+          "fact": "This handbook summarises example workplace policies for Sample Company.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "It is designed to help employees",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-017",
+      "category": "edge_case",
+      "subtype": "partial_information",
+      "question": "Under the hybrid-work arrangement, what are the conditions for accessing company data, and how does this relate to the requirement of remaining reachable during agreed working hours?",
+      "expected_behavior": "Answer the covered part with a citation and state that the rest is not in the documents.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "Employees must remain reachable during agreed working hours.",
+        "Company data must only be accessed through approved devices, networks, and security controls."
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question requires the assistant to connect two related but distinct points from the passage. It tests whether the assistant can identify and relate the conditions for accessing company data to the requirement of remaining reachable during agreed working hours, which are both covered in the passage. The assistant should also be able to explain the relationship between these points and the overa",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0022"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Employees must remain reachable during agreed working hours.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Company data must only be accessed through approved devices, networks, and security controls.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-018",
+      "category": "edge_case",
+      "subtype": "false_premise",
+      "question": "According to the HR Policy Handbook, employees are not allowed to use any travel booking channels other than the preferred ones.",
+      "expected_behavior": "Point out that the assumption is incorrect and give the correct information with a citation.",
+      "expected_sources": [
+        "Sample_HR_Policy_Handbook.pdf"
+      ],
+      "expected_facts": [
+        "Business travel must be approved by the manager before booking.",
+        "Employees should use preferred vendors and booking channels where available."
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question assumes that employees are not allowed to use any travel booking channels other than the preferred ones, which contradicts the passage which states that employees should use preferred vendors and booking channels where available. The correct answer should clarify that employees are not restricted to using only preferred booking channels.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0071"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Business travel must be approved by the manager before booking.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Employees should use preferred vendors and booking channels where available.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-019",
+      "category": "edge_case",
+      "subtype": "ambiguous",
+      "question": "What specific examples of conflicts of interest are mentioned in the HR Policy Handbook?",
+      "expected_behavior": "Ask a clarifying question or explain the possible interpretations instead of guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question is designed to test the assistant's ability to identify specific examples of conflicts of interest from the passage. The correct answer should include at least two specific examples, which are provided in the correct_facts. The question is not too easy because it requires the assistant to recognize and list specific examples, and it is not too hard because it is based on a clear and s",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0047"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Examples include participating in decisions involving a close relative, using company information for personal gain, or having an outside activity that materially conflicts with company duties.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-020",
+      "category": "edge_case",
+      "subtype": "incomplete",
+      "question": "What is the illustrative payroll date for the sample arrangement?",
+      "expected_behavior": "Ask for the missing detail or answer for the documented cases, without guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question is designed to test the assistant's ability to identify and request the missing detail (actual payroll dates) from the passage, which is not provided in the illustrative format.",
+      "evidence_chunk_ids": [
+        "fbb73df84d81-0081"
+      ],
+      "fact_verification": [
+        {
+          "fact": "The illustrative payroll date is the last working day of each month.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "OOS-021",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "What is the average salary range for a software engineer in the tech industry?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "it must be refused (best retrieval similarity 0.31)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    },
+    {
+      "test_id": "OOS-022",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "What are the specific disciplinary actions taken for theft in the past year?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "it must be refused (best retrieval similarity 0.40)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    },
+    {
+      "test_id": "OOS-023",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "What are the specific steps taken during the recruitment process for a new position?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "it must be refused (best retrieval similarity 0.43)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    },
+    {
+      "test_id": "OOS-024",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "Can you share the compensation structure for different levels of management?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "it must be refused (best retrieval similarity 0.50)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    },
+    {
+      "test_id": "OOS-025",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "What are the specific reasons for rejecting a candidate during the hiring process?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "it must be refused (best retrieval similarity 0.21)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    },
+    {
+      "test_id": "OOS-026",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "How many employees have received a warning for tardiness in the last quarter?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "it must be refused (best retrieval similarity 0.43)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    }
+  ],
+  "generation_config": {
+    "target_cases": 26,
+    "seed": 7,
+    "temperature": 0.0,
+    "planned": {
+      "single": 9,
+      "multi": 3,
+      "edge": 8,
+      "out_of_scope": 6
+    },
+    "prompts": [
+      "eval_generator.txt",
+      "eval_generator_multi.txt",
+      "eval_generator_edge.txt",
+      "eval_generator_out_of_scope.txt"
+    ]
+  },
+  "rejected_candidates": [
+    {
+      "type": "out_of_scope",
+      "question": "Can you provide details on the benefits package for new hires?",
+      "best_similarity": 0.5857,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "How many days of paid vacation does an employee receive after 5 years of service?",
+      "best_similarity": 0.5596,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    }
+  ],
+  "created_at": "2026-11-26T22:30:57.613530+00:00"
+}

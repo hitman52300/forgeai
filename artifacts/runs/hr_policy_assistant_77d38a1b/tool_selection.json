@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "calculator",
+    "selected": true,
+    "reason": "Required for calculations such as leave amounts, benefits, timelines, and procedures."
+  },
+  {
+    "tool": "csv_lookup",
+    "selected": false,
+    "reason": "deselected: no CSV knowledge source is attached"
+  },
+  {
+    "tool": "current_date",
+    "selected": true,
+    "reason": "Required for understanding deadlines, notice periods, and schedules that depend on today's date or current time."
+  },
+  {
+    "tool": "weather_api",
+    "selected": false,
+    "reason": "Not required as there are no mentions of weather conditions in the requirements."
+  }
+]

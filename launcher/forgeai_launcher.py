@@ -139,7 +139,10 @@ def main() -> None:
         say("created .env from .env.example. Fill in the Supabase values, or set STORAGE_BACKEND=local.")
     env = read_env(root)
     py = ensure_venv(root)
-    ensure_ollama(env)
+    if env.get("LLM_PROVIDER", "ollama") == "ollama":
+        ensure_ollama(env)
+    else:
+        say(f"using online LLM provider '{env.get('LLM_PROVIDER')}' (Ollama not needed)")
     child_env = dict(os.environ, API_BASE_URL=f"http://127.0.0.1:{API_PORT}", PYTHONUNBUFFERED="1")
     logs = root / "data" / "logs"
     logs.mkdir(parents=True, exist_ok=True)

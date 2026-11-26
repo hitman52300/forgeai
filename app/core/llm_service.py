@@ -81,6 +81,78 @@ class OllamaProvider:
         return [m["name"] for m in r.json().get("models", [])]
 
 
+class OpenRouterProvider:
+    """OpenRouter (OpenAI-compatible) chat completions. By default only free (':free') models are allowed.
+
+    Free models are rate limited by OpenRouter; HTTP 429/5xx are retried with backoff and, if
+    configured, the request falls back to the next free model in OPENROUTER_FALLBACK_MODELS.
+    """
+
+    def __init__(self, settings: Settings):
+        if not settings.openrouter_api_key:
+            raise LLMError("OPENROUTER_API_KEY is not set in .env")
+        self.s = settings
+        self._client = httpx.Client(
+            base_url=settings.openrouter_base_url.rstrip("/"), timeout=settings.llm_timeout_s,
+            headers={"Authorization": f"Bearer {settings.openrouter_api_key}",
+                     "X-Title": "ForgeAI", "Content-Type": "application/json"})
+
+    def _check_free(self, model: str) -> None:
+        if self.s.openrouter_free_only and not model.endswith(":free"):
+            raise LLMError(f"model '{model}' is not a free model; OPENROUTER_FREE_ONLY=true allows only ':free' models")
+
+    def chat(self, messages, *, model, temperature, max_tokens, json_schema=None, seed=None) -> LLMResult:
+        candidates = [model] + [m for m in self.s.openrouter_fallback_list if m != model]
+        last = ""
+        for m in candidates:
+            self._check_free(m)
+            payload: dict[str, Any] = {"model": m, "messages": messages, "temperature": temperature,
+                                       "max_tokens": max_tokens}
+            if seed is not None:
+                payload["seed"] = seed
+            if isinstance(json_schema, dict):
+                payload["response_format"] = {"type": "json_schema",
+                                              "json_schema": {"name": "output", "strict": False,
+                                                              "schema": json_schema}}
+            elif json_schema is not None:
+                payload["response_format"] = {"type": "json_object"}
+            t0 = time.monotonic()
+            for attempt in range(self.s.openrouter_rate_limit_retries + 1):
+                try:
+                    r = self._client.post("/chat/completions", json=payload)
+                except httpx.HTTPError as e:
+                    last = f"OpenRouter request failed: {e}"
+                    time.sleep(min(30, 2 ** attempt))
+                    continue
+                if r.status_code == 400 and "response_format" in payload:
+                    payload.pop("response_format")  # model does not support it: rely on prompt + validation
+                    continue
+                if r.status_code in (429, 500, 502, 503, 504):
+                    last = f"OpenRouter HTTP {r.status_code} for {m}: {r.text[:200]}"
+                    wait = float(r.headers.get("retry-after") or min(60, 5 * 2 ** attempt))
+                    time.sleep(wait)
+                    continue
+                if r.status_code != 200:
+                    raise LLMError(f"OpenRouter returned HTTP {r.status_code}: {r.text[:300]}")
+                data = r.json()
+                if data.get("error"):
+                    last = f"OpenRouter error for {m}: {str(data['error'])[:200]}"
+                    break
+                choice = (data.get("choices") or [{}])[0]
+                usage = data.get("usage") or {}
+                return LLMResult(text=(choice.get("message") or {}).get("content") or "",
+                                 prompt_tokens=int(usage.get("prompt_tokens") or 0),
+                                 completion_tokens=int(usage.get("completion_tokens") or 0),
+                                 model=data.get("model", m), latency_s=time.monotonic() - t0)
+        raise LLMError(last or "OpenRouter request failed")
+
+    def list_models(self) -> list[str]:
+        r = self._client.get("/models")
+        r.raise_for_status()
+        ids = [m["id"] for m in r.json().get("data", [])]
+        return [i for i in ids if i.endswith(":free")] if self.s.openrouter_free_only else ids
+
+
 class ScriptedProvider:
     """Deterministic provider for unit tests: a function maps messages -> reply text."""
 
@@ -135,9 +207,10 @@ class LLMService:
     @classmethod
     def from_settings(cls, settings: Settings | None = None, budget: BudgetManager | None = None) -> "LLMService":
         s = settings or get_settings()
-        if s.llm_provider != "ollama":
-            raise LLMError(f"Unsupported LLM provider '{s.llm_provider}'")
-        return cls(provider=OllamaProvider(s), settings=s, budget=budget)
+        providers = {"ollama": OllamaProvider, "openrouter": OpenRouterProvider}
+        if s.llm_provider not in providers:
+            raise LLMError(f"Unsupported LLM provider '{s.llm_provider}' (supported: {', '.join(providers)})")
+        return cls(provider=providers[s.llm_provider](s), settings=s, budget=budget)
 
     # ------------------------------------------------------------------ text
     def complete(self, messages: list[dict[str, str]], *, stage: str, model: str | None = None,

@@ -1,0 +1,33 @@
+{
+  "project_id": "cbb9a1b1-8a20-461b-9188-b59996113a09",
+  "collection": "p_cbb9a1b18a20461b9188b599_c800_o120",
+  "documents": [
+    {
+      "document_id": "f2939fc5-d872-4dd4-86da-0cdc6189ce93",
+      "project_id": "cbb9a1b1-8a20-461b-9188-b59996113a09",
+      "filename": "Sample_HR_Policy_Handbook.pdf",
+      "file_type": "pdf",
+      "size_bytes": 46489,
+      "content_hash": "fbb73df84d813f21d75d2ce77c95fc2abca4611edc05702de4331bead801d158",
+      "version": 1,
+      "page_count": 9,
+      "row_count": null,
+      "columns": null,
+      "chunk_count": 82,
+      "storage_path": "documents/cbb9a1b1-8a20-461b-9188-b59996113a09/fbb73df84d81_Sample_HR_Policy_Handbook.pdf",
+      "status": "ingested",
+      "error": null,
+      "preview": "SAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 1\n\nSAMPLE COMPANY\n\nHUMAN RESOURCES\n\nPOLICY HANDBOOK\nEmployee Guide | Version 1.0 | 2026\nPurpose\nThis handbook is a fictional sample knowledge document created for testing and demonstrating an HR Policy Assistant\nAI agent. It provides example answers and policy clauses for common employee questions.\n\nIMPORTANT DISCLAIMER\nThis document is illustrative only. It is not legal advice and is not an actual company's policy. The leave amounts,\nbenefits, timelines, and procedures below are fictional examples. Replace them with approved company policies\nbefore using this handbook in a real workplace.\nPrepared for AI knowledge-base testing\n\nSAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\nPage 2\nContents\n•  1. About this Handbook\n•  2. Employment Categories and Work Schedule\n•  3. Attendance, Punctuality and Remote Work\n•  4. Leave and Holidays\n•  5. Compensation and Payroll\n•  6. Benefits and Reimbursements\n•  7. Code of Conduct and Workplace Behaviour\n•  8. Anti-Harassment and Grievance Reporting\n•  9. Information Security and Confidentiality\n•  10. Performance, Learning and Development\n•  11. Travel and Business Expenses\n•  12. Resignation, Notice Period and Exit\n•  13. Frequently Asked Questions\n•  14. Policy Ownership and Review\nDocument note: Section and page references are intended to help a retrieval-based assistant cite the source. PDF page numbers may\nvary if this document is edited.\n\nSAMPLE COMPANY | FICTIONAL HR POLICY HANDBOOK\n"
+    }
+  ],
+  "errors": [],
+  "duplicates": [],
+  "changes": [
+    {
+      "filename": "Sample_HR_Policy_Handbook.pdf",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "fbb73df84d813f21d75d2ce77c95fc2abca4611edc05702de4331bead801d158"
+    }
+  ]
+}

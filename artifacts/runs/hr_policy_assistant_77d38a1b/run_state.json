@@ -1,0 +1,59 @@
+{
+  "run": {
+    "run_id": "77d38a1b-6835-4a04-9d6e-fab3682fbaba",
+    "project_id": "cbb9a1b1-8a20-461b-9188-b59996113a09",
+    "project_name": "HR Policy Assistant: ",
+    "brief": "HR Policy Assistant: ",
+    "status": "failed",
+    "stages": {
+      "document_analysis": "completed",
+      "interview": "completed",
+      "groundability": "completed",
+      "requirements_approval": "completed",
+      "agent_generation": "completed",
+      "evaluation_generation": "failed",
+      "evaluation": "pending",
+      "optimization": "pending",
+      "final_delivery": "pending"
+    },
+    "stage_messages": {
+      "target_cases": "26",
+      "document_analysis": "1 documents ingested",
+      "interview": "5 question(s), 5 answered",
+      "groundability": "{\"unsupported\": 4, \"supported\": 1, \"partially_supported\": 1}",
+      "requirements_approval": "approved by luckyraghav081@gmail.com at 2026-11-26T22:25:39.902690+00:00; 0 field(s) edited",
+      "agent_generation": "HRPolicyAI v1; tools=['calculator', 'current_date']; 1 documents, 23374 prose characters, median indexed chunk 274 chars; chunk_size=600 overlap=90 (15%); top_k=4 (more documents/tables need more passages for cross-document questions)",
+      "evaluation_generation": "StorageError: insert into evaluation_cases failed: [WinError 10035] A non-blocking socket operation could not be completed immediately"
+    },
+    "budget": {
+      "max_llm_calls": 1500,
+      "max_tokens": 3000000,
+      "max_iterations": 3,
+      "max_seconds": 10800,
+      "max_eval_cases": 40
+    },
+    "usage": {
+      "llm_calls": 35,
+      "prompt_tokens": 17462,
+      "completion_tokens": 6680,
+      "elapsed_seconds": 214.08,
+      "iterations": 0,
+      "eval_cases": 0,
+      "calls_by_stage": {
+        "interview": 1,
+        "groundability": 10,
+        "tool_selection": 1,
+        "requirements": 1,
+        "agent_generation": 1,
+        "eval_generation": 21
+      }
+    },
+    "stop_reason": "StorageError: insert into evaluation_cases failed: [WinError 10035] A non-blocking socket operation could not be completed immediately",
+    "created_at": "2026-11-26T22:22:14.091195+00:00",
+    "updated_at": "2026-11-26T22:30:58.722186+00:00",
+    "owner": "luckyraghav081@gmail.com",
+    "final_agent_version": null,
+    "agent_id": "9e146934-563d-4903-9ac9-ca7d162cb826"
+  },
+  "slug": "hr_policy_assistant_77d38a1b"
+}

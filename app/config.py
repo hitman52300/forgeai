@@ -4,7 +4,7 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 
-from pydantic import Field
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +24,27 @@ class Settings(BaseSettings):
     llm_max_retries: int = 3
     llm_seed: int = 42
     llm_num_ctx: int = 4096
+
+    # OpenRouter (used when LLM_PROVIDER=openrouter; LLM_MODEL / JUDGE_MODEL then hold OpenRouter model ids)
+    openrouter_api_key: str = ""
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
+    openrouter_free_only: bool = True
+    openrouter_fallback_models: str = ""
+    openrouter_rate_limit_retries: int = 4
+    openrouter_agent_model: str = "google/gemma-4-31b-it:free"
+    openrouter_judge_model: str = "nvidia/nemotron-3.5-super-vl:free"
+
+    @model_validator(mode="after")
+    def _select_provider_models(self) -> "Settings":
+        # one switch (LLM_PROVIDER) changes the models used everywhere; Ollama settings stay intact
+        if self.llm_provider == "openrouter":
+            self.llm_model = self.openrouter_agent_model
+            self.judge_model = self.openrouter_judge_model
+        return self
+
+    @property
+    def openrouter_fallback_list(self) -> list[str]:
+        return [m.strip() for m in self.openrouter_fallback_models.split(",") if m.strip()]
 
     # embeddings / vectors
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
