@@ -6,6 +6,7 @@ from app.core.llm_service import LLMError, OpenRouterProvider
 
 
 def _provider(handler, **kw):
+    kw.setdefault("openrouter_fallback_models", "")
     s = Settings(llm_provider="openrouter", openrouter_api_key="test-key", openrouter_rate_limit_retries=1, **kw)
     p = OpenRouterProvider(s)
     p._client = httpx.Client(base_url="https://openrouter.test/api/v1", transport=httpx.MockTransport(handler))
@@ -30,7 +31,7 @@ def test_json_schema_request_and_usage(monkeypatch):
     res = p.chat([{"role": "user", "content": "x"}], model="a:free", temperature=0.1, max_tokens=50,
                  json_schema={"type": "object"})
     assert res.text == '{"a": 1}' and res.prompt_tokens == 7 and res.completion_tokens == 3
-    assert seen["response_format"]["type"] == "json_schema" and seen["max_tokens"] == 50
+    assert seen["response_format"]["type"] == "json_schema" and seen["max_tokens"] == 1500 and seen["reasoning"]["exclude"] is True
 
 
 def test_rate_limit_falls_back_to_next_free_model(monkeypatch):
@@ -46,4 +47,4 @@ def test_rate_limit_falls_back_to_next_free_model(monkeypatch):
         return httpx.Response(200, json={"choices": [{"message": {"content": "ok"}}], "usage": {}})
     p = _provider(handler, openrouter_fallback_models="b:free")
     assert p.chat([{"role": "user", "content": "x"}], model="a:free", temperature=0, max_tokens=5).text == "ok"
-    assert calls[-1] == "b:free" and calls.count("a:free") == 2
+    assert calls == ["a:free", "b:free"]  # a 429 moves straight to the next free model

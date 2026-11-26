@@ -31,8 +31,8 @@ class Settings(BaseSettings):
     openrouter_free_only: bool = True
     openrouter_fallback_models: str = ""
     openrouter_rate_limit_retries: int = 4
-    openrouter_agent_model: str = "google/gemma-4-31b-it:free"
-    openrouter_judge_model: str = "nvidia/nemotron-3.5-super-vl:free"
+    openrouter_agent_model: str = "nvidia/nemotron-3-ultra-550b-a55b:free"
+    openrouter_judge_model: str = "baidu/ernie-5.5-flash-preview:free"
 
     @model_validator(mode="after")
     def _select_provider_models(self) -> "Settings":

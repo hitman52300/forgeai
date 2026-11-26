@@ -101,49 +101,58 @@ class OpenRouterProvider:
         if self.s.openrouter_free_only and not model.endswith(":free"):
             raise LLMError(f"model '{model}' is not a free model; OPENROUTER_FREE_ONLY=true allows only ':free' models")
 
+    def _payload(self, m: str, messages, temperature, max_tokens, json_schema, seed) -> dict[str, Any]:
+        payload: dict[str, Any] = {"model": m, "messages": messages, "temperature": temperature,
+                                   # free models are often reasoning models whose hidden reasoning consumes the
+                                   # token budget; keep reasoning short and out of the reply
+                                   "max_tokens": max(max_tokens, 1500), "reasoning": {"effort": "low", "exclude": True}}
+        if seed is not None:
+            payload["seed"] = seed
+        if isinstance(json_schema, dict):
+            payload["response_format"] = {"type": "json_schema",
+                                          "json_schema": {"name": "output", "strict": False, "schema": json_schema}}
+        elif json_schema is not None:
+            payload["response_format"] = {"type": "json_object"}
+        return payload
+
     def chat(self, messages, *, model, temperature, max_tokens, json_schema=None, seed=None) -> LLMResult:
+        """Try the requested model, then each fallback; free models are often rate-limited upstream, so a
+        429 moves on to the next model immediately and the whole list is retried with backoff."""
         candidates = [model] + [m for m in self.s.openrouter_fallback_list if m != model]
-        last = ""
         for m in candidates:
             self._check_free(m)
-            payload: dict[str, Any] = {"model": m, "messages": messages, "temperature": temperature,
-                                       "max_tokens": max_tokens}
-            if seed is not None:
-                payload["seed"] = seed
-            if isinstance(json_schema, dict):
-                payload["response_format"] = {"type": "json_schema",
-                                              "json_schema": {"name": "output", "strict": False,
-                                                              "schema": json_schema}}
-            elif json_schema is not None:
-                payload["response_format"] = {"type": "json_object"}
-            t0 = time.monotonic()
-            for attempt in range(self.s.openrouter_rate_limit_retries + 1):
+        payloads = {m: self._payload(m, messages, temperature, max_tokens, json_schema, seed) for m in candidates}
+        last = ""
+        t0 = time.monotonic()
+        for rnd in range(self.s.openrouter_rate_limit_retries + 1):
+            for m in candidates:
+                payload = payloads[m]
                 try:
                     r = self._client.post("/chat/completions", json=payload)
                 except httpx.HTTPError as e:
                     last = f"OpenRouter request failed: {e}"
-                    time.sleep(min(30, 2 ** attempt))
                     continue
-                if r.status_code == 400 and "response_format" in payload:
-                    payload.pop("response_format")  # model does not support it: rely on prompt + validation
-                    continue
-                if r.status_code in (429, 500, 502, 503, 504):
-                    last = f"OpenRouter HTTP {r.status_code} for {m}: {r.text[:200]}"
-                    wait = float(r.headers.get("retry-after") or min(60, 5 * 2 ** attempt))
-                    time.sleep(wait)
+                if r.status_code == 400 and ("response_format" in payload or "reasoning" in payload):
+                    payload.pop("reasoning", None)  # unsupported parameter: retry without it
+                    if "reasoning" not in r.text.lower():
+                        payload.pop("response_format", None)
+                    r = self._client.post("/chat/completions", json=payload)
+                if r.status_code in (402, 404, 408, 429, 500, 502, 503, 504):
+                    last = f"OpenRouter HTTP {r.status_code} for {m}: {r.text[:160]}"
                     continue
                 if r.status_code != 200:
                     raise LLMError(f"OpenRouter returned HTTP {r.status_code}: {r.text[:300]}")
                 data = r.json()
-                if data.get("error"):
-                    last = f"OpenRouter error for {m}: {str(data['error'])[:200]}"
-                    break
                 choice = (data.get("choices") or [{}])[0]
+                text = ((choice or {}).get("message") or {}).get("content") or ""
+                if data.get("error") or not text.strip():
+                    last = f"OpenRouter returned no content for {m}: {str(data.get('error') or '')[:160]}"
+                    continue
                 usage = data.get("usage") or {}
-                return LLMResult(text=(choice.get("message") or {}).get("content") or "",
-                                 prompt_tokens=int(usage.get("prompt_tokens") or 0),
+                return LLMResult(text=text, prompt_tokens=int(usage.get("prompt_tokens") or 0),
                                  completion_tokens=int(usage.get("completion_tokens") or 0),
                                  model=data.get("model", m), latency_s=time.monotonic() - t0)
+            time.sleep(min(60, 4 * 2 ** rnd))
         raise LLMError(last or "OpenRouter request failed")
 
     def list_models(self) -> list[str]:
@@ -227,7 +236,7 @@ class LLMService:
         )
         if self.budget:
             self.budget.record_call(stage, res.prompt_tokens, res.completion_tokens)
-        self.call_log.append({"stage": stage, "model": model, "prompt_tokens": res.prompt_tokens,
+        self.call_log.append({"stage": stage, "model": res.model or model, "prompt_tokens": res.prompt_tokens,
                               "completion_tokens": res.completion_tokens, "latency_s": round(res.latency_s, 2)})
         return res
 
