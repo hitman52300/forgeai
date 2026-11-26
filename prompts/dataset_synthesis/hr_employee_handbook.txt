@@ -1,0 +1,21 @@
+Write an employee handbook (about 1,300 words) for the shore (office and port) staff of a
+fictional ship-management company called "Coral Harbour Marine Services".
+
+Use numbered section headings. Cover:
+1. About the handbook: who it applies to (shore staff, not seafarers on board), that it
+   is read together with the Leave Policy and the Attendance and Workplace Policy.
+2. Employment basics: probation period (state a length), confirmation by letter, notice
+   periods during and after probation (state values).
+3. Working week: office days and the standard weekly hours (consistent with the
+   attendance policy: 09:30-17:30 Monday to Friday, 40 hours).
+4. Employee procedures: how to update personal details in HRMS, how to request an
+   employment verification letter (state a turnaround time), how to raise a
+   grievance (steps and response time), exit procedure (handover, clearance form).
+5. Code of conduct summary: conflicts of interest, gifts (state a value limit in INR),
+   confidentiality.
+6. Learning and development: a yearly training-hours expectation.
+7. A short statement that salary, payroll, allowances and benefits are covered by a
+   separate Compensation and Benefits Policy that is NOT part of this handbook, and
+   that employees should contact HR for it. Do not state any salary or benefit details.
+
+Write in a formal, internally consistent style. Do not include real company names.

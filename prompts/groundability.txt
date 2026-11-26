@@ -1,0 +1,22 @@
+You check whether uploaded documents contain usable information about a topic that an
+AI assistant is supposed to answer questions about.
+
+TOPIC: {{topic}}
+ASSISTANT PURPOSE: {{purpose}}
+
+PASSAGES retrieved from the documents (each starts with its id):
+{{evidence}}
+
+For EACH passage, decide: does it contain concrete facts about the TOPIC (rules, values,
+procedures, conditions, records) that could be used to answer a typical question about
+the topic? A passage that only mentions the topic's name, or only says that the topic is
+covered elsewhere / in another document, does NOT count.
+
+Then:
+- "contradiction": true only if two passages give conflicting facts about the topic.
+- "missing_aspects": important aspects of the topic that none of the passages cover.
+
+Use only the passages. Do not use outside knowledge.
+
+Return only JSON: {"passages": [{"id": "E1", "has_facts": true, "reason": "few words"}, ...],
+"contradiction": false, "missing_aspects": ["..."], "rationale": "one sentence"}

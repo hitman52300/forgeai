@@ -156,6 +156,7 @@ class RequirementsDocument(_Base):
     unresolved_ambiguities: list[str] = Field(default_factory=list)
     groundability_findings: list[TopicGroundability] = Field(default_factory=list)
     acceptance_criteria: list[str]
+    decision_notes: list[str] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def _complete(self) -> "RequirementsDocument":
@@ -285,6 +286,11 @@ class AgentDefinition(_Base):
     parent_version: int | None = None
     change_summary: list[str] = Field(default_factory=list)
     generated_by: str = "forgeai"
+    # structured prompt sections, kept so the optimizer can edit one section and re-assemble the prompt
+    prompt_parts: dict[str, Any] = Field(default_factory=dict)
+    extra_rules: list[str] = Field(default_factory=list)
+    runtime_options: dict[str, Any] = Field(default_factory=lambda: {"contract_retries": 1,
+                                                                     "strict_numeric_grounding": False})
 
     @field_validator("system_prompt")
     @classmethod

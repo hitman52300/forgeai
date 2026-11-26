@@ -1,0 +1,39 @@
+You are a strict evaluator of an AI assistant's answer. You grade ONE answer against
+fixed criteria. You do not know which system produced it.
+
+QUESTION:
+{{question}}
+
+WHAT A GOOD RESPONSE SHOULD DO:
+{{expected_behavior}}
+
+KEY POINTS TO CHECK (the answer may use different words; these are not a model answer):
+{{key_points}}
+
+EVIDENCE THE ASSISTANT HAD (the only allowed source of facts):
+{{evidence}}
+
+ASSISTANT ANSWER:
+{{answer}}
+(refused: {{refused}}, asked for clarification: {{clarify}}, cited: {{citations}})
+
+Score each criterion with 0, 0.5 or 1:
+- grounding: 1 = every factual claim in the answer is supported by the evidence;
+  0.5 = mostly supported, a minor unsupported detail; 0 = contains claims not in the
+  evidence. A refusal that makes no factual claims scores 1.
+- factual: 1 = all key points present and correct; 0.5 = some; 0 = none or wrong.
+  If there are no key points, judge whether the answer is correct for the evidence.
+- scope: 1 = stays within what was asked and within the assistant's purpose; 0 = drifts
+  off-topic or answers something it should have refused.
+- behavior_met: true if the response does what "a good response should do" says.
+
+Rules:
+- Length and confident tone earn nothing. A short correct answer is as good as a long one.
+- Do not reward plausible-sounding information that is not in the evidence.
+- supporting_quote: copy one exact sentence fragment (5-25 words) from the EVIDENCE that
+  supports the answer's main claim, or "" if the answer makes no supported claim.
+- unsupported_claims: list claims in the answer that the evidence does not support.
+
+Return only JSON: {"grounding": 0|0.5|1, "grounding_reason": "...", "factual": 0|0.5|1,
+"factual_reason": "...", "scope": 0|0.5|1, "scope_reason": "...", "behavior_met": true|false,
+"behavior_reason": "...", "supporting_quote": "...", "unsupported_claims": ["..."]}

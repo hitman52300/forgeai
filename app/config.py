@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 180.0
     llm_max_retries: int = 3
     llm_seed: int = 42
-    llm_num_ctx: int = 8192
+    llm_num_ctx: int = 4096
 
     # embeddings / vectors
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
@@ -62,9 +62,11 @@ class Settings(BaseSettings):
         p = Path(rel)
         return p if p.is_absolute() else ROOT_DIR / p
 
+    artifacts_root: str = "artifacts"
+
     @property
     def artifacts_dir(self) -> Path:
-        return ROOT_DIR / "artifacts"
+        return self.path(self.artifacts_root)
 
     @property
     def prompts_dir(self) -> Path:

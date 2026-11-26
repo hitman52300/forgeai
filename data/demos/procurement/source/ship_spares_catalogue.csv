@@ -1,0 +1,41 @@
+part_id,part_name,category,vessel_compatibility,quantity_on_hand,unit_price,currency,supplier_id,availability,manufacturer_part_no
+SP-1001,Main Engine Fuel Injector Nozzle,Main Engine,Bulk Carrier 58k/Tanker 115k,24,412.50,USD,SUP-A,In Stock,FIN-58-220
+SP-1001,Main Engine Fuel Injector Nozzle,Main Engine,Bulk Carrier 58k/Tanker 115k,10,389.00,EUR,SUP-B,In Stock,FIN-58-220
+SP-1002,Main Engine Cylinder Liner O-Ring Set,Main Engine,Bulk Carrier 58k,40,96.80,USD,SUP-A,In Stock,ORS-CL-58
+SP-1003,Exhaust Valve Spindle,Main Engine,Tanker 115k,2,3150.00,USD,SUP-A,Low Stock,EVS-115-07
+SP-1003,Exhaust Valve Spindle,Main Engine,Tanker 115k,0,2980.00,EUR,SUP-B,Out of Stock,EVS-115-07
+SP-1004,Piston Ring Set,Main Engine,Bulk Carrier 58k/Tanker 115k,6,1240.00,USD,SUP-A,In Stock,PRS-500
+SP-1005,Turbocharger Bearing Kit,Main Engine,Tanker 115k/Container 4500TEU,3,2275.00,EUR,SUP-B,Low Stock,TBK-45
+SP-2001,Auxiliary Engine Fuel Pump Element,Auxiliary Engine,Bulk Carrier 58k/Container 4500TEU,15,265.00,USD,SUP-A,In Stock,AFP-E-12
+SP-2001,Auxiliary Engine Fuel Pump Element,Auxiliary Engine,Bulk Carrier 58k/Container 4500TEU,20,249.50,EUR,SUP-B,In Stock,AFP-E-12
+SP-2002,Auxiliary Engine Cylinder Head Gasket,Auxiliary Engine,Bulk Carrier 58k,12,138.40,USD,SUP-A,In Stock,CHG-AE-3
+SP-2003,Auxiliary Engine Governor Actuator,Auxiliary Engine,Container 4500TEU,0,1890.00,EUR,SUP-B,Out of Stock,GOV-ACT-9
+SP-2004,Lube Oil Cooler Tube Bundle,Auxiliary Engine,Tanker 115k,1,4420.00,USD,SUP-A,Low Stock,LOC-TB-115
+SP-3001,Centrifugal Seawater Pump Impeller,Pumps,Bulk Carrier 58k/Tanker 115k/Container 4500TEU,8,540.00,USD,SUP-A,In Stock,CSP-IMP-150
+SP-3001,Centrifugal Seawater Pump Impeller,Pumps,Bulk Carrier 58k/Tanker 115k/Container 4500TEU,5,515.00,EUR,SUP-B,In Stock,CSP-IMP-150
+SP-3002,Pump Mechanical Seal 45mm,Pumps,Bulk Carrier 58k/Tanker 115k,30,182.00,USD,SUP-A,In Stock,MS-45-SIC
+SP-3002,Pump Mechanical Seal 45mm,Pumps,Bulk Carrier 58k/Tanker 115k,18,171.25,EUR,SUP-B,In Stock,MS-45-SIC
+SP-3003,Fire Pump Wear Ring,Pumps,Container 4500TEU,4,96.00,EUR,SUP-B,Low Stock,FPW-R-80
+SP-3004,Ballast Pump Shaft Sleeve,Pumps,Tanker 115k,0,610.00,USD,SUP-A,Out of Stock,BPS-SL-200
+SP-4001,Fuel Oil Purifier Bowl Disc Set,Purifiers,Bulk Carrier 58k/Tanker 115k,2,3640.00,USD,SUP-A,Low Stock,PBD-FO-30
+SP-4002,Purifier Gravity Disc Kit,Purifiers,Bulk Carrier 58k/Tanker 115k,9,214.00,USD,SUP-A,In Stock,PGD-K-30
+SP-4002,Purifier Gravity Disc Kit,Purifiers,Bulk Carrier 58k/Tanker 115k,7,199.00,EUR,SUP-B,In Stock,PGD-K-30
+SP-4003,Purifier Operating Water Solenoid Valve,Purifiers,Container 4500TEU,6,328.00,EUR,SUP-B,In Stock,POW-SV-24
+SP-5001,Butterfly Valve DN150 PN16,Valves,Bulk Carrier 58k/Tanker 115k/Container 4500TEU,11,690.00,EUR,SUP-B,In Stock,BFV-150-16
+SP-5002,Globe Valve DN50 PN40,Valves,Tanker 115k,7,455.00,USD,SUP-A,In Stock,GLV-50-40
+SP-5003,Safety Relief Valve 10 bar,Valves,Bulk Carrier 58k/Container 4500TEU,5,372.00,USD,SUP-A,In Stock,SRV-10-25
+SP-5003,Safety Relief Valve 10 bar,Valves,Bulk Carrier 58k/Container 4500TEU,3,349.00,EUR,SUP-B,Low Stock,SRV-10-25
+SP-5004,Quick Closing Valve Actuator,Valves,Tanker 115k,0,1275.00,EUR,SUP-B,On Request,QCV-ACT-2
+SP-6001,Main Switchboard Air Circuit Breaker 1600A,Electrical,Container 4500TEU,1,5980.00,EUR,SUP-B,Low Stock,ACB-1600
+SP-6002,Generator Automatic Voltage Regulator,Electrical,Bulk Carrier 58k/Tanker 115k,3,1460.00,USD,SUP-A,In Stock,AVR-G-440
+SP-6003,Motor Starter Contactor 95A,Electrical,Bulk Carrier 58k/Tanker 115k/Container 4500TEU,14,212.00,USD,SUP-A,In Stock,MSC-95
+SP-6004,Emergency Lighting LED Fixture,Electrical,Bulk Carrier 58k/Tanker 115k/Container 4500TEU,36,88.50,EUR,SUP-B,In Stock,ELF-24V
+SP-7001,Radar Magnetron X-Band,Navigation,Bulk Carrier 58k/Tanker 115k,2,2140.00,USD,SUP-A,Low Stock,RMX-25KW
+SP-7002,Gyro Compass Sensitive Element,Navigation,Container 4500TEU,0,7350.00,EUR,SUP-B,On Request,GCS-E-5
+SP-7003,ECDIS Display Unit 24in,Navigation,Tanker 115k/Container 4500TEU,1,6890.00,USD,SUP-A,Low Stock,ECD-24
+SP-8001,Mooring Winch Brake Lining,Deck Machinery,Bulk Carrier 58k/Tanker 115k,16,145.00,USD,SUP-A,In Stock,MWB-L-12
+SP-8002,Hydraulic Crane Slewing Motor Seal Kit,Deck Machinery,Bulk Carrier 58k,4,598.00,EUR,SUP-B,In Stock,HCS-SK-30
+SP-9001,Lifejacket SOLAS Adult,Safety Equipment,Bulk Carrier 58k/Tanker 115k/Container 4500TEU,60,46.00,EUR,SUP-B,In Stock,LJ-SOL-A
+SP-9002,Immersion Suit Universal,Safety Equipment,Bulk Carrier 58k/Tanker 115k/Container 4500TEU,0,312.00,USD,SUP-A,Out of Stock,IMS-U
+SP-9101,Fuel Oil Duplex Filter Element 25 micron,Filters,Bulk Carrier 58k/Tanker 115k,48,64.20,USD,SUP-A,In Stock,FOF-25
+SP-9101,Fuel Oil Duplex Filter Element 25 micron,Filters,Bulk Carrier 58k/Tanker 115k,30,59.90,EUR,SUP-B,In Stock,FOF-25

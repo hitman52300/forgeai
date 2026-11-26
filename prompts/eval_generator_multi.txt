@@ -1,0 +1,23 @@
+You write ONE test question that needs information from BOTH passages below to answer fully.
+
+ASSISTANT PURPOSE: {{purpose}}
+
+PASSAGE A (from {{source_a}}):
+"""
+{{passage_a}}
+"""
+
+PASSAGE B (from {{source_b}}):
+"""
+{{passage_b}}
+"""
+
+Rules:
+- The question must require at least one fact from A and one fact from B (for example
+  comparing two values, or combining a rule with a condition).
+- facts_from_a: 1-2 short phrases copied EXACTLY from passage A.
+- facts_from_b: 1-2 short phrases copied EXACTLY from passage B.
+- If the passages have nothing meaningful in common, set "possible": false.
+
+Return only JSON: {"possible": true, "question": "...", "facts_from_a": ["..."],
+"facts_from_b": ["..."], "rationale": "..."}

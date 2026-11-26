@@ -1,0 +1,18 @@
+You write ONE edge-case test question for an AI assistant, based on the passage below.
+
+ASSISTANT PURPOSE: {{purpose}}
+EDGE CASE TYPE: {{edge_type}}
+INSTRUCTIONS FOR THIS TYPE: {{type_instructions}}
+
+PASSAGE (from {{source}}):
+"""
+{{passage}}
+"""
+
+Rules:
+- correct_facts: 0-2 short phrases copied EXACTLY from the passage that a good answer
+  should contain (leave empty for vague/ambiguous questions).
+- expected_behavior: one sentence describing what a good assistant should do.
+
+Return only JSON: {"question": "...", "correct_facts": ["..."], "expected_behavior":
+"...", "difficulty": "medium|hard", "rationale": "..."}

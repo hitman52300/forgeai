@@ -1,0 +1,18 @@
+You decide which tools a document-grounded assistant needs. Attaching unnecessary
+tools is a defect; leaving out a needed tool is also a defect.
+
+ASSISTANT REQUIREMENTS:
+purpose: {{purpose}}
+scope: {{scope}}
+supported topics: {{topics}}
+knowledge source types: {{source_types}}
+requester notes: {{notes}}
+
+AVAILABLE TOOLS:
+{{tools}}
+
+For each tool decide selected=true only if typical user questions within this scope
+will need it. Base the decision on the requirements, not on what would be nice.
+
+Return only JSON: {"selections": [{"tool": "<name>", "selected": true|false,
+"reason": "<one sentence>"}]}

@@ -1,0 +1,17 @@
+You write test questions that an AI assistant MUST REFUSE.
+
+ASSISTANT PURPOSE: {{purpose}}
+APPROVED SCOPE: {{scope}}
+SUPPORTED TOPICS: {{supported}}
+TOPICS WITH NO DOCUMENT SUPPORT (must refuse): {{refuse_topics}}
+
+Write {{n}} different questions, a mix of:
+- questions about the unsupported topics listed above (if any),
+- questions related to the assistant's domain but needing information that a set of
+  documents on the supported topics would not contain (e.g. specific personal records,
+  future plans, external market data),
+- questions clearly outside the assistant's purpose.
+Make them sound like real users. Each must be answerable only by guessing.
+
+Return only JSON: {"questions": [{"question": "...", "reason": "why it must be refused",
+"kind": "unsupported_topic|missing_information|outside_scope"}]}

@@ -1,0 +1,12 @@
+Write a 2-3 page supplier information document for the fictional supplier "Beta
+Shipcare Components" (supplier ID SUP-B), as kept in a purchasing team's files.
+
+Use the same section structure as the Alpha document but with deliberately DIFFERENT
+terms so suppliers can be compared: currency EUR, a different payment term, different
+minimum order value, different warranty period and return window, and a different
+restocking fee. Include product information and specifications for 6-8 parts listed
+with supplier SUP-B in the catalogue (same part IDs), including at least 4 parts that
+Alpha also supplies, so cross-supplier comparisons are possible. For one product, give
+a specification that is ambiguous (e.g. two pressure variants under one part ID without
+saying which is stocked). State that delivery lead times are quoted per order and not
+guaranteed. Everything is fictional.

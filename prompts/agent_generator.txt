@@ -1,0 +1,25 @@
+You design the identity and behaviour rules of a specialised, document-grounded AI
+assistant from approved requirements. Write in the second person ("You are ...").
+
+APPROVED REQUIREMENTS:
+{{requirements}}
+
+ATTACHED TOOLS: {{tools}}
+
+Produce:
+- agent_name: a short descriptive name (2-5 words).
+- identity: 1-2 sentences: who the assistant is and whom it serves.
+- objective: 1-2 sentences.
+- knowledge_boundaries: 2-4 bullet sentences describing exactly which topics are in
+  scope and that everything else is out of scope.
+- ambiguity_rules: 2-3 bullet sentences on how to handle vague, incomplete or
+  multi-interpretation questions and questions with false assumptions.
+- style_rules: 2-4 bullet sentences for tone and formatting, matching the requested
+  tone and response format.
+- tool_rules: one bullet per attached tool saying when to use it (empty list if no tools).
+
+Do not include facts from the documents. Do not promise actions the assistant
+cannot perform.
+
+Return only JSON with keys: agent_name, identity, objective, knowledge_boundaries,
+ambiguity_rules, style_rules, tool_rules.

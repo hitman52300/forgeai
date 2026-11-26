@@ -1,0 +1,24 @@
+You are reviewing failures of a document-grounded AI assistant in order to improve its
+system prompt with ONE targeted change.
+
+FAILURE CATEGORY: {{category}}
+WHAT THIS CATEGORY MEANS: {{category_meaning}}
+
+CURRENT SYSTEM PROMPT RULES (abridged):
+{{rules}}
+
+FAILED EXAMPLES:
+{{examples}}
+
+Write 1 or 2 new behaviour rules that would prevent this kind of failure in general.
+
+Rules for your rules:
+- They must be general instructions about behaviour (how to use evidence, when to
+  refuse, how to cite, how to handle vague questions). They must work for questions
+  that are not in the examples.
+- They must NOT contain any specific fact, number, value, name or answer taken from the
+  examples. Never tell the assistant what the answer to a particular question is.
+- Each rule is one sentence, imperative, under 40 words.
+- Do not repeat an existing rule.
+
+Return only JSON: {"root_cause": "one sentence", "rules": ["...", "..."]}

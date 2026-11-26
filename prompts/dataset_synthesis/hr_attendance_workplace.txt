@@ -1,0 +1,19 @@
+Write an "Attendance and Workplace Policy" (about 1,300 words) for the shore staff of the
+fictional company "Coral Harbour Marine Services". Use numbered section headings.
+
+Part A - Attendance (consistent with the handbook: 09:30-17:30, Monday-Friday):
+- core hours, lunch break length, grace period for late arrival (minutes),
+- biometric/HRMS punch-in rule, missed-punch regularisation deadline,
+- late-mark rule (how many late marks in a month count as half a day of annual leave),
+- work-from-home: eligibility after probation, days per month, approval,
+- overtime/extra hours: compensatory off rule (no payment amounts).
+Part B - Workplace rules:
+- dress code (business casual; safety shoes and helmet at port/terminal sites),
+- port site safety induction requirement before first visit,
+- IT and email acceptable use, password and device rules,
+- prevention of harassment: Internal Committee, how to report, timeline for inquiry,
+- smoking and alcohol rules,
+- visitor policy.
+Part C - Disciplinary process: steps (verbal warning, written warning, inquiry).
+Do not mention salary amounts. Keep values consistent with the leave policy where they
+interact (late marks are deducted from annual leave).

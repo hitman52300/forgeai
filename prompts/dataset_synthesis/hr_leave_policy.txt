@@ -1,0 +1,21 @@
+Write a leave policy (about 1,300 words) for the shore staff of the fictional company
+"Coral Harbour Marine Services". Use numbered section headings.
+
+Include specific, internally consistent values for:
+- Leave year (January to December) and pro-rata accrual for joiners (state the rule,
+  e.g. per completed month).
+- Annual (earned) leave: days per year, minimum notice, approval by reporting manager
+  in HRMS, maximum consecutive days without department-head approval.
+- Carry forward: maximum days that can be carried into the next year; lapse rule.
+- Leave encashment: only at separation, maximum days, (do not state amounts of money).
+- Sick leave: days per year, medical certificate requirement after N consecutive days,
+  no carry forward.
+- Casual leave: days per year, maximum at one time, cannot be combined with annual leave.
+- Maternity leave (weeks) and paternity leave (days, within how many months of birth).
+- Bereavement leave (days).
+- Public holidays: number per year, list published by HR each December.
+- Leave without pay: when it applies.
+- Sandwich rule: weekends between leave days.
+- Procedure: apply in HRMS, emergency leave informed by phone/email within a stated
+  number of hours and regularised in HRMS within a stated number of days.
+Do not mention salary amounts or benefits other than leave.

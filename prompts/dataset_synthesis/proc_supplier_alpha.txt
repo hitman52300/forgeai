@@ -1,0 +1,17 @@
+Write a 2-3 page supplier information document for the fictional supplier "Alpha Marine
+Spares" (supplier ID SUP-A), as it would be kept in a purchasing team's files.
+
+Sections (numbered headings):
+1. Supplier profile (fictional; location, product focus).
+2. Commercial terms: currency (USD), payment terms (days), minimum order value,
+   price validity of quotations (days), Incoterms used.
+3. Warranty and returns: warranty period, return window, restocking fee (%).
+4. Quality and certification: certificates supplied with parts (e.g. maker's
+   certificate), class approval statement.
+5. Product information and specifications for 6-8 parts that also appear in the
+   catalogue CSV with supplier SUP-A (use the same part IDs and names), with technical
+   specifications (material, pressure rating, dimensions, power, etc.).
+6. Ordering procedure: how to send a purchase order, quotation reference requirement.
+7. Delivery: state that lead times are quoted per order and are NOT guaranteed in this
+   document. Do not state guaranteed delivery dates.
+Everything is fictional.

@@ -54,7 +54,10 @@ def _state_file(project_id: str) -> Path:
 
 def load_state(project_id: str) -> dict:
     f = _state_file(project_id)
-    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"documents": {}, "collections": []}
+    state = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"documents": {}, "collections": {}}
+    if isinstance(state.get("collections"), list):  # older format
+        state["collections"] = {}
+    return state
 
 
 def save_state(project_id: str, state: dict) -> None:
@@ -126,9 +129,25 @@ class KnowledgeBase:
                                              content_hash=info["hash"], version=info["version"] + 1,
                                              status="removed")
                         self.repo.upsert_document(rec, "removed")
-        if col not in state["collections"]:
-            state["collections"].append(col)
+        state["collections"][col] = {"chunk_size": cfg.chunk_size, "chunk_overlap": cfg.chunk_overlap,
+                                     "separators": cfg.separators}
+        state["documents"] = known
         save_state(self.project_id, state)
+        # keep every other index of this project (other chunking configs) in sync with the change
+        changed = [c for c in report.changes if c["change_type"] in ("added", "modified", "removed")]
+        for other, ocfg in state["collections"].items():
+            if other == col or not changed:
+                continue
+            ostore = VectorStore(other)
+            rc = RetrievalConfig(chunk_size=ocfg["chunk_size"], chunk_overlap=ocfg["chunk_overlap"],
+                                 separators=ocfg.get("separators") or RetrievalConfig().separators)
+            for ch in changed:
+                if ch["old_hash"]:
+                    ostore.delete_hash(ch["old_hash"])
+                if ch["change_type"] != "removed":
+                    info = known[ch["filename"]]
+                    vf = validate_file(ch["filename"], Path(info["path"]).read_bytes())
+                    ostore.upsert(chunk_document(parse(vf), info["document_id"], vf.sha256, rc, other))
         return report
 
     def _raw_path(self, filename: str) -> Path:
@@ -170,7 +189,9 @@ class KnowledgeBase:
                 vf = validate_file(fname, data)
                 parsed = parse(vf)
                 store.upsert(chunk_document(parsed, info["document_id"], vf.sha256, cfg, col))
-            state["collections"].append(col)
+        if col not in state["collections"]:
+            state["collections"][col] = {"chunk_size": cfg.chunk_size, "chunk_overlap": cfg.chunk_overlap,
+                                         "separators": cfg.separators}
             save_state(self.project_id, state)
         return col
 

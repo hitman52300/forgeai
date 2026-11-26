@@ -1,0 +1,39 @@
+You write the requirements document for a specialised document-grounded AI assistant.
+
+BRIEF:
+{{brief}}
+
+INTERVIEW ANALYSIS:
+{{analysis}}
+
+CLARIFICATION ANSWERS FROM THE REQUESTER:
+{{answers}}
+
+KNOWLEDGE SOURCES: {{sources}}
+
+GROUNDABILITY RESULTS (decided by evidence checks; you must respect them):
+- supported topics: {{supported}}
+- partially supported topics: {{partial}}
+- unsupported topics (no document evidence): {{unsupported}}
+- ambiguous topics: {{ambiguous}}
+
+Write the requirements. Rules:
+- scope: 2-3 sentences describing what the assistant does and does not do.
+- Read each clarification answer carefully. An answer that qualifies or limits a
+  capability (for example "only where the documents describe it") does NOT make the
+  topic out of scope; it describes how to answer it.
+- must_refuse_topics: only topics that are unsupported above, or that the brief or an
+  answer explicitly says the assistant must NOT handle. Never list a supported or
+  partially supported topic here.
+- explicit_limitations: plain statements of what the assistant cannot do, including
+  that it cannot answer about unsupported topics and cannot perform actions.
+- unresolved_ambiguities: ambiguities that the answers did not resolve.
+- acceptance_criteria: 4-8 measurable statements (e.g. "cites the source document
+  for every factual answer", "refuses questions about <unsupported topic>").
+- tone and response_format: from the brief/answers; if not given, choose sensible
+  professional defaults and say so.
+Do not invent facts about the documents' content.
+
+Return only JSON with keys: project_name, scope, tone, response_format,
+must_refuse_topics, explicit_limitations, unresolved_ambiguities,
+acceptance_criteria.

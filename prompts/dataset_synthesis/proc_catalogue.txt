@@ -1,0 +1,18 @@
+Create a CSV catalogue of 40 fictional ship spare parts for a ship-management company's
+purchasing team. Columns (exact header):
+
+part_id,part_name,category,vessel_compatibility,quantity_on_hand,unit_price,currency,supplier_id,availability,manufacturer_part_no
+
+Rules:
+- part_id format SP-#### (unique).
+- categories: Main Engine, Auxiliary Engine, Pumps, Purifiers, Valves, Electrical,
+  Navigation, Deck Machinery, Safety Equipment, Filters.
+- vessel_compatibility: one or more fictional vessel classes separated by "/"
+  (e.g. "Bulk Carrier 58k/Tanker 115k").
+- supplier_id: SUP-A or SUP-B only. Some parts (at least 8) are offered by BOTH
+  suppliers: list them twice, once per supplier, with different prices.
+- currency: USD or EUR (supplier Alpha quotes USD, supplier Beta quotes EUR).
+- availability: In Stock, Low Stock, Out of Stock, On Request.
+- Include a few rows with quantity 0 and availability "Out of Stock".
+- Prices realistic but fictional, two decimals.
+All data is fictional; it must not represent real stock or real suppliers.
