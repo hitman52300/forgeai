@@ -43,7 +43,7 @@ with left:
         df = pd.DataFrame([{"Project": r["project_name"], "Status": r["status"].replace("_", " "),
                             "Final version": r.get("final_agent_version") or "", "Updated": r["updated_at"][:19]}
                            for r in runs[:12]])
-        st.dataframe(df, hide_index=True, use_container_width=True)
+        st.dataframe(df, hide_index=True, width="stretch")
     else:
         st.caption("No runs yet. Start one from Create New Agent.")
     st.markdown("### Requiring attention")

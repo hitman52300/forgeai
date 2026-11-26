@@ -23,3 +23,9 @@ data/generated/tmp/
 .idea/
 Thumbs.db
 .DS_Store
+
+# launcher build outputs (rebuild with scripts/build_exe.cmd)
+ForgeAI.exe
+data/generated/pyinstaller_build/
+data/logs/
+.venv/.forgeai_installed

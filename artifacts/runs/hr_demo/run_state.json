@@ -1,0 +1,50 @@
+{
+  "run": {
+    "run_id": "0922fe40-694a-493e-a11b-0ff7f80d9bb4",
+    "project_id": "576cf3ad-f10d-47b8-ac0c-b1e43d951174",
+    "project_name": "HR Policy Assistant",
+    "brief": "Create an HR policy assistant for shore staff that answers employee questions about leave, attendance, workplace rules, and employee procedures. It should be professional, concise, and strictly grounded in the supplied policies.",
+    "status": "interviewing",
+    "stages": {
+      "document_analysis": "completed",
+      "interview": "awaiting_approval",
+      "groundability": "pending",
+      "requirements_approval": "pending",
+      "agent_generation": "pending",
+      "evaluation_generation": "pending",
+      "evaluation": "pending",
+      "optimization": "pending",
+      "final_delivery": "pending"
+    },
+    "stage_messages": {
+      "target_cases": "35",
+      "document_analysis": "3 documents ingested",
+      "interview": "5 clarifying question(s); 0 dropped as answered by documents"
+    },
+    "budget": {
+      "max_llm_calls": 1500,
+      "max_tokens": 3000000,
+      "max_iterations": 3,
+      "max_seconds": 10800,
+      "max_eval_cases": 40
+    },
+    "usage": {
+      "llm_calls": 1,
+      "prompt_tokens": 994,
+      "completion_tokens": 442,
+      "elapsed_seconds": 49.93,
+      "iterations": 0,
+      "eval_cases": 0,
+      "calls_by_stage": {
+        "interview": 1
+      }
+    },
+    "stop_reason": "",
+    "created_at": "2026-11-26T21:12:40.060864+00:00",
+    "updated_at": "2026-11-26T21:13:55.631004+00:00",
+    "owner": "luckyraghav081@gmail.com",
+    "final_agent_version": null,
+    "agent_id": null
+  },
+  "slug": "hr_demo"
+}

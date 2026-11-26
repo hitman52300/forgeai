@@ -1,0 +1,50 @@
+{
+  "run": {
+    "run_id": "8d07ab22-25d1-4caf-ad23-8e8dff6e3ef3",
+    "project_id": "5d4818ab-d45e-47ea-b578-697217ff723b",
+    "project_name": "Ship Spares Procurement Assistant",
+    "brief": "Create a procurement assistant that helps purchasing staff identify ship spare parts, compare supplier information, retrieve part details, and answer questions using the provided catalogue and supplier documents.",
+    "status": "interviewing",
+    "stages": {
+      "document_analysis": "completed",
+      "interview": "awaiting_approval",
+      "groundability": "pending",
+      "requirements_approval": "pending",
+      "agent_generation": "pending",
+      "evaluation_generation": "pending",
+      "evaluation": "pending",
+      "optimization": "pending",
+      "final_delivery": "pending"
+    },
+    "stage_messages": {
+      "target_cases": "35",
+      "document_analysis": "3 documents ingested",
+      "interview": "5 clarifying question(s); 0 dropped as answered by documents"
+    },
+    "budget": {
+      "max_llm_calls": 1500,
+      "max_tokens": 3000000,
+      "max_iterations": 3,
+      "max_seconds": 10800,
+      "max_eval_cases": 40
+    },
+    "usage": {
+      "llm_calls": 1,
+      "prompt_tokens": 1059,
+      "completion_tokens": 500,
+      "elapsed_seconds": 15.41,
+      "iterations": 0,
+      "eval_cases": 0,
+      "calls_by_stage": {
+        "interview": 1
+      }
+    },
+    "stop_reason": "",
+    "created_at": "2026-11-26T21:14:06.709537+00:00",
+    "updated_at": "2026-11-26T21:14:38.686066+00:00",
+    "owner": "luckyraghav081@gmail.com",
+    "final_agent_version": null,
+    "agent_id": null
+  },
+  "slug": "procurement_demo"
+}

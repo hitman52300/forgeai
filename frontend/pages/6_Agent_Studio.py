@@ -45,6 +45,6 @@ with c2:
 st.markdown("### Version history")
 st.dataframe(pd.DataFrame([{"Version": x["version"], "Parent": x["parent_version"], "Created": x["created_at"][:19],
                             "Changes": " | ".join(x["change_summary"])[:300]} for x in vers]),
-             hide_index=True, use_container_width=True)
+             hide_index=True, width="stretch")
 st.download_button("Download this definition (JSON)", json.dumps(d, indent=2),
                    file_name=f"{d['agent_name'].replace(' ', '_')}_v{d['version']}.json", mime="application/json")

@@ -15,7 +15,7 @@ class Settings(BaseSettings):
 
     # LLM
     llm_provider: str = "ollama"
-    ollama_base_url: str = "http://localhost:11434"
+    ollama_base_url: str = "http://127.0.0.1:11434"
     llm_model: str = "qwen2.5:3b"
     judge_model: str = "llama3.2:3b"
     llm_temperature: float = 0.1
@@ -51,7 +51,7 @@ class Settings(BaseSettings):
     budget_max_eval_cases: int = 40
     quality_target: float = Field(0.85, ge=0, le=1)
 
-    api_base_url: str = "http://localhost:8000"
+    api_base_url: str = "http://127.0.0.1:8000"
     forgeai_operator_email: str = ""
 
     @property

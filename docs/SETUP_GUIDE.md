@@ -51,6 +51,25 @@ private storage buckets.
 
 ## 5. Run
 
+### One click
+Double-click **`ForgeAI.exe`** in the ForgeAI folder (or **`Start-ForgeAI.cmd`**). The
+launcher creates the Python environment and installs packages on first start, starts
+Ollama if it is installed but not running, downloads missing models, starts the API
+(port 8000) and the UI (port 8501), and opens the browser. Close its window to stop.
+Logs: `data/logs/`.
+
+It cannot bundle: the Ollama program (install once from ollama.com), the model weights
+(downloaded by the launcher on first start), Python itself (needed once to create the
+environment) and the Supabase project (cloud; values in `.env`).
+
+On the development PC, Windows Smart App Control blocks unsigned executables, including
+the locally built `ForgeAI.exe`. `Start-ForgeAI.cmd` runs the same launcher through the
+signed Python interpreter and was verified to start both servers. A code-signing
+certificate would be needed for the .exe to run under Smart App Control. Rebuild the exe
+with `scriptsuild_exe.cmd`.
+
+### Manually
+
 ```powershell
 # terminal 1: API
 .venv\Scripts\python.exe -m uvicorn app.main:app --port 8000

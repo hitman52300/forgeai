@@ -29,7 +29,7 @@ with tab_ground:
                                                              for e in t["evidence"][:3]}))
                                 if t["status"] != "unsupported" else "No supporting document",
                                 "Best similarity": round(t["retrieval_max_score"], 2), "Rationale": t["rationale"]}
-                               for t in g]), hide_index=True, use_container_width=True)
+                               for t in g]), hide_index=True, width="stretch")
     uns = [t["topic"] for t in g if t["status"] == "unsupported"]
     if uns:
         st.warning("Unsupported topics (the agent will refuse these): " + ", ".join(uns) +

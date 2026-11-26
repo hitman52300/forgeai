@@ -1,0 +1,59 @@
+{
+  "analysis": {
+    "agent_purpose": "Create an AI assistant for shore staff to answer questions about leave, attendance, workplace rules, and employee procedures based on provided policies.",
+    "target_audience": "Shore staff of Coral Harbour Marine Services",
+    "requested_topics": [
+      "leave policy",
+      "attendance policy",
+      "workplace rules",
+      "employee procedures"
+    ],
+    "tone": "professional, concise",
+    "response_format": "strictly grounded in the supplied policies",
+    "ambiguities": [
+      "The assistant should be professional, concise, and strictly grounded in the supplied policies. What does 'strictly grounded in the supplied policies' mean? Does it mean the assistant should only use the provided policies or should it also consider other relevant policies not provided in the documents? "
+    ],
+    "missing_information": [
+      "What is the specific format of the HRMS system? Are there any specific fields or data points that the assistant should be able to access or display? "
+    ],
+    "questions": [
+      {
+        "question_id": "q051226",
+        "question": "What specific leave types are covered by the leave policy?",
+        "reason": "To ensure the assistant can cover all relevant leave types.",
+        "target_field": "leave policy",
+        "answer": null
+      },
+      {
+        "question_id": "qf67965",
+        "question": "Are there any specific actions the assistant should take if a question is not covered by the provided policies?",
+        "reason": "To determine how the assistant should handle questions that are not related to the provided policies.",
+        "target_field": "policy",
+        "answer": null
+      },
+      {
+        "question_id": "q889a84",
+        "question": "Should the assistant be able to provide links to the relevant policies?",
+        "reason": "To ensure the assistant can provide users with the necessary information to understand the policies.",
+        "target_field": "policy",
+        "answer": null
+      },
+      {
+        "question_id": "qfc9a62",
+        "question": "Are there any specific actions the assistant should take if a user asks about a policy update?",
+        "reason": "To determine how the assistant should handle policy updates.",
+        "target_field": "policy",
+        "answer": null
+      },
+      {
+        "question_id": "qf08f1c",
+        "question": "Should the assistant be able to provide examples of the policies?",
+        "reason": "To ensure the assistant can provide users with practical examples of the policies.",
+        "target_field": "policy",
+        "answer": null
+      }
+    ]
+  },
+  "dropped_questions": [],
+  "answers": {}
+}

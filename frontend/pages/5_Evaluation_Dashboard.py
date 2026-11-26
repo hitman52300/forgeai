@@ -36,7 +36,7 @@ with left:
     st.dataframe(pd.DataFrame([{"Metric": m.replace("_", " "), "Score": f"{sc['metrics'][m]:.1%}",
                                 "Cases applicable": sc["metric_counts"].get(m, 0)} for m in METRICS] +
                               [{"Metric": "composite (derived)", "Score": f"{sc['composite_score']:.1%}",
-                                "Cases applicable": ""}]), hide_index=True, use_container_width=True)
+                                "Cases applicable": ""}]), hide_index=True, width="stretch")
     st.caption(sc["composite_formula"])
 with right:
     st.markdown("### Failure categories")
@@ -47,7 +47,7 @@ with right:
     st.markdown("### By category")
     st.dataframe(pd.DataFrame([{"Category": k, "Passed": int(v["passed"]), "Total": int(v["total"]),
                                 "Pass rate": f"{v['pass_rate']:.0%}"} for k, v in sc["by_category"].items()]),
-                 hide_index=True, use_container_width=True)
+                 hide_index=True, width="stretch")
 
 st.markdown("### Iteration comparison")
 st.line_chart(pd.DataFrame({"pass rate": [s["pass_rate"] for s in scs],
@@ -74,7 +74,7 @@ only_fail = st.toggle("Show failed cases only", value=False)
 rows = [r for r in res if not only_fail or not r["passed"]]
 st.dataframe(pd.DataFrame([{"Test": r["test_id"], "Category": r["category"], "Pass": "yes" if r["passed"] else "no",
                             "Refused": r["answer"]["refused"], "Failure": ", ".join(r["failure_categories"]),
-                            "Question": r["question"]} for r in rows]), hide_index=True, use_container_width=True)
+                            "Question": r["question"]} for r in rows]), hide_index=True, width="stretch")
 sel = st.selectbox("Inspect case", [r["test_id"] for r in rows]) if rows else None
 if sel:
     r = next(x for x in rows if x["test_id"] == sel)

@@ -1,0 +1,79 @@
+{
+  "project_id": "576cf3ad-f10d-47b8-ac0c-b1e43d951174",
+  "collection": "p_576cf3adf10d47b8ac0cb1e4_c800_o120",
+  "documents": [
+    {
+      "document_id": "f5a1dbdd-5413-43d2-9ef4-a439f3712d19",
+      "project_id": "576cf3ad-f10d-47b8-ac0c-b1e43d951174",
+      "filename": "attendance_and_workplace_policy.pdf",
+      "file_type": "pdf",
+      "size_bytes": 5078,
+      "content_hash": "720a481b4953dcae510d3001d69ff6a2fa867167842eab946d814f6eb1bac968",
+      "version": 1,
+      "page_count": 2,
+      "row_count": null,
+      "columns": null,
+      "chunk_count": 13,
+      "storage_path": "documents/576cf3ad-f10d-47b8-ac0c-b1e43d951174/720a481b4953_attendance_and_workplace_policy.pdf",
+      "status": "ingested",
+      "error": null,
+      "preview": "Coral Harbour Marine Services - Attendance and Workplace\nPolicy (Shore Staff)\nVersion 1.9, effective 1 January 2026. Owner: Human Resources Department.\nPart A - Attendance\n\n1. Working Hours\n1.1 Office hours are 09:30 to 17:30, Monday to Friday. Core hours, during which all office staff must be present, are\n10:00 to 16:00.\n1.2 The lunch break is 45 minutes, to be taken between 12:30 and 14:30.\n\n2. Recording Attendance\n2.1 Attendance is recorded by biometric punch-in and punch-out at the office entrance, which is synchronised with\nHRMS. Port and terminal staff without a biometric device punch in through the HRMS mobile application.\n2.2 A missed punch must be regularised in HRMS within 3 working days, with the approval of the reporting manager. A\nmissed punch that is not regularised is treated as half a day of absence.\n\n3. Late Arrival\n3.1 A grace period of 10 minutes applies: arrival up to 09:40 is not marked late.\n3.2 Arrival after 09:40 is recorded as a late mark. Three late marks in a calendar month are counted as half a day of\nannual leave, deducted automatically in HRMS.\n\n4. Work From Home\n4.1 Confirmed employees in office roles may work from home for up to 4 days per calendar month, with prior approval\nof the reporting manager in HRMS.\n4.2 Employees on probation and port or terminal staff are not eligible for work from home.\n\n5. Extra Hours and Compensatory Off\n5.1 Work on a weekend or public holiday that is requested in writing by the reporting manager earns one day of\nc"
+    },
+    {
+      "document_id": "0bcb20a6-e609-4b2c-ae31-df92d586f9a2",
+      "project_id": "576cf3ad-f10d-47b8-ac0c-b1e43d951174",
+      "filename": "employee_handbook.pdf",
+      "file_type": "pdf",
+      "size_bytes": 5446,
+      "content_hash": "77c623c4d4683fb08d8ab8cc25ad5b883d426d5f1d6c6e5ce540d11f15d3b3c2",
+      "version": 1,
+      "page_count": 2,
+      "row_count": null,
+      "columns": null,
+      "chunk_count": 10,
+      "storage_path": "documents/576cf3ad-f10d-47b8-ac0c-b1e43d951174/77c623c4d468_employee_handbook.pdf",
+      "status": "ingested",
+      "error": null,
+      "preview": "Coral Harbour Marine Services - Employee Handbook (Shore\nStaff)\nVersion 3.2, effective 1 January 2026. Owner: Human Resources Department.\n\n1. About this Handbook\n1.1 This handbook applies to all shore staff of Coral Harbour Marine Services, including office staff at the head office\nand staff working at port and terminal offices. It does not apply to seafarers serving on board managed vessels, who\nare covered by their contracts of employment and the applicable collective agreements.\n1.2 The handbook must be read together with the Leave Policy and the Attendance and Workplace Policy. Where this\nhandbook and a specific policy differ, the specific policy prevails.\n1.3 The HR Management System (HRMS) is the single system of record for employee data, leave and attendance.\nEmployees access HRMS with their company login.\n\n2. Employment Basics\n2.1 Probation. All new shore staff serve a probation period of six months from the date of joining. The reporting\nmanager may extend probation once, by up to three months, with written reasons.\n2.2 Confirmation. Confirmation of employment is communicated by a confirmation letter issued by HR. An employee is\nnot confirmed until this letter has been issued.\n2.3 Notice period. During probation, either party may end employment with 15 days' written notice. After confirmation,\nthe notice period is 60 days for all grades. The notice period may be shortened only with the written approval of the\ndepartment head and HR.\n2.4 Employee ID. Every employee re"
+    },
+    {
+      "document_id": "e1c22a00-024f-4e21-ae6f-701e49c7a604",
+      "project_id": "576cf3ad-f10d-47b8-ac0c-b1e43d951174",
+      "filename": "leave_policy.pdf",
+      "file_type": "pdf",
+      "size_bytes": 4717,
+      "content_hash": "4ff8ed93f78fe71529196bae8e5ddc7888fc7395373385e3c543dab02999090f",
+      "version": 1,
+      "page_count": 2,
+      "row_count": null,
+      "columns": null,
+      "chunk_count": 17,
+      "storage_path": "documents/576cf3ad-f10d-47b8-ac0c-b1e43d951174/4ff8ed93f78f_leave_policy.pdf",
+      "status": "ingested",
+      "error": null,
+      "preview": "Coral Harbour Marine Services - Leave Policy (Shore Staff)\nVersion 2.4, effective 1 January 2026. Owner: Human Resources Department.\n\n1. Scope\n1.1 This policy applies to all shore staff. It is read together with the Employee Handbook and the Attendance and\nWorkplace Policy.\n1.2 The leave year runs from 1 January to 31 December. All leave is applied for and approved in HRMS.\n\n2. Accrual for New Joiners\n2.1 Employees who join during the year receive annual leave on a pro-rata basis of 2 days for every completed month\nof service in that leave year.\n2.2 Sick leave and casual leave for new joiners are also granted pro-rata, rounded down to the nearest whole day.\n\n3. Annual Leave\n3.1 Confirmed and probationary employees are entitled to 24 days of annual leave per leave year.\n3.2 Annual leave must be applied for in HRMS at least 7 calendar days before the first day of leave. The reporting\nmanager approves or rejects the request in HRMS.\n3.3 Annual leave of more than 10 consecutive working days requires the additional approval of the department head.\n\n4. Carry Forward and Lapse\n4.1 A maximum of 15 days of unused annual leave can be carried forward into the next leave year.\n4.2 Unused annual leave above 15 days lapses on 31 December and is not compensated.\n\n5. Leave Encashment\n\n5.1 Annual leave cannot be encashed during employment.\n5.2 At separation, accumulated annual leave of up to 30 days may be encashed. The amount is calculated under the\nCompensation and Benefits Policy.\n\n6. Sick"
+    }
+  ],
+  "errors": [],
+  "duplicates": [],
+  "changes": [
+    {
+      "filename": "attendance_and_workplace_policy.pdf",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "720a481b4953dcae510d3001d69ff6a2fa867167842eab946d814f6eb1bac968"
+    },
+    {
+      "filename": "employee_handbook.pdf",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "77c623c4d4683fb08d8ab8cc25ad5b883d426d5f1d6c6e5ce540d11f15d3b3c2"
+    },
+    {
+      "filename": "leave_policy.pdf",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "4ff8ed93f78fe71529196bae8e5ddc7888fc7395373385e3c543dab02999090f"
+    }
+  ]
+}

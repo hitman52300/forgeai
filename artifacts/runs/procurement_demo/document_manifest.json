@@ -1,0 +1,90 @@
+{
+  "project_id": "5d4818ab-d45e-47ea-b578-697217ff723b",
+  "collection": "p_5d4818abd45e47eab5786972_c800_o120",
+  "documents": [
+    {
+      "document_id": "aaf59915-cdde-48f2-9495-1ac4ee2b260f",
+      "project_id": "5d4818ab-d45e-47ea-b578-697217ff723b",
+      "filename": "ship_spares_catalogue.csv",
+      "file_type": "csv",
+      "size_bytes": 4752,
+      "content_hash": "206c122119ad3e8c227682e41fd05d973ecb170e60a07ba15411ca4ed99c84f1",
+      "version": 1,
+      "page_count": null,
+      "row_count": 40,
+      "columns": [
+        "part_id",
+        "part_name",
+        "category",
+        "vessel_compatibility",
+        "quantity_on_hand",
+        "unit_price",
+        "currency",
+        "supplier_id",
+        "availability",
+        "manufacturer_part_no"
+      ],
+      "chunk_count": 20,
+      "storage_path": "documents/5d4818ab-d45e-47ea-b578-697217ff723b/206c122119ad_ship_spares_catalogue.csv",
+      "status": "ingested",
+      "error": null,
+      "preview": "[ship_spares_catalogue.csv row 2] part_id: SP-1001; part_name: Main Engine Fuel Injector Nozzle; category: Main Engine; vessel_compatibility: Bulk Carrier 58k/Tanker 115k; quantity_on_hand: 24; unit_price: 412.50; currency: USD; supplier_id: SUP-A; availability: In Stock; manufacturer_part_no: FIN-58-220\n\n[ship_spares_catalogue.csv row 3] part_id: SP-1001; part_name: Main Engine Fuel Injector Nozzle; category: Main Engine; vessel_compatibility: Bulk Carrier 58k/Tanker 115k; quantity_on_hand: 10; unit_price: 389.00; currency: EUR; supplier_id: SUP-B; availability: In Stock; manufacturer_part_no: FIN-58-220\n\n[ship_spares_catalogue.csv row 4] part_id: SP-1002; part_name: Main Engine Cylinder Liner O-Ring Set; category: Main Engine; vessel_compatibility: Bulk Carrier 58k; quantity_on_hand: 40; unit_price: 96.80; currency: USD; supplier_id: SUP-A; availability: In Stock; manufacturer_part_no: ORS-CL-58\n\n[ship_spares_catalogue.csv row 5] part_id: SP-1003; part_name: Exhaust Valve Spindle; category: Main Engine; vessel_compatibility: Tanker 115k; quantity_on_hand: 2; unit_price: 3150.00; currency: USD; supplier_id: SUP-A; availability: Low Stock; manufacturer_part_no: EVS-115-07\n\n[ship_spares_catalogue.csv row 6] part_id: SP-1003; part_name: Exhaust Valve Spindle; category: Main Engine; vessel_compatibility: Tanker 115k; quantity_on_hand: 0; unit_price: 2980.00; currency: EUR; supplier_id: SUP-B; availability: Out of Stock; manufacturer_part_no: EVS-115-07\n\n[ship_spares_catalogue.cs"
+    },
+    {
+      "document_id": "1d95b87c-997e-4bd0-bc22-d32a587ea6d5",
+      "project_id": "5d4818ab-d45e-47ea-b578-697217ff723b",
+      "filename": "supplier_alpha.pdf",
+      "file_type": "pdf",
+      "size_bytes": 4907,
+      "content_hash": "4699f5f7d3ae6fff9f552235ad491130fc0cf184225301f010e7bb3883efd0a3",
+      "version": 1,
+      "page_count": 2,
+      "row_count": null,
+      "columns": null,
+      "chunk_count": 16,
+      "storage_path": "documents/5d4818ab-d45e-47ea-b578-697217ff723b/4699f5f7d3ae_supplier_alpha.pdf",
+      "status": "ingested",
+      "error": null,
+      "preview": "Supplier Information: Alpha Marine Spares (Supplier ID\nSUP-A)\nPurchasing department supplier file. Last reviewed March 2026. All information is fictional.\n\n1. Supplier Profile\n1.1 Alpha Marine Spares is a marine spare parts stockist based in Singapore. Its product focus is main engine,\nauxiliary engine, pump, purifier, valve, electrical and navigation spares for bulk carriers and tankers.\n1.2 Supplier ID in our systems: SUP-A. Contact for quotations: the Alpha sales desk via the supplier portal.\n\n2. Commercial Terms\n\n2.1 Currency: all quotations and invoices are in US dollars (USD).\n\n2.2 Payment terms: 45 days from the invoice date.\n\n2.3 Minimum order value: USD 500 per purchase order.\n2.4 Quotation validity: prices quoted are valid for 30 days from the quotation date.\n\n2.5 Incoterms: FCA Singapore unless the purchase order states otherwise.\n\n3. Warranty and Returns\n\n3.1 Warranty: 12 months from the date of delivery for manufacturing defects.\n3.2 Returns: unused parts in original packaging may be returned within 30 days of delivery.\n3.3 Restocking fee: 15% of the invoice value of returned parts. Parts specially ordered for us (availability \"On Request\")\ncannot be returned.\n\n4. Quality and Certification\n4.1 Each part is supplied with a maker's certificate or a certificate of conformity.\n4.2 Parts for class-relevant systems are supplied with class approval documentation where the maker provides it.\nAlpha does not issue class certificates itself.\n\n5. Product Information and Spec"
+    },
+    {
+      "document_id": "d292fc05-3e87-4a33-b2e1-be531ae147bc",
+      "project_id": "5d4818ab-d45e-47ea-b578-697217ff723b",
+      "filename": "supplier_beta.pdf",
+      "file_type": "pdf",
+      "size_bytes": 4797,
+      "content_hash": "c2be5e06337874b902ee854fbb4a9a667eecd1d0040b876c84e2b693ae14beea",
+      "version": 1,
+      "page_count": 2,
+      "row_count": null,
+      "columns": null,
+      "chunk_count": 16,
+      "storage_path": "documents/5d4818ab-d45e-47ea-b578-697217ff723b/c2be5e063378_supplier_beta.pdf",
+      "status": "ingested",
+      "error": null,
+      "preview": "Supplier Information: Beta Shipcare Components (Supplier ID\nSUP-B)\nPurchasing department supplier file. Last reviewed April 2026. All information is fictional.\n\n1. Supplier Profile\n1.1 Beta Shipcare Components is a marine spare parts distributor based in Rotterdam, the Netherlands. Its product\nfocus is main and auxiliary engine spares, pumps, purifiers, valves, electrical, navigation, deck machinery and safety\nequipment, with an emphasis on container ships.\n1.2 Supplier ID in our systems: SUP-B. Quotations are requested by email to the Beta inside-sales team.\n\n2. Commercial Terms\n\n2.1 Currency: all quotations and invoices are in euro (EUR).\n\n2.2 Payment terms: 30 days from the invoice date.\n\n2.3 Minimum order value: EUR 1,000 per purchase order.\n2.4 Quotation validity: prices quoted are valid for 60 days from the quotation date.\n\n2.5 Incoterms: EXW Rotterdam unless the purchase order states otherwise.\n\n3. Warranty and Returns\n3.1 Warranty: 18 months from the date of delivery or 12 months from installation, whichever comes first.\n3.2 Returns: unused parts in original packaging may be returned within 14 days of delivery.\n3.3 Restocking fee: 10% of the invoice value of returned parts. Safety equipment cannot be returned once the seal is\nbroken.\n\n4. Quality and Certification\n4.1 Parts are supplied with a certificate of conformity. Original maker's certificates are available on request for an\nadministration fee.\n\n4.2 Safety equipment is supplied with valid type-approval (wheelmark"
+    }
+  ],
+  "errors": [],
+  "duplicates": [],
+  "changes": [
+    {
+      "filename": "ship_spares_catalogue.csv",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "206c122119ad3e8c227682e41fd05d973ecb170e60a07ba15411ca4ed99c84f1"
+    },
+    {
+      "filename": "supplier_alpha.pdf",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "4699f5f7d3ae6fff9f552235ad491130fc0cf184225301f010e7bb3883efd0a3"
+    },
+    {
+      "filename": "supplier_beta.pdf",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "c2be5e06337874b902ee854fbb4a9a667eecd1d0040b876c84e2b693ae14beea"
+    }
+  ]
+}
