@@ -1,0 +1,159 @@
+[
+  {
+    "run_id": "023ad8c2-1728-408c-87bb-76103db7d994",
+    "agent_version": 1,
+    "iteration": 0,
+    "label": "factory",
+    "total_cases": 26,
+    "passed_cases": 9,
+    "failed_cases": 17,
+    "pass_rate": 0.3462,
+    "metrics": {
+      "grounding": 0.4038,
+      "factual_correctness": 0.5125,
+      "citation_correctness": 1.0,
+      "refusal_correctness": 0.9231,
+      "scope_adherence": 0.4231,
+      "output_contract": 1.0
+    },
+    "metric_counts": {
+      "grounding": 26,
+      "factual_correctness": 20,
+      "citation_correctness": 26,
+      "refusal_correctness": 26,
+      "scope_adherence": 26,
+      "output_contract": 26
+    },
+    "composite_score": 0.7104,
+    "composite_formula": "composite = mean of the six metric averages (grounding, factual_correctness, citation_correctness, refusal_correctness, scope_adherence, output_contract), each averaged only over cases where it applies",
+    "by_category": {
+      "answerable": {
+        "total": 14.0,
+        "passed": 5.0,
+        "pass_rate": 0.3571
+      },
+      "edge_case": {
+        "total": 10.0,
+        "passed": 4.0,
+        "pass_rate": 0.4
+      },
+      "out_of_scope": {
+        "total": 2.0,
+        "passed": 0.0,
+        "pass_rate": 0.0
+      }
+    },
+    "failure_categories": {
+      "hallucination": 14,
+      "retrieval_miss": 4,
+      "prompt_defect": 6,
+      "wrong_refusal": 2
+    },
+    "created_at": "2026-11-26T21:41:16.422723+00:00"
+  },
+  {
+    "run_id": "023ad8c2-1728-408c-87bb-76103db7d994",
+    "agent_version": 2,
+    "iteration": 1,
+    "label": "factory",
+    "total_cases": 26,
+    "passed_cases": 12,
+    "failed_cases": 14,
+    "pass_rate": 0.4615,
+    "metrics": {
+      "grounding": 0.54,
+      "factual_correctness": 0.5625,
+      "citation_correctness": 1.0,
+      "refusal_correctness": 0.9615,
+      "scope_adherence": 0.5385,
+      "output_contract": 1.0
+    },
+    "metric_counts": {
+      "grounding": 25,
+      "factual_correctness": 20,
+      "citation_correctness": 25,
+      "refusal_correctness": 26,
+      "scope_adherence": 26,
+      "output_contract": 26
+    },
+    "composite_score": 0.7671,
+    "composite_formula": "composite = mean of the six metric averages (grounding, factual_correctness, citation_correctness, refusal_correctness, scope_adherence, output_contract), each averaged only over cases where it applies",
+    "by_category": {
+      "answerable": {
+        "total": 14.0,
+        "passed": 7.0,
+        "pass_rate": 0.5
+      },
+      "edge_case": {
+        "total": 10.0,
+        "passed": 4.0,
+        "pass_rate": 0.4
+      },
+      "out_of_scope": {
+        "total": 2.0,
+        "passed": 1.0,
+        "pass_rate": 0.5
+      }
+    },
+    "failure_categories": {
+      "hallucination": 11,
+      "retrieval_miss": 3,
+      "prompt_defect": 7,
+      "wrong_refusal": 1
+    },
+    "created_at": "2026-11-26T21:50:04.382241+00:00"
+  },
+  {
+    "run_id": "023ad8c2-1728-408c-87bb-76103db7d994",
+    "agent_version": 3,
+    "iteration": 2,
+    "label": "factory",
+    "total_cases": 26,
+    "passed_cases": 8,
+    "failed_cases": 18,
+    "pass_rate": 0.3077,
+    "metrics": {
+      "grounding": 0.32,
+      "factual_correctness": 0.4458,
+      "citation_correctness": 0.96,
+      "refusal_correctness": 0.9615,
+      "scope_adherence": 0.3462,
+      "output_contract": 0.9615
+    },
+    "metric_counts": {
+      "grounding": 25,
+      "factual_correctness": 20,
+      "citation_correctness": 25,
+      "refusal_correctness": 26,
+      "scope_adherence": 26,
+      "output_contract": 26
+    },
+    "composite_score": 0.6658,
+    "composite_formula": "composite = mean of the six metric averages (grounding, factual_correctness, citation_correctness, refusal_correctness, scope_adherence, output_contract), each averaged only over cases where it applies",
+    "by_category": {
+      "answerable": {
+        "total": 14.0,
+        "passed": 5.0,
+        "pass_rate": 0.3571
+      },
+      "edge_case": {
+        "total": 10.0,
+        "passed": 2.0,
+        "pass_rate": 0.2
+      },
+      "out_of_scope": {
+        "total": 2.0,
+        "passed": 1.0,
+        "pass_rate": 0.5
+      }
+    },
+    "failure_categories": {
+      "hallucination": 16,
+      "retrieval_miss": 2,
+      "prompt_defect": 8,
+      "output_contract_defect": 1,
+      "wrong_refusal": 1
+    },
+    "created_at": "2026-11-26T22:00:55.175259+00:00"
+  }
+]

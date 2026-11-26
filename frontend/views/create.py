@@ -8,7 +8,7 @@ import streamlit as st  # noqa: E402
 from frontend.components import api  # noqa: E402
 from frontend.components.ui import page, safe, wait_job  # noqa: E402
 
-page("Create New Agent", "Describe the agent in one paragraph and upload its knowledge documents.")
+page("Create New Agent", "Describe the agent in one paragraph and upload its knowledge documents.", eyebrow="Build · Step 1")
 allowed = api.S.allowed_extensions
 
 with st.form("new"):
@@ -33,4 +33,4 @@ if go:
             if out:
                 st.session_state["current_run"] = out["run_id"]
                 st.success("Document analysis and interview complete. Continue on the Interview page.")
-                st.page_link("pages/2_Interview.py", label="Go to Interview")
+                st.page_link("views/interview.py", label="Go to Interview")

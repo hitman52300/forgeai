@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="36" viewBox="0 0 168 36">
+  <rect x="0" y="2" width="32" height="32" rx="8" fill="#14213D"/>
+  <path d="M10 10h13v3.4h-9.2v3.8h8v3.4h-8V27H10z" fill="#FFFFFF"/>
+  <rect x="22" y="23" width="4" height="4" rx="1" fill="#2F6F73"/>
+  <text x="42" y="24" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#14213D" letter-spacing="-0.4">ForgeAI</text>
+</svg>

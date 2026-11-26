@@ -10,7 +10,7 @@ import streamlit as st  # noqa: E402
 from frontend.components import api  # noqa: E402
 from frontend.components.ui import page, safe  # noqa: E402
 
-page("Agent Studio", "Inspect generated agent definitions and their version history.")
+page("Agent Studio", "Inspect generated agent definitions and their version history.", eyebrow="Quality")
 agents = safe(api.get, "/agents") or []
 if not agents:
     st.info("No agents have been generated yet.")

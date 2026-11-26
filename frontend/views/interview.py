@@ -8,7 +8,7 @@ import streamlit as st  # noqa: E402
 from frontend.components import api  # noqa: E402
 from frontend.components.ui import page, run_picker, safe, wait_job  # noqa: E402
 
-page("Interview", "Up to five clarifying questions generated from the brief and the documents.")
+page("Interview", "Up to five clarifying questions generated from the brief and the documents.", eyebrow="Build · Step 2")
 run = run_picker()
 if not run:
     st.stop()
@@ -50,4 +50,4 @@ if sub:
     res = safe(api.post, f"/runs/{run['run_id']}/interview/answers", json={"answers": answers})
     if res and wait_job(res["job_id"], "Checking groundability and writing requirements"):
         st.success("Requirements are ready for review.")
-        st.page_link("pages/3_Requirements_Review.py", label="Go to Requirements Review")
+        st.page_link("views/requirements.py", label="Go to Requirements Review")

@@ -1,0 +1,29 @@
+{
+  "limits": {
+    "max_llm_calls": 1500,
+    "max_tokens": 3000000,
+    "max_iterations": 3,
+    "max_seconds": 10800,
+    "max_eval_cases": 40
+  },
+  "usage": {
+    "llm_calls": 197,
+    "prompt_tokens": 264599,
+    "completion_tokens": 27089,
+    "elapsed_seconds": 2190.22,
+    "iterations": 2,
+    "eval_cases": 0,
+    "calls_by_stage": {
+      "interview": 1,
+      "groundability": 5,
+      "tool_selection": 1,
+      "requirements": 1,
+      "agent_generation": 1,
+      "eval_generation": 25,
+      "runtime_answer": 83,
+      "judge": 78,
+      "critic": 2
+    }
+  },
+  "total_tokens": 291688
+}

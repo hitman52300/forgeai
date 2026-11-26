@@ -1,0 +1,53 @@
+[
+  {
+    "iteration": 1,
+    "version": 2,
+    "field_path": "runtime_options.strict_numeric_grounding",
+    "old": false,
+    "new": true,
+    "reason": "11 hallucinations: validate that numbers in answers exist in the evidence"
+  },
+  {
+    "iteration": 1,
+    "version": 2,
+    "field_path": "extra_rules",
+    "old": [],
+    "new": [
+      "When answering, only cite information directly from the evidence provided, avoiding unsupported content.",
+      "For ambiguous questions, provide guidance based on the evidence and known best practices, without making assumptions or citations that are not supported."
+    ],
+    "reason": "critic (hallucination): Ensure answers are grounded in the provided evidence"
+  },
+  {
+    "iteration": 1,
+    "version": 2,
+    "field_path": "retrieval_config.top_k",
+    "old": 4,
+    "new": 7,
+    "reason": "4 retrieval misses: retrieve more passages"
+  },
+  {
+    "iteration": 1,
+    "version": 2,
+    "field_path": "retrieval_config.similarity_threshold",
+    "old": 0.25,
+    "new": 0.2,
+    "reason": "admit slightly less similar passages that contained the expected facts"
+  },
+  {
+    "iteration": 2,
+    "version": 3,
+    "field_path": "retrieval_config.top_k",
+    "old": 7,
+    "new": 10,
+    "reason": "3 retrieval misses: retrieve more passages"
+  },
+  {
+    "iteration": 2,
+    "version": 3,
+    "field_path": "retrieval_config.similarity_threshold",
+    "old": 0.2,
+    "new": 0.15,
+    "reason": "admit slightly less similar passages that contained the expected facts"
+  }
+]

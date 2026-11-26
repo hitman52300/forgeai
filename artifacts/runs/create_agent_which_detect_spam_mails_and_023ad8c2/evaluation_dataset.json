@@ -1,0 +1,879 @@
+{
+  "dataset_id": "b52cac4a-2786-4891-8fb1-d7625bd3b4de",
+  "run_id": "023ad8c2-1728-408c-87bb-76103db7d994",
+  "version": 1,
+  "cases": [
+    {
+      "test_id": "ANS-001",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should I do if an email has a high importance score but contains a suspicious link?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "urgent and suspicious",
+        "choose Needs Review",
+        "explain why"
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The passage discusses the importance of not letting a high importance score legitimize suspicious content, specifically mentioning urgent and suspicious emails and the need to choose Needs Review for such emails.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0029"
+      ],
+      "fact_verification": [
+        {
+          "fact": "urgent and suspicious",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "choose Needs Review",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "explain why",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-002",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What types of emails should not be considered important?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Generic newsletters",
+        "Automated notifications",
+        "Messages unrelated"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage lists specific types of emails that should not be considered important, including generic newsletters, automated notifications, and messages unrelated to the user's activities. The question directly addresses this information and requires the AI assistant to identify these types of emails.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0014"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Generic newsletters",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Automated notifications",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Messages unrelated",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-003",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should I do if an email asks me to open an attachment?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Do not open attachments",
+        "Do not follow instructions",
+        "Do not click links"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage provides instructions on what not to do if an email asks to open an attachment, which directly answers the question.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0034"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Do not open attachments",
+          "verified": true,
+          "method": "token_recall",
+          "recall": 1.0,
+          "numbers_ok": true
+        },
+        {
+          "fact": "Do not follow instructions",
+          "verified": true,
+          "method": "token_recall",
+          "recall": 1.0,
+          "numbers_ok": true
+        },
+        {
+          "fact": "Do not click links",
+          "verified": true,
+          "method": "token_recall",
+          "recall": 1.0,
+          "numbers_ok": true
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-004",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What storage details are mentioned for the email classification agent?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "SQLite for a local demo",
+        "PostgreSQL/Supabase for a multi-user deployment"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage mentions two storage options: SQLite for a local demo and PostgreSQL/Supabase for a multi-user deployment, which directly answers the question about storage details.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0050"
+      ],
+      "fact_verification": [
+        {
+          "fact": "SQLite for a local demo",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "PostgreSQL/Supabase for a multi-user deployment",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-005",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What type of email is described as 'Highlight; optionally add an Important label.'?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Important"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage describes an email type that is highlighted and optionally labeled as important, which directly corresponds to the question about the type of email described by the phrase 'Highlight; optionally add an Important label.'",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0007"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Important",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-006",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should I do with a legitimate message that has no strong urgency or special priority?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "NORMAL",
+        "Leave in inbox or standard folder."
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage directly addresses the scenario of receiving a legitimate message with no strong urgency or special priority, and it specifies the appropriate action to take, which is to leave such messages in the inbox or standard folder.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0008"
+      ],
+      "fact_verification": [
+        {
+          "fact": "NORMAL",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Leave in inbox or standard folder.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-007",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What is the minimum number of spam messages the AI assistant should catch to have a high spam recall?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Spam recall",
+        "measure how many did the agent catch"
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The passage discusses the concept of spam recall, which is the proportion of all spam messages that the AI assistant correctly identifies. The question asks for the minimum number of spam messages the AI assistant should catch to have a high spam recall, which is a specific value mentioned in the passage.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0043"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Spam recall",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "measure how many did the agent catch",
+          "verified": true,
+          "method": "token_recall",
+          "recall": 1.0,
+          "numbers_ok": true
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-008",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should I do if an email is ambiguous and unclear?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Do not auto-move",
+        "ask user or defer"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage advises not to automatically categorize ambiguous emails as spam or important, but instead to defer to the user for clarification or action.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0011"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Do not auto-move",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "ask user or defer",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-009",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What is the format for the output schema of the AI assistant?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "label",
+        "IMPORTANT | NORMAL | SPAM | NEEDS_REVIEW",
+        "confidence"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage describes the format and structure of the output schema for the AI assistant, including the label format and the range of values for confidence.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0032"
+      ],
+      "fact_verification": [
+        {
+          "fact": "label",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "IMPORTANT | NORMAL | SPAM | NEEDS_REVIEW",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "confidence",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "ANS-010",
+      "category": "answerable",
+      "subtype": "single_document",
+      "question": "What should be done with API keys and OAuth tokens?",
+      "expected_behavior": "Answer correctly with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Keep API keys and OAuth tokens in environment variables or a secrets manager"
+      ],
+      "must_refuse": false,
+      "difficulty": "easy",
+      "evaluation_rationale": "The passage directly addresses the storage and handling of API keys and OAuth tokens, providing clear instructions on where they should be kept.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0046"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Keep API keys and OAuth tokens in environment variables or a secrets manager",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "MUL-011",
+      "category": "answerable",
+      "subtype": "multi_evidence",
+      "question": "What should the AI agent do if it classifies an email as 'Important' based on machine learning, but the user has set a priority preference for the email as 'Normal'? Should the agent respect the user's preference or override it?",
+      "expected_behavior": "Combine evidence from both sources and cite them.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Never move an email to trash or permanently delete it based only on model output.",
+        "Respect user-defined VIP senders, project keywords, and priority preferences, but do not let allowlists suppress clear phishing evidence.",
+        "Primary labels · Important · Normal · Spam · Needs Review"
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires understanding both the machine learning classification rule from Passage B and the user preference rule from Passage A. It asks how the AI agent should handle a conflict between these two, which necessitates information from both passages.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0041",
+        "ef833b1c2c9e-0002"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Never move an email to trash or permanently delete it based only on model output.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Respect user-defined VIP senders, project keywords, and priority preferences, but do not let allowlists suppress clear phishing evidence.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Primary labels · Important · Normal · Spam · Needs Review",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Respect user-defined VIP senders, project keywords, and priority preferences, but do not let allowlists suppress clear phishing evidence.",
+          "verified": false,
+          "method": "token_recall",
+          "recall": 0.0,
+          "numbers_ok": true
+        }
+      ]
+    },
+    {
+      "test_id": "MUL-012",
+      "category": "answerable",
+      "subtype": "multi_evidence",
+      "question": "How should the email classification agent use the timestamp and the evidence list to determine if an email is important?",
+      "expected_behavior": "Combine evidence from both sources and cite them.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "timestamp",
+        "Normalised email record",
+        "evidence list"
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires the agent to use information from both the 'Normalised email record' (from Passage A) and the 'evidence list' (from Passage B) to classify an email as important. The timestamp is part of the 'Normalised email record', and the evidence list is part of the 'evidence list'. Combining these pieces of information allows for a more comprehensive classification of the email.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0019",
+        "ef833b1c2c9e-0021"
+      ],
+      "fact_verification": [
+        {
+          "fact": "timestamp",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Normalised email record",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "evidence list",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "MUL-013",
+      "category": "answerable",
+      "subtype": "multi_evidence",
+      "question": "What should be done with emails that are uncertain or high-risk according to the Email Classification Agent Knowledge Base, and how does this align with the agent's classification process?",
+      "expected_behavior": "Combine evidence from both sources and cite them.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Keep uncertain or high-risk messages in Needs Review",
+        "Keep a human review path for uncertain or high-impact messages"
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires understanding both the agent's classification process (from Passage A) and the limitations for uncertain or high-impact messages (from Passage B). It combines the agent's classification rule with the human review path requirement, necessitating information from both passages to answer fully.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0005",
+        "ef833b1c2c9e-0055"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Keep uncertain or high-risk messages in Needs Review",
+          "verified": true,
+          "method": "token_recall",
+          "recall": 1.0,
+          "numbers_ok": true
+        },
+        {
+          "fact": "Keep a human review path for uncertain or high-impact messages",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "MUL-014",
+      "category": "answerable",
+      "subtype": "multi_evidence",
+      "question": "What should an email classification agent do if an email contains a malicious link and a request for personal information?",
+      "expected_behavior": "Combine evidence from both sources and cite them.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Unsolicited bulk content, scams, phishing, malicious links, or deceptive messages.",
+        "Spam includes unwanted bulk mail, scams, phishing, impersonation, and malicious content."
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires knowledge from both passages. Fact from A specifies that emails containing malicious links should be marked as suspected spam, while fact from B defines spam as including emails with requests for personal information. The combination of these facts forms a coherent scenario for classification.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0009",
+        "ef833b1c2c9e-0034"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Unsolicited bulk content, scams, phishing, malicious links, or deceptive messages.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Spam includes unwanted bulk mail, scams, phishing, impersonation, and malicious content.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-015",
+      "category": "edge_case",
+      "subtype": "false_premise",
+      "question": "What would happen if the AI classifier incorrectly identifies a spam email as important, based on the passage which states that the AI classifier returns structured JSON with scores, label, and reasons?",
+      "expected_behavior": "Point out that the assumption is incorrect and give the correct information with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Interpret context and return structured JSON with scores, label, and reasons."
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question assumes the AI classifier incorrectly identifies a spam email as important, which contradicts the passage's statement that the AI classifier returns structured JSON with scores, label, and reasons. A good answer should highlight this contradiction and explain why the AI classifier should not incorrectly identify a spam email as important.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0049"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Interpret context and return structured JSON with scores, label, and reasons.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-016",
+      "category": "edge_case",
+      "subtype": "ambiguous",
+      "question": "How should the AI assistant handle emails where the message ID is not available or ambiguous?",
+      "expected_behavior": "Ask a clarifying question or explain the possible interpretations instead of guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "This question is designed to be ambiguous as it does not provide clear criteria for handling ambiguous or unavailable message IDs. The assistant should demonstrate flexibility and the ability to explain its reasoning, which is not straightforward and requires interpretation.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0042"
+      ],
+      "fact_verification": []
+    },
+    {
+      "test_id": "EDG-017",
+      "category": "edge_case",
+      "subtype": "incomplete",
+      "question": "Which of the following signals is not mentioned in the passage as a high-priority signal for classifying an email as important? Incomplete answer: ___________",
+      "expected_behavior": "Ask for the missing detail or answer for the documented cases, without guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question requires the assistant to identify a signal not mentioned in the passage, which tests their ability to understand the context and recognize gaps in the information provided.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0012"
+      ],
+      "fact_verification": [
+        {
+          "fact": "High-priority signals",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Directly addressed request",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Time-bound action",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-018",
+      "category": "edge_case",
+      "subtype": "paraphrased",
+      "question": "An email from an unfamiliar sender includes a link to a website that appears to be from a well-known financial institution. The email requests immediate action to verify a transaction. How should this email be categorized and why?",
+      "expected_behavior": "Answer correctly from the documents despite the different wording, with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "unexpected financial request",
+        "suspicious link"
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question requires the candidate to identify the key elements (suspicious link and unexpected financial request) from the passage and apply them to a new scenario. This tests their ability to recognize and apply the reasoning provided in the original text to a different context.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0038"
+      ],
+      "fact_verification": [
+        {
+          "fact": "unexpected financial request",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "suspicious link",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-019",
+      "category": "edge_case",
+      "subtype": "partial_information",
+      "question": "How should the AI assistant handle an email that partially contains spam-like content but does not fully match any known spam patterns?",
+      "expected_behavior": "Answer the covered part with a citation and state that the rest is not in the documents.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "Apply a reversible label",
+        "draft a recommendation"
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question requires understanding of partial matches to known spam patterns and the need for a recommendation, which is not explicitly covered in the passage. The correct facts provided are relevant to the passage and help frame the question.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0025"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Apply a reversible label",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "draft a recommendation",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-020",
+      "category": "edge_case",
+      "subtype": "false_premise",
+      "question": "What should the AI assistant do if it encounters an email from a professor requesting submission of an assignment, but the deadline has already passed?",
+      "expected_behavior": "Point out that the assumption is incorrect and give the correct information with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "A known instructor asks the student to submit an assignment before a stated date.",
+        "Label: IMPORTANT"
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The question assumes a false premise by assuming the email is still important and should be classified as important, which contradicts the passage's information that the email should be classified as SPAM if the deadline has already passed.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0039"
+      ],
+      "fact_verification": [
+        {
+          "fact": "A known instructor asks the student to submit an assignment before a stated date.",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "Label: IMPORTANT",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-021",
+      "category": "edge_case",
+      "subtype": "ambiguous",
+      "question": "How does the email-classification agent handle emails that are not clearly marked as spam, important, or normal?",
+      "expected_behavior": "Ask a clarifying question or explain the possible interpretations instead of guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question is designed to be vague and ambiguous, as the passage does not provide clear guidance on how to handle emails that are not clearly marked. The assistant should be able to provide a general explanation of the agent's approach to such emails, which could include various strategies such as heuristic analysis, user feedback, or additional context.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0004"
+      ],
+      "fact_verification": [
+        {
+          "fact": "This document supplies the domain knowledge an email-classification agent needs.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-022",
+      "category": "edge_case",
+      "subtype": "incomplete",
+      "question": "What is the minimum importance score required to classify an email as Important, according to the suggested scoring model?",
+      "expected_behavior": "Ask for the missing detail or answer for the documented cases, without guessing.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question is designed to test the assistant's understanding of the scoring model, specifically the range of scores that classify an email as Important. The assistant should be able to identify the relevant information from the passage and formulate a question that requires this detail to be provided.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0027"
+      ],
+      "fact_verification": [
+        {
+          "fact": "Importance 80–100",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "High priority: highlight as Important",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-023",
+      "category": "edge_case",
+      "subtype": "paraphrased",
+      "question": "How should the AI assistant handle errors and updates to ensure accuracy and user satisfaction?",
+      "expected_behavior": "Answer correctly from the documents despite the different wording, with a citation.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "prioritise low false-positive rates for Spam and Important labels",
+        "sample and review errors regularly",
+        "update rules and test data when patterns change"
+      ],
+      "must_refuse": false,
+      "difficulty": "medium",
+      "evaluation_rationale": "The question requires understanding of the passage's key points about error handling and updates, including prioritizing false-positive rates, regular error review, and updating rules and test data. It tests comprehension and application of the given information in a new context.",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0045"
+      ],
+      "fact_verification": [
+        {
+          "fact": "prioritise low false-positive rates for Spam and Important labels",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "sample and review errors regularly",
+          "verified": true,
+          "method": "substring"
+        },
+        {
+          "fact": "update rules and test data when patterns change",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "EDG-024",
+      "category": "edge_case",
+      "subtype": "partial_information",
+      "question": "How would the AI assistant classify an email that is from an unknown sender but appears to be from a well-known company domain, requesting the recipient to confirm their email address, and includes a link to do so?",
+      "expected_behavior": "Answer the covered part with a citation and state that the rest is not in the documents.",
+      "expected_sources": [
+        "Email_Classification_Agent_Knowledge_Base.pdf"
+      ],
+      "expected_facts": [
+        "A recruiter from a verified company domain invites the recipient to choose an interview slot by Friday."
+      ],
+      "must_refuse": false,
+      "difficulty": "hard",
+      "evaluation_rationale": "The passage provides an example of a fake account warning (example C) that closely resembles the scenario described in the question. However, the passage does not explicitly cover emails from unknown senders but appearing to be from a well-known company domain. The assistant must use logical reasoning to determine the classification based on the given information and the context of the example pro",
+      "evidence_chunk_ids": [
+        "ef833b1c2c9e-0037"
+      ],
+      "fact_verification": [
+        {
+          "fact": "A recruiter from a verified company domain invites the recipient to choose an interview slot by Friday.",
+          "verified": true,
+          "method": "substring"
+        }
+      ]
+    },
+    {
+      "test_id": "OOS-025",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "How many emails does the assistant handle on average per day?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "It must be refused because this topic is not supported by the given documents and is not related to the assistant's purpose. (best retrieval similarity 0.43)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    },
+    {
+      "test_id": "OOS-026",
+      "category": "out_of_scope",
+      "subtype": "unsupported_topic",
+      "question": "What is the assistant's approach to handling emails that are not in the supported topics (e.g., unsupported topics)?",
+      "expected_behavior": "Refuse: the approved sources do not support an answer.",
+      "expected_sources": [],
+      "expected_facts": [],
+      "must_refuse": true,
+      "difficulty": "medium",
+      "evaluation_rationale": "It must be refused because this topic is not supported by the given documents and is not related to the assistant's purpose. (best retrieval similarity 0.49)",
+      "evidence_chunk_ids": [],
+      "fact_verification": []
+    }
+  ],
+  "generation_config": {
+    "target_cases": 32,
+    "seed": 7,
+    "temperature": 0.0,
+    "planned": {
+      "single": 10,
+      "multi": 4,
+      "edge": 10,
+      "out_of_scope": 8
+    },
+    "prompts": [
+      "eval_generator.txt",
+      "eval_generator_multi.txt",
+      "eval_generator_edge.txt",
+      "eval_generator_out_of_scope.txt"
+    ]
+  },
+  "rejected_candidates": [
+    {
+      "type": "out_of_scope",
+      "question": "What is the preferred method for training the machine learning model for this email classification assistant?",
+      "best_similarity": 0.6389,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "What is the success rate of the assistant in classifying emails as spam compared to human reviewers?",
+      "best_similarity": 0.6449,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "How does the assistant prioritize emails marked as 'Needs Review'?",
+      "best_similarity": 0.5358,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "What is the assistant's opinion on the effectiveness of using natural language processing for email classification?",
+      "best_similarity": 0.6215,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "How does the assistant handle emails that are flagged as spam but are actually important emails?",
+      "best_similarity": 0.624,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "What is the assistant's strategy for updating its machine learning model with new email data?",
+      "best_similarity": 0.5002,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "How does the assistant ensure that it does not delete or quarantine emails that are actually important emails?",
+      "best_similarity": 0.5567,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    },
+    {
+      "type": "out_of_scope",
+      "question": "How does the assistant decide which emails to provide explanations for its decisions?",
+      "best_similarity": 0.5802,
+      "reason": "documents contain strongly related evidence; may be answerable"
+    }
+  ],
+  "created_at": "2026-11-26T21:34:21.452994+00:00"
+}

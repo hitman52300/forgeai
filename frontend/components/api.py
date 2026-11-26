@@ -71,3 +71,10 @@ def sign_up(email: str, password: str) -> str:
         st.session_state["user_email"] = res.user.email
         return "Account created and signed in."
     return "Account created. Confirm the e-mail sent by Supabase, then sign in."
+
+
+def sign_out() -> None:
+    for k in ("access_token", "user_email"):
+        st.session_state.pop(k, None)
+    for k in [k for k in st.session_state if k.startswith(("chat_", "sid_"))]:
+        st.session_state.pop(k, None)

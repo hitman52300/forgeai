@@ -1,0 +1,65 @@
+{
+  "run": {
+    "run_id": "023ad8c2-1728-408c-87bb-76103db7d994",
+    "project_id": "03a35631-da1f-43c6-bbc4-712735083513",
+    "project_name": "create agent which detect spam mails and imp mails",
+    "brief": "create agent which detect spam mails and imp mails",
+    "status": "completed",
+    "stages": {
+      "document_analysis": "completed",
+      "interview": "completed",
+      "groundability": "completed",
+      "requirements_approval": "completed",
+      "agent_generation": "completed",
+      "evaluation_generation": "completed",
+      "evaluation": "completed",
+      "optimization": "completed",
+      "final_delivery": "completed"
+    },
+    "stage_messages": {
+      "target_cases": "32",
+      "document_analysis": "1 documents ingested",
+      "interview": "3 question(s), 3 answered",
+      "groundability": "{\"supported\": 3}",
+      "requirements_approval": "approved by luckyraghav081@gmail.com at 2026-11-26T21:31:28.576632+00:00; 0 field(s) edited",
+      "agent_generation": "EmailClassifierAI v1; tools=none; 1 documents, 22544 prose characters, median indexed chunk 453 chars; chunk_size=600 overlap=90 (15%); top_k=4 (more documents/tables need more passages for cross-document questions)",
+      "evaluation_generation": "26 cases {'answerable': 14, 'edge_case': 10, 'out_of_scope': 2}; 8 candidates rejected",
+      "evaluation": "initial pass rate 34.6% (9/26)",
+      "optimization": "2 iteration(s); stop: no measurable improvement (pass rate change -15.4%)",
+      "final_delivery": "final agent v2; pass rate 46.2%"
+    },
+    "budget": {
+      "max_llm_calls": 1500,
+      "max_tokens": 3000000,
+      "max_iterations": 3,
+      "max_seconds": 10800,
+      "max_eval_cases": 40
+    },
+    "usage": {
+      "llm_calls": 197,
+      "prompt_tokens": 264599,
+      "completion_tokens": 27089,
+      "elapsed_seconds": 2190.22,
+      "iterations": 2,
+      "eval_cases": 0,
+      "calls_by_stage": {
+        "interview": 1,
+        "groundability": 5,
+        "tool_selection": 1,
+        "requirements": 1,
+        "agent_generation": 1,
+        "eval_generation": 25,
+        "runtime_answer": 83,
+        "judge": 78,
+        "critic": 2
+      }
+    },
+    "stop_reason": "no measurable improvement (pass rate change -15.4%)",
+    "created_at": "2026-11-26T21:28:13.688420+00:00",
+    "updated_at": "2026-11-26T22:07:12.389537+00:00",
+    "owner": "luckyraghav081@gmail.com",
+    "final_agent_version": 2,
+    "agent_id": "273c10b7-3724-4cf9-85b7-d60754399ac8"
+  },
+  "slug": "create_agent_which_detect_spam_mails_and_023ad8c2"
+}

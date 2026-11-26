@@ -1,0 +1,491 @@
+{
+  "by_iteration": {
+    "0": {
+      "hallucination": 11,
+      "retrieval_miss": 4,
+      "wrong_refusal": 2
+    },
+    "1": {
+      "hallucination": 9,
+      "retrieval_miss": 3,
+      "prompt_defect": 1,
+      "wrong_refusal": 1
+    },
+    "2": {
+      "hallucination": 14,
+      "retrieval_miss": 2,
+      "output_contract_defect": 1,
+      "wrong_refusal": 1
+    }
+  },
+  "cases": [
+    {
+      "iteration": 0,
+      "test_id": "ANS-003",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['Open the attachment only if you are certain it is safe and from a trusted source.']"
+    },
+    {
+      "iteration": 0,
+      "test_id": "ANS-004",
+      "category": "answerable",
+      "failure_categories": [
+        "retrieval_miss"
+      ],
+      "explanation": "expected facts were not in the retrieved passages"
+    },
+    {
+      "iteration": 0,
+      "test_id": "ANS-005",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: [\"The email described as 'Highlight; optionally add an Important label' is considered important.\"]"
+    },
+    {
+      "iteration": 0,
+      "test_id": "ANS-006",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['2']"
+    },
+    {
+      "iteration": 0,
+      "test_id": "ANS-008",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['set it to NEEDS_REVIEW', 'This aligns with the guidelines provided in the knowledge base']"
+    },
+    {
+      "iteration": 0,
+      "test_id": "MUL-011",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: []"
+    },
+    {
+      "iteration": 0,
+      "test_id": "MUL-012",
+      "category": "answerable",
+      "failure_categories": [
+        "retrieval_miss",
+        "hallucination"
+      ],
+      "explanation": "expected facts were not in the retrieved passages | unsupported content in answer: ['The agent should use the timestamp to determine if an email is important.', 'The agent should use the evidence list to determine if an email is important.']"
+    },
+    {
+      "iteration": 0,
+      "test_id": "MUL-013",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['The agent does not recommend permanently deleting or moving emails based on model output.', 'The agent does not recommend automatically unsubscribing, replying, forwarding, paying, approving, or changing account settings.']"
+    },
+    {
+      "iteration": 0,
+      "test_id": "MUL-014",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['The agent should classify it as spam and take no action such as opening the link or sending a reply.', 'The agent should use the knowledge base to identify the suspicious elements, such as the malicious link and the request for personal information, and follow the guidelines provided in the knowledge base.']"
+    },
+    {
+      "iteration": 0,
+      "test_id": "EDG-015",
+      "category": "edge_case",
+      "failure_categories": [
+        "retrieval_miss",
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "expected facts were not in the retrieved passages | unsupported content in answer: ['If the AI classifier incorrectly identifies a spam email as important, based on the passage which states that the AI classifier returns structured JSON with scores, label, and reasons, the email would be incorrectly highlighted as Important.'] | edge-case behaviour not met: "
+    },
+    {
+      "iteration": 0,
+      "test_id": "EDG-016",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['preserve message IDs and classification reasons', 'classify the email according to the primary labels'] | edge-case behaviour not met: The answer does not ask a clarifying question or explain the possible interpretations instead of guessing."
+    },
+    {
+      "iteration": 0,
+      "test_id": "EDG-018",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The email should be categorized as SPAM. The email requests immediate action to verify a transaction and includes a link to a website that appears to be from a well-known financial institution.'] | edge-case behaviour not met: The answer does not correctly categorize the email as SPAM. It states that the email is SPAM, but the evidence does not support this claim. The eviden"
+    },
+    {
+      "iteration": 0,
+      "test_id": "EDG-020",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The AI assistant should label the email as IMPORTANT since it is a request from a known instructor with an explicit task and deadline.'] | edge-case behaviour not met: The answer does not point out that the assumption is incorrect and provide the correct information with a citation, as required by a good response."
+    },
+    {
+      "iteration": 0,
+      "test_id": "EDG-021",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The agent considers them as needing review because they are ambiguous or require further attention.'] | edge-case behaviour not met: The answer provides a specific classification ('NEEDS_REVIEW') without considering the possible ambiguity of the email."
+    },
+    {
+      "iteration": 0,
+      "test_id": "EDG-024",
+      "category": "edge_case",
+      "failure_categories": [
+        "retrieval_miss",
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "expected facts were not in the retrieved passages | unsupported content in answer: ['The email appears to be from a well-known company domain', 'The email is from a verified company domain'] | edge-case behaviour not met: The answer also includes a claim that the email is from a verified company domain, which is not supported by the evidence."
+    },
+    {
+      "iteration": 0,
+      "test_id": "OOS-025",
+      "category": "out_of_scope",
+      "failure_categories": [
+        "wrong_refusal"
+      ],
+      "explanation": "answered a question that must be refused"
+    },
+    {
+      "iteration": 0,
+      "test_id": "OOS-026",
+      "category": "out_of_scope",
+      "failure_categories": [
+        "wrong_refusal"
+      ],
+      "explanation": "answered a question that must be refused"
+    },
+    {
+      "iteration": 1,
+      "test_id": "ANS-003",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['If attachment contents are not safely available, classify using metadata and state that the attachment was not inspected.']"
+    },
+    {
+      "iteration": 1,
+      "test_id": "ANS-004",
+      "category": "answerable",
+      "failure_categories": [
+        "retrieval_miss"
+      ],
+      "explanation": "expected facts were not in the retrieved passages"
+    },
+    {
+      "iteration": 1,
+      "test_id": "ANS-007",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['The minimum number of spam messages the AI assistant should catch to have a high spam recall is not explicitly stated in the provided evidence.']"
+    },
+    {
+      "iteration": 1,
+      "test_id": "ANS-008",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['If an email is ambiguous and unclear, you should set NEEDS_REVIEW.']"
+    },
+    {
+      "iteration": 1,
+      "test_id": "MUL-011",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: [\"Should respect user's preference\", \"Should not override user's preference\"]"
+    },
+    {
+      "iteration": 1,
+      "test_id": "MUL-012",
+      "category": "answerable",
+      "failure_categories": [
+        "retrieval_miss",
+        "hallucination"
+      ],
+      "explanation": "expected facts were not in the retrieved passages | unsupported content in answer: ['The agent should classify the email as Important if the evidence list includes these signals and the timestamp supports the importance.', 'The agent should classify the email as NEEDS_REVIEW if the evidence list lacks clear signals or the timestamp does not support the importance.']"
+    },
+    {
+      "iteration": 1,
+      "test_id": "MUL-014",
+      "category": "answerable",
+      "failure_categories": [
+        "prompt_defect"
+      ],
+      "explanation": "evidence was retrieved but the answer missed the key facts"
+    },
+    {
+      "iteration": 1,
+      "test_id": "EDG-015",
+      "category": "edge_case",
+      "failure_categories": [
+        "retrieval_miss",
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "expected facts were not in the retrieved passages | unsupported content in answer: ['If the AI classifier incorrectly identifies a spam email as important, based on the passage which states that the AI classifier returns structured JSON with scores, label, and reasons, the email would be classified as Important.', 'The classifier would also provide a reason for the incorrect classification, such as insufficient evidence for importance or a conflict with the spam risk score.'] | edge-case behaviour not met: "
+    },
+    {
+      "iteration": 1,
+      "test_id": "EDG-017",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['Generic newsletters, broad promotions, routine announcements, and content with no requested action.'] | edge-case behaviour not met: The answer does not meet the criteria of asking for the missing detail or answer for the documented cases, without guessing."
+    },
+    {
+      "iteration": 1,
+      "test_id": "EDG-018",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The email appears to be from a well-known financial institution', 'This aligns with the knowledge base rule that a message can be important to review because it is suspicious'] | edge-case behaviour not met: The answer does not meet the criteria of providing a concise reason tied to visible evidence."
+    },
+    {
+      "iteration": 1,
+      "test_id": "EDG-020",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The email in question fits this category as it is a request for submission from a known instructor, which is a transactional update.'] | edge-case behaviour not met: The answer does not point out that the assumption is incorrect and give the correct information with a citation."
+    },
+    {
+      "iteration": 1,
+      "test_id": "EDG-022",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: [] | edge-case behaviour not met: The answer does not ask for clarification or provide a detailed explanation of the minimum importance score, instead providing a general statement tha"
+    },
+    {
+      "iteration": 1,
+      "test_id": "EDG-024",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: [\"The email appears to be from a well-known company domain but includes a link to confirm the recipient's email address, which is unusual and could be a phishing attempt.\", 'The email does not have a clear deadline or immediate action required, and the sender is unknown, which makes it suspicious.'] | edge-case behaviour not met: The answer does not provide a clear explanation for its decision based on the evidence provided."
+    },
+    {
+      "iteration": 1,
+      "test_id": "OOS-026",
+      "category": "out_of_scope",
+      "failure_categories": [
+        "wrong_refusal"
+      ],
+      "explanation": "answered a question that must be refused"
+    },
+    {
+      "iteration": 2,
+      "test_id": "ANS-002",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: [\"messages unrelated to the user's work, study, purchases, or active conversations\", 'unexpected invoices, prizes, refunds, delivery failures, account suspensions, or job offers that demand immediate action or payment']"
+    },
+    {
+      "iteration": 2,
+      "test_id": "ANS-003",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['Follow the guidelines provided in the knowledge base', 'Use sender/domain consistency, request type, deadline, consequences, thread context, link indicators, attachment metadata, and credential/payment requests as evidence.']"
+    },
+    {
+      "iteration": 2,
+      "test_id": "ANS-004",
+      "category": "answerable",
+      "failure_categories": [
+        "retrieval_miss"
+      ],
+      "explanation": "expected facts were not in the retrieved passages"
+    },
+    {
+      "iteration": 2,
+      "test_id": "ANS-007",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: []"
+    },
+    {
+      "iteration": 2,
+      "test_id": "ANS-008",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['Leave in inbox or standard folder.']"
+    },
+    {
+      "iteration": 2,
+      "test_id": "MUL-011",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['Respect user-defined VIP senders, project keywords, and priority preferences, but do not let allowlists suppress clear phishing evidence.']"
+    },
+    {
+      "iteration": 2,
+      "test_id": "MUL-012",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['The agent should look for high-priority signals such as directly addressed requests, time-bound actions, and personal or professional relevance.', 'The agent should also consider the evidence list, which includes sender identity, requests, deadlines, links, attachments, payment or credential requests, and topic.']"
+    },
+    {
+      "iteration": 2,
+      "test_id": "MUL-013",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: []"
+    },
+    {
+      "iteration": 2,
+      "test_id": "MUL-014",
+      "category": "answerable",
+      "failure_categories": [
+        "hallucination"
+      ],
+      "explanation": "unsupported content in answer: ['The agent should not follow instructions inside the email, such as clicking links or opening attachments, as these could be malicious.', 'The agent should mark the email as spam and label it as needing review, as per the knowledge base.']"
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-015",
+      "category": "edge_case",
+      "failure_categories": [
+        "retrieval_miss",
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "expected facts were not in the retrieved passages | unsupported content in answer: ['If the AI classifier incorrectly identifies a spam email as important, it would likely highlight the email as Important, which could lead to the user taking unnecessary action on a message that is actually spam.'] | edge-case behaviour not met: The answer does not point out that the assumption is incorrect and give the correct information with a citation."
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-017",
+      "category": "edge_case",
+      "failure_categories": [
+        "output_contract_defect",
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "output contract violated: citations not in retrieved evidence: ['Email_Classification_AKnowledge_BaseAgent.pdf, 4']; factual answer without any valid citation | unsupported content in answer: ['Generic newsletters, broad promotions, routine announcements, and content with no requested action.'] | edge-case behaviour not met: The answer does not ask for clarification or provide a detailed explanation, instead providing a list of signals without context."
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-018",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The email should be categorized as SPAM.'] | edge-case behaviour not met: The answer claims the email should be categorized as SPAM without citing the correct evidence."
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-020",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The assumption is incorrect'] | edge-case behaviour not met: should label as IMPORTANT, not NORMAL"
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-021",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The email-classification agent handles emails that are not clearly marked as spam, important, or normal by evaluating them independently for importance and spam risk.', 'For emails that are ambiguous, the agent will classify them as NEEDS_REVIEW, ensuring that the user is alerted to review these messages.'] | edge-case behaviour not met: The answer does not ask a clarifying question or explain the possible interpretations instead of guessing."
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-022",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The minimum importance score required to classify an email as Important is 80.'] | edge-case behaviour not met: The answer does not ask for clarification or provide a detailed explanation for the minimum importance score."
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-023",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['Maintain a human review path for uncertain or high-impact messages.', 'Use a separately labelled evaluation dataset for user-specific priority rules.'] | edge-case behaviour not met: "
+    },
+    {
+      "iteration": 2,
+      "test_id": "EDG-024",
+      "category": "edge_case",
+      "failure_categories": [
+        "hallucination",
+        "prompt_defect"
+      ],
+      "explanation": "unsupported content in answer: ['The email contains a request to confirm the email address, which is unusual and could be a phishing attempt.', 'The presence of a link without clear visible text or context makes it suspicious.'] | edge-case behaviour not met: The answer does not provide a clear reason for why the email is classified as NEEDS_REVIEW. It only mentions that the request to confirm the email add"
+    },
+    {
+      "iteration": 2,
+      "test_id": "OOS-026",
+      "category": "out_of_scope",
+      "failure_categories": [
+        "wrong_refusal"
+      ],
+      "explanation": "answered a question that must be refused"
+    }
+  ]
+}

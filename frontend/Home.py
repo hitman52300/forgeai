@@ -1,69 +1,56 @@
-"""ForgeAI dashboard.   streamlit run frontend/Home.py"""
+"""ForgeAI UI entry point.   streamlit run frontend/Home.py
+
+Signed-out users only see the sign-in / create-account screen. After sign-in the
+application pages become available in the sidebar.
+"""
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-import pandas as pd  # noqa: E402
 import streamlit as st  # noqa: E402
 
 from frontend.components import api  # noqa: E402
-from frontend.components.ui import badge, kpi, page, safe  # noqa: E402
+from frontend.components.ui import inject_css  # noqa: E402
 
-page("Dashboard", "Factory runs, generated agents and measured quality.")
+st.set_page_config(page_title="ForgeAI", page_icon=":material/precision_manufacturing:", layout="wide",
+                   initial_sidebar_state="expanded")
+inject_css()
 
-runs = safe(api.get, "/runs") or []
-agents = safe(api.get, "/agents") or []
-health = safe(api.get, "/health") or {}
+V = "views/"
+login = st.Page(V + "login.py", title="Sign in", icon=":material/login:")
+signed_in = (not api.auth_required()) or bool(st.session_state.get("access_token"))
 
-scores = []
-attention = []
-for r in runs:
-    if r["status"] == "completed":
-        sc = safe(api.get, f"/runs/{r['run_id']}/evaluation/scorecards") or []
-        final = next((s for s in sc if s["agent_version"] == r.get("final_agent_version")), None)
-        if final:
-            scores.append(final["pass_rate"])
-            if final["pass_rate"] < 0.85:
-                attention.append((r, final))
-    elif r["status"] in ("failed", "stopped", "awaiting_approval", "interviewing"):
-        attention.append((r, None))
-
-c1, c2, c3, c4 = st.columns(4)
-kpi(c1, "Total factory runs", len(runs))
-kpi(c2, "Generated agents", len([a for a in agents if a.get("final_version")]))
-kpi(c3, "Average final pass rate", f"{sum(scores) / len(scores):.0%}" if scores else "n/a")
-kpi(c4, "Runs requiring attention", len(attention))
-
-st.markdown("&nbsp;")
-left, right = st.columns([3, 2])
-with left:
-    st.markdown("### Recent projects")
-    if runs:
-        df = pd.DataFrame([{"Project": r["project_name"], "Status": r["status"].replace("_", " "),
-                            "Final version": r.get("final_agent_version") or "", "Updated": r["updated_at"][:19]}
-                           for r in runs[:12]])
-        st.dataframe(df, hide_index=True, width="stretch")
-    else:
-        st.caption("No runs yet. Start one from Create New Agent.")
-    st.markdown("### Requiring attention")
-    if not attention:
-        st.caption("Nothing requires attention.")
-    for r, sc in attention[:8]:
-        why = (f"final pass rate {sc['pass_rate']:.0%} is below 85%" if sc
-               else {"awaiting_approval": "requirements are waiting for approval",
-                     "interviewing": "clarifying questions are waiting for answers"}.get(r["status"], r.get("stop_reason") or r["status"]))
-        st.markdown(f"{badge(r['status'])} **{r['project_name']}**: {why}", unsafe_allow_html=True)
-with right:
-    st.markdown("### System")
-    oll = health.get("ollama", {})
-    st.markdown(f"- Storage backend: `{health.get('storage_backend', '?')}` ({health.get('database', '?')})\n"
-                f"- Agent model: `{health.get('llm_model', '?')}`  \n- Judge model: `{health.get('judge_model', '?')}`\n"
-                f"- Ollama: {'reachable' if oll.get('ok') else 'problem: ' + str(oll.get('error') or oll.get('missing'))}")
-    st.markdown("### Recent activity")
-    for r in runs[:6]:
-        msgs = r.get("stages", {})
-        last = next((k for k in reversed(list(msgs)) if msgs[k] != "pending"), None)
-        if last:
-            st.markdown(f"{badge(msgs[last])} {r['project_name']} · {last.replace('_', ' ')}",
+if not signed_in:
+    st.navigation([login], position="hidden").run()
+else:
+    pages = {
+        "Overview": [st.Page(V + "dashboard.py", title="Dashboard", icon=":material/space_dashboard:", default=True)],
+        "Build": [
+            st.Page(V + "create.py", title="Create New Agent", icon=":material/add_circle:"),
+            st.Page(V + "interview.py", title="Interview", icon=":material/forum:"),
+            st.Page(V + "requirements.py", title="Requirements Review", icon=":material/fact_check:"),
+            st.Page(V + "execution.py", title="Factory Execution", icon=":material/account_tree:"),
+        ],
+        "Quality": [
+            st.Page(V + "evaluation.py", title="Evaluation Dashboard", icon=":material/monitoring:"),
+            st.Page(V + "studio.py", title="Agent Studio", icon=":material/tune:"),
+        ],
+        "Operate": [
+            st.Page(V + "chat.py", title="Agent Chat", icon=":material/chat:"),
+            st.Page(V + "reports.py", title="Reports and Artifacts", icon=":material/folder_open:"),
+        ],
+    }
+    assets = Path(__file__).parent / "assets"
+    st.logo(str(assets / "logo.svg"), icon_image=str(assets / "mark.svg"), size="large")
+    nav = st.navigation(pages, position="sidebar")
+    with st.sidebar:
+        if api.auth_required():
+            st.markdown(f"<div class='fa-user'>Signed in as<br><b>{st.session_state.get('user_email', '')}</b></div>",
                         unsafe_allow_html=True)
+            if st.button("Sign out", icon=":material/logout:"):
+                api.sign_out()
+                st.rerun()
+        else:
+            st.caption("Local mode: authentication disabled.")
+    nav.run()

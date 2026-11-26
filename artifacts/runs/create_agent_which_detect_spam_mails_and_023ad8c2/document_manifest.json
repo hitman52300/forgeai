@@ -1,0 +1,33 @@
+{
+  "project_id": "03a35631-da1f-43c6-bbc4-712735083513",
+  "collection": "p_03a35631da1f43c6bbc47127_c800_o120",
+  "documents": [
+    {
+      "document_id": "a286ba31-64e0-4bd6-b763-1ea0470ef903",
+      "project_id": "03a35631-da1f-43c6-bbc4-712735083513",
+      "filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+      "file_type": "pdf",
+      "size_bytes": 47112,
+      "content_hash": "ef833b1c2c9e10644db88793e963507b005621e00788609c3256eefa6d5b8f38",
+      "version": 1,
+      "page_count": 7,
+      "row_count": null,
+      "columns": null,
+      "chunk_count": 48,
+      "storage_path": "documents/03a35631-da1f-43c6-bbc4-712735083513/ef833b1c2c9e_Email_Classification_Agent_Knowledge_Base.pdf",
+      "status": "ingested",
+      "error": null,
+      "preview": "Reference document for agent design and evaluation\nPage 1\n\nEMAIL CLASSIFICATION\n\nAGENT\nKnowledge Base & Build Specification\nA practical reference for creating an AI agent that identifies spam, prioritises important emails, and\nexplains its decisions.\nCore task\nClassify incoming emails\nPrimary labels\nImportant · Normal · Spam · Needs Review\nRecommended approach\nRules + machine learning / LLM reasoning\nSafety principle\nNever permanently delete or send email\nautomatically\nVersion 1.0 · 27 November 2026\n\nEMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 2\n\n1. Purpose and scope\nThis document supplies the domain knowledge an email-classification agent needs. The agent reviews email content\nand available metadata, then assigns a category and priority. It is designed for inbox triage—not for making irreversible\ndecisions or replacing the user.\nExpected outcomes\n• Detect likely unsolicited, deceptive, malicious, or irrelevant messages and label them as Spam.\n• Identify messages that deserve the user's attention and label them Important.\n• Keep ordinary correspondence in Normal so the inbox remains useful.\n• Send uncertain or high-risk messages to Needs Review rather than guessing.\n• Provide a short explanation and confidence score for every classification.\n\n2. Classification labels\nLabel\nMeaning\nTypical action\n\nIMPORTANT\nA message likely requiring attention, a response, a\ndecision, or timely action.\nHighlight; optionally add an\nImporta"
+    }
+  ],
+  "errors": [],
+  "duplicates": [],
+  "changes": [
+    {
+      "filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+      "change_type": "added",
+      "old_hash": null,
+      "new_hash": "ef833b1c2c9e10644db88793e963507b005621e00788609c3256eefa6d5b8f38"
+    }
+  ]
+}

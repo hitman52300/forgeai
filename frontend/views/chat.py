@@ -9,7 +9,7 @@ import streamlit as st  # noqa: E402
 from frontend.components import api  # noqa: E402
 from frontend.components.ui import page, safe  # noqa: E402
 
-page("Agent Chat Runner", "Generic runtime: any generated agent, its own knowledge base, its own history.")
+page("Agent Chat Runner", "Generic runtime: any generated agent, its own knowledge base, its own history.", eyebrow="Operate")
 agents = [a for a in (safe(api.get, "/agents") or []) if a.get("final_version") or a["origin"] == "human_baseline"]
 if not agents:
     st.info("No delivered agents yet.")

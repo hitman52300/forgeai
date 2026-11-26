@@ -11,7 +11,7 @@ from frontend.components.ui import kpi, page, run_picker, safe  # noqa: E402
 
 METRICS = ["grounding", "factual_correctness", "citation_correctness", "refusal_correctness", "scope_adherence",
            "output_contract"]
-page("Evaluation Dashboard", "Measured results only. Pass rate, individual metrics and the composite are reported separately.")
+page("Evaluation Dashboard", "Measured results only. Pass rate, individual metrics and the composite are reported separately.", eyebrow="Quality")
 run = run_picker()
 if not run:
     st.stop()

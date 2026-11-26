@@ -1,3 +1,4 @@
+import html
 import sys
 from pathlib import Path
 
@@ -8,7 +9,13 @@ import streamlit as st  # noqa: E402
 from frontend.components import api  # noqa: E402
 from frontend.components.ui import STAGE_LABELS, badge, page, run_picker, safe, wait_job  # noqa: E402
 
-page("Factory Execution", "Stage statuses are read from the run record; a stage is shown completed only after it completed.")
+page("Factory Execution", "Stage statuses are read from the run record; a stage is shown completed only after it completed.", eyebrow="Build · Step 4")
+
+
+def _short(t: str, n: int = 95) -> str:
+    return t if len(t) <= n else t[:n].rsplit(" ", 1)[0] + " ..."
+
+
 run = run_picker()
 if not run:
     st.stop()
@@ -20,10 +27,13 @@ stages = r["stages"]
 msgs = r["stage_messages"]
 order = list(STAGE_LABELS)
 for row in (order[:5], order[5:]):
-    cols = st.columns(len(row))
+    cols = st.columns(5)
     for c, s in zip(cols, row):
-        c.markdown(f"<div class='fa-stage'><div class='fa-stage-t'>{STAGE_LABELS[s]}</div>{badge(stages[s])}"
-                   f"<div class='fa-stage-m'>{(msgs.get(s) or '')[:140]}</div></div>", unsafe_allow_html=True)
+        n = order.index(s) + 1
+        c.markdown(f"<div class='fa-stage'><div class='fa-stage-n'>STAGE {n:02d}</div>"
+                   f"<div class='fa-stage-t'>{STAGE_LABELS[s]}</div>{badge(stages[s])}"
+                   f"<div class='fa-stage-m' title='{html.escape(msgs.get(s) or '', quote=True)}'>"
+                   f"{html.escape(_short(msgs.get(s) or ''))}</div></div>", unsafe_allow_html=True)
 
 st.markdown("&nbsp;")
 u = r["usage"]
@@ -47,7 +57,7 @@ if r["status"] == "approved":
                 st.rerun()
 elif r["status"] in ("awaiting_approval", "interviewing"):
     st.warning("Awaiting human approval of the requirements. Execution is blocked until then.")
-    st.page_link("pages/3_Requirements_Review.py", label="Review requirements")
+    st.page_link("views/requirements.py", label="Review requirements")
 elif r["status"] == "running":
     st.info("This run is executing. Refresh to update the stage statuses.")
     if st.button("Refresh"):

@@ -1,0 +1,183 @@
+[
+  {
+    "iteration": 1,
+    "from_version": 1,
+    "to_version": 2,
+    "score_before": 0.3462,
+    "score_after": 0.4615,
+    "pass_rate_before": 0.3462,
+    "pass_rate_after": 0.4615,
+    "failure_categories": [
+      "hallucination",
+      "retrieval_miss"
+    ],
+    "changes_made": [
+      "runtime_options.strict_numeric_grounding: False -> True",
+      "extra_rules: [] -> ['When answering, only cite information directly from the evidence provided, avoiding unsupported content.', 'For ambiguous questions, provide guidance based on the evidence and known best practices, without making assumptions or citations that are not supported.']",
+      "retrieval_config.top_k: 4 -> 7",
+      "retrieval_config.similarity_threshold: 0.25 -> 0.2"
+    ],
+    "reason_for_changes": [
+      "11 hallucinations: validate that numbers in answers exist in the evidence",
+      "critic (hallucination): Ensure answers are grounded in the provided evidence",
+      "4 retrieval misses: retrieve more passages",
+      "admit slightly less similar passages that contained the expected facts",
+      "hallucination x11: Ensure answers are grounded in the provided evidence",
+      "retrieval_miss x4: relevant passages were not retrieved"
+    ],
+    "affected_test_ids": [
+      "ANS-003",
+      "ANS-004",
+      "ANS-005",
+      "ANS-006",
+      "ANS-008",
+      "EDG-015",
+      "EDG-016",
+      "EDG-018",
+      "EDG-020",
+      "EDG-021",
+      "EDG-024",
+      "MUL-011",
+      "MUL-012",
+      "MUL-013",
+      "MUL-014"
+    ],
+    "regression_results": [
+      {
+        "test_id": "ANS-007",
+        "was": "pass",
+        "now": "fail",
+        "categories": [
+          "hallucination"
+        ]
+      },
+      {
+        "test_id": "EDG-017",
+        "was": "pass",
+        "now": "fail",
+        "categories": [
+          "hallucination",
+          "prompt_defect"
+        ]
+      },
+      {
+        "test_id": "EDG-022",
+        "was": "pass",
+        "now": "fail",
+        "categories": [
+          "hallucination",
+          "prompt_defect"
+        ]
+      },
+      {
+        "test_id": "ANS-005",
+        "was": "fail",
+        "now": "pass"
+      },
+      {
+        "test_id": "ANS-006",
+        "was": "fail",
+        "now": "pass"
+      },
+      {
+        "test_id": "MUL-013",
+        "was": "fail",
+        "now": "pass"
+      },
+      {
+        "test_id": "EDG-016",
+        "was": "fail",
+        "now": "pass"
+      },
+      {
+        "test_id": "EDG-021",
+        "was": "fail",
+        "now": "pass"
+      },
+      {
+        "test_id": "OOS-025",
+        "was": "fail",
+        "now": "pass"
+      }
+    ],
+    "decision": "continue",
+    "decision_reason": "improved by +11.5%; failures remain",
+    "kept_version": 2
+  },
+  {
+    "iteration": 2,
+    "from_version": 2,
+    "to_version": 3,
+    "score_before": 0.4615,
+    "score_after": 0.3077,
+    "pass_rate_before": 0.4615,
+    "pass_rate_after": 0.3077,
+    "failure_categories": [
+      "hallucination",
+      "retrieval_miss"
+    ],
+    "changes_made": [
+      "retrieval_config.top_k: 7 -> 10",
+      "retrieval_config.similarity_threshold: 0.2 -> 0.15"
+    ],
+    "reason_for_changes": [
+      "3 retrieval misses: retrieve more passages",
+      "admit slightly less similar passages that contained the expected facts",
+      "hallucination x9: Ensure answers are directly supported by the provided evidence",
+      "retrieval_miss x3: relevant passages were not retrieved"
+    ],
+    "affected_test_ids": [
+      "ANS-003",
+      "ANS-004",
+      "ANS-007",
+      "ANS-008",
+      "EDG-015",
+      "EDG-017",
+      "EDG-018",
+      "EDG-020",
+      "EDG-022",
+      "EDG-024",
+      "MUL-011",
+      "MUL-012"
+    ],
+    "regression_results": [
+      {
+        "test_id": "ANS-002",
+        "was": "pass",
+        "now": "fail",
+        "categories": [
+          "hallucination"
+        ]
+      },
+      {
+        "test_id": "MUL-013",
+        "was": "pass",
+        "now": "fail",
+        "categories": [
+          "hallucination"
+        ]
+      },
+      {
+        "test_id": "EDG-021",
+        "was": "pass",
+        "now": "fail",
+        "categories": [
+          "hallucination",
+          "prompt_defect"
+        ]
+      },
+      {
+        "test_id": "EDG-023",
+        "was": "pass",
+        "now": "fail",
+        "categories": [
+          "hallucination",
+          "prompt_defect"
+        ]
+      }
+    ],
+    "decision": "stop",
+    "decision_reason": "no measurable improvement (pass rate change -15.4%)",
+    "kept_version": 2
+  }
+]

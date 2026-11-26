@@ -1,0 +1,12 @@
+{
+  "agent_definition": "artifacts/agents/273c10b7-3724-4cf9-85b7-d60754399ac8/final.json",
+  "project_id": "03a35631-da1f-43c6-bbc4-712735083513",
+  "collection": "p_03a35631da1f43c6bbc47127_c600_o90",
+  "model": "qwen2.5:3b",
+  "run_with": "python scripts/run_agent.py artifacts/agents/273c10b7-3724-4cf9-85b7-d60754399ac8/final.json",
+  "requires": [
+    "Ollama running with the model above",
+    "ChromaDB index in CHROMA_DIR",
+    "raw documents in data/uploads/<project_id>"
+  ]
+}

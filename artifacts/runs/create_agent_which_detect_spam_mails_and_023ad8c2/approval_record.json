@@ -1,0 +1,412 @@
+{
+  "approval_id": "afc4da80-b2ba-487c-87be-7c00f27a1567",
+  "run_id": "023ad8c2-1728-408c-87bb-76103db7d994",
+  "decision": "approved",
+  "approver": "luckyraghav081@gmail.com",
+  "comment": "",
+  "timestamp": "2026-11-26T21:31:28.576632+00:00",
+  "original_requirements": {
+    "project_name": "create agent which detect spam mails and imp mails",
+    "agent_purpose": "Create an AI assistant to classify emails into spam, important, and normal categories.",
+    "target_audience": "Email administrators and users who need to manage and review their email inbox.",
+    "scope": "The AI assistant will classify emails into spam, important, and normal categories. It will automatically delete or quarantine emails marked as spam and provide explanations for its decisions. The assistant will prioritize 'Needs Review' emails and will not handle unsupported topics or perform actions.",
+    "supported_topics": [
+      "Spam detection",
+      "Important email prioritization",
+      "Email classification"
+    ],
+    "must_answer_topics": [
+      "Spam detection",
+      "Important email prioritization",
+      "Email classification"
+    ],
+    "must_refuse_topics": [
+      "What is the preferred method for training the machine learning model?"
+    ],
+    "tone": "Technical and informative",
+    "response_format": "Structured JSON output",
+    "required_tools": [],
+    "knowledge_sources": [
+      "Email_Classification_Agent_Knowledge_Base.pdf"
+    ],
+    "explicit_limitations": [
+      "The assistant will not handle unsupported topics as per the provided knowledge base.",
+      "The assistant will not perform actions such as deleting or quarantining emails without explicit user instruction.",
+      "The assistant will not provide answers about unsupported topics as per the provided brief and answers."
+    ],
+    "unresolved_ambiguities": [
+      "What is the expected response format for the assistant's output?",
+      "What is the preferred method for training the machine learning model?"
+    ],
+    "groundability_findings": [
+      {
+        "topic": "Spam detection",
+        "status": "supported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.7347,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0047",
+            "location": "p.7",
+            "score": 0.6932,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 17. Limitations] 17. Limitations\nNo classifier can guarantee perfect spam detection. Email headers may be incomplete, sender identities can be\nspoofed, and phishing content changes frequently. A language model may misunderstand context or produce incor"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0004",
+            "location": "p.2",
+            "score": 0.6772,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 1. Purpose and scope] 1. Purpose and scope\nThis document supplies the domain knowledge an email-classification agent needs. The agent reviews email content\nand available metadata, then assigns a category and priority. It is designed for inbox triage—no"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0043",
+            "location": "p.7",
+            "score": 0.6451,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 14. Suggested implementation architecture] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 7\nLayer\nSuggested responsibility\nPreprocessor\nNormalise text, strip quoted history where appropriate, extract"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0035",
+            "location": "p.5",
+            "score": 0.644,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 11. Knowledge base facts and decision rules] 11. Knowledge base facts and decision rules\n• Spam and importance are separate dimensions. A message can be important to review because it is suspicious.\n• Sender display names can be forged; inspect the act"
+          }
+        ],
+        "rationale": "All passages contain facts relevant to the topic of spam detection, and there are no contradictions or missing aspects. 5 of 6 retrieved passages contain usable facts.",
+        "retrieval_max_score": 0.7714,
+        "llm_status": "supported"
+      },
+      {
+        "topic": "Important email prioritization",
+        "status": "supported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.735,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0004",
+            "location": "p.2",
+            "score": 0.7233,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 1. Purpose and scope] 1. Purpose and scope\nThis document supplies the domain knowledge an email-classification agent needs. The agent reviews email content\nand available metadata, then assigns a category and priority. It is designed for inbox triage—no"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0025",
+            "location": "p.4",
+            "score": 0.6973,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 6. Suggested scoring model] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 4\nUse two independent scores from 0 to 100: importance_score and spam_risk_score. This avoids the mistake of\ntreating every "
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0013",
+            "location": "p.3",
+            "score": 0.6891,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 3. What makes an email important?] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 3\n• Generic newsletters, broad promotions, routine announcements, and content with no requested action.\n• Automated n"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0020",
+            "location": "p.3",
+            "score": 0.6856,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 4. Score] 4. Score\nEvaluate importance and spam risk separately using rules and model reasoning.\nPriority score + spam score"
+          }
+        ],
+        "rationale": "5 of 6 retrieved passages contain usable facts. Missing: rules, values, procedures, conditions, records about the specific classification approach and scoring model.",
+        "retrieval_max_score": 0.7882,
+        "llm_status": "supported"
+      },
+      {
+        "topic": "Email classification",
+        "status": "supported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.7602,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0004",
+            "location": "p.2",
+            "score": 0.7245,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 1. Purpose and scope] 1. Purpose and scope\nThis document supplies the domain knowledge an email-classification agent needs. The agent reviews email content\nand available metadata, then assigns a category and priority. It is designed for inbox triage—no"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0047",
+            "location": "p.7",
+            "score": 0.6985,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 17. Limitations] 17. Limitations\nNo classifier can guarantee perfect spam detection. Email headers may be incomplete, sender identities can be\nspoofed, and phishing content changes frequently. A language model may misunderstand context or produce incor"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0043",
+            "location": "p.7",
+            "score": 0.6963,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 14. Suggested implementation architecture] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 7\nLayer\nSuggested responsibility\nPreprocessor\nNormalise text, strip quoted history where appropriate, extract"
+          }
+        ],
+        "rationale": "Passages E2, E3, E4, and E5 provide concrete facts about the topic, while E1 and E6 do not. 4 of 6 retrieved passages contain usable facts. Missing: human review path for uncertain or high-impact messages.",
+        "retrieval_max_score": 0.7975,
+        "llm_status": "supported"
+      },
+      {
+        "topic": "What is the preferred method for training the machine learning model?",
+        "status": "unsupported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0002",
+            "location": "p.1",
+            "score": 0.7414,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, AGENT] AGENT\nKnowledge Base & Build Specification\nA practical reference for creating an AI agent that identifies spam, prioritises important emails, and\nexplains its decisions.\nCore task\nClassify incoming emails\nPrimary labels\nImportant · Normal · Spam"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.6907,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          }
+        ],
+        "rationale": "none of the passages provide concrete facts about the recommended approach, safety principle, limitations, suggested implementation architecture, or privacy, security, and human control aspects of the topic. 0 of 6 retrieved passages contain usable facts. Missing: Recommended approach, Safety principle, Limitations, Suggested implementation architecture. [no retrieved passage contains concrete facts about the topic]",
+        "retrieval_max_score": 0.7414,
+        "llm_status": "unsupported"
+      }
+    ],
+    "acceptance_criteria": [
+      "The assistant will cite the source document for every factual answer.",
+      "The assistant will refuse questions about unsupported topics.",
+      "The assistant will provide explanations for its decisions regarding spam classification.",
+      "The assistant will prioritize 'Needs Review' emails and provide explanations for its decisions.",
+      "The assistant will not delete or quarantine emails without explicit user instruction.",
+      "The assistant will not provide answers about unsupported topics.",
+      "Answers questions about 'Spam detection' using the documents.",
+      "Answers questions about 'Important email prioritization' using the documents.",
+      "Answers questions about 'Email classification' using the documents.",
+      "Every factual answer cites at least one approved knowledge source.",
+      "Questions outside the approved scope or without document evidence are refused."
+    ],
+    "decision_notes": [
+      "dropped proposed refuse topic 'What is the acceptable threshold for false positives in spam detection?': it is a supported topic",
+      "dropped proposed refuse topic 'What is the expected response format for the assistant's output?': documents support it (supported)"
+    ]
+  },
+  "approved_requirements": {
+    "project_name": "create agent which detect spam mails and imp mails",
+    "agent_purpose": "Create an AI assistant to classify emails into spam, important, and normal categories.",
+    "target_audience": "Email administrators and users who need to manage and review their email inbox.",
+    "scope": "The AI assistant will classify emails into spam, important, and normal categories. It will automatically delete or quarantine emails marked as spam and provide explanations for its decisions. The assistant will prioritize 'Needs Review' emails and will not handle unsupported topics or perform actions.",
+    "supported_topics": [
+      "Spam detection",
+      "Important email prioritization",
+      "Email classification"
+    ],
+    "must_answer_topics": [
+      "Spam detection",
+      "Important email prioritization",
+      "Email classification"
+    ],
+    "must_refuse_topics": [
+      "What is the preferred method for training the machine learning model?"
+    ],
+    "tone": "Technical and informative",
+    "response_format": "Structured JSON output",
+    "required_tools": [],
+    "knowledge_sources": [
+      "Email_Classification_Agent_Knowledge_Base.pdf"
+    ],
+    "explicit_limitations": [
+      "The assistant will not handle unsupported topics as per the provided knowledge base.",
+      "The assistant will not perform actions such as deleting or quarantining emails without explicit user instruction.",
+      "The assistant will not provide answers about unsupported topics as per the provided brief and answers."
+    ],
+    "unresolved_ambiguities": [
+      "What is the expected response format for the assistant's output?",
+      "What is the preferred method for training the machine learning model?"
+    ],
+    "groundability_findings": [
+      {
+        "topic": "Spam detection",
+        "status": "supported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.7347,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0047",
+            "location": "p.7",
+            "score": 0.6932,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 17. Limitations] 17. Limitations\nNo classifier can guarantee perfect spam detection. Email headers may be incomplete, sender identities can be\nspoofed, and phishing content changes frequently. A language model may misunderstand context or produce incor"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0004",
+            "location": "p.2",
+            "score": 0.6772,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 1. Purpose and scope] 1. Purpose and scope\nThis document supplies the domain knowledge an email-classification agent needs. The agent reviews email content\nand available metadata, then assigns a category and priority. It is designed for inbox triage—no"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0043",
+            "location": "p.7",
+            "score": 0.6451,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 14. Suggested implementation architecture] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 7\nLayer\nSuggested responsibility\nPreprocessor\nNormalise text, strip quoted history where appropriate, extract"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0035",
+            "location": "p.5",
+            "score": 0.644,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 11. Knowledge base facts and decision rules] 11. Knowledge base facts and decision rules\n• Spam and importance are separate dimensions. A message can be important to review because it is suspicious.\n• Sender display names can be forged; inspect the act"
+          }
+        ],
+        "rationale": "All passages contain facts relevant to the topic of spam detection, and there are no contradictions or missing aspects. 5 of 6 retrieved passages contain usable facts.",
+        "retrieval_max_score": 0.7714,
+        "llm_status": "supported"
+      },
+      {
+        "topic": "Important email prioritization",
+        "status": "supported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.735,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0004",
+            "location": "p.2",
+            "score": 0.7233,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 1. Purpose and scope] 1. Purpose and scope\nThis document supplies the domain knowledge an email-classification agent needs. The agent reviews email content\nand available metadata, then assigns a category and priority. It is designed for inbox triage—no"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0025",
+            "location": "p.4",
+            "score": 0.6973,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 6. Suggested scoring model] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 4\nUse two independent scores from 0 to 100: importance_score and spam_risk_score. This avoids the mistake of\ntreating every "
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0013",
+            "location": "p.3",
+            "score": 0.6891,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 3. What makes an email important?] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 3\n• Generic newsletters, broad promotions, routine announcements, and content with no requested action.\n• Automated n"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0020",
+            "location": "p.3",
+            "score": 0.6856,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 4. Score] 4. Score\nEvaluate importance and spam risk separately using rules and model reasoning.\nPriority score + spam score"
+          }
+        ],
+        "rationale": "5 of 6 retrieved passages contain usable facts. Missing: rules, values, procedures, conditions, records about the specific classification approach and scoring model.",
+        "retrieval_max_score": 0.7882,
+        "llm_status": "supported"
+      },
+      {
+        "topic": "Email classification",
+        "status": "supported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.7602,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0004",
+            "location": "p.2",
+            "score": 0.7245,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 1. Purpose and scope] 1. Purpose and scope\nThis document supplies the domain knowledge an email-classification agent needs. The agent reviews email content\nand available metadata, then assigns a category and priority. It is designed for inbox triage—no"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0047",
+            "location": "p.7",
+            "score": 0.6985,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 17. Limitations] 17. Limitations\nNo classifier can guarantee perfect spam detection. Email headers may be incomplete, sender identities can be\nspoofed, and phishing content changes frequently. A language model may misunderstand context or produce incor"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0043",
+            "location": "p.7",
+            "score": 0.6963,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 14. Suggested implementation architecture] EMAIL CLASSIFICATION AGENT | KNOWLEDGE BASE\nReference document for agent design and evaluation\nPage 7\nLayer\nSuggested responsibility\nPreprocessor\nNormalise text, strip quoted history where appropriate, extract"
+          }
+        ],
+        "rationale": "Passages E2, E3, E4, and E5 provide concrete facts about the topic, while E1 and E6 do not. 4 of 6 retrieved passages contain usable facts. Missing: human review path for uncertain or high-impact messages.",
+        "retrieval_max_score": 0.7975,
+        "llm_status": "supported"
+      },
+      {
+        "topic": "What is the preferred method for training the machine learning model?",
+        "status": "unsupported",
+        "evidence": [
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0002",
+            "location": "p.1",
+            "score": 0.7414,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, AGENT] AGENT\nKnowledge Base & Build Specification\nA practical reference for creating an AI agent that identifies spam, prioritises important emails, and\nexplains its decisions.\nCore task\nClassify incoming emails\nPrimary labels\nImportant · Normal · Spam"
+          },
+          {
+            "source_filename": "Email_Classification_Agent_Knowledge_Base.pdf",
+            "chunk_id": "ef833b1c2c9e-0030",
+            "location": "p.4",
+            "score": 0.6907,
+            "excerpt": "[Email_Classification_Agent_Knowledge_Base.pdf, 9. System prompt for the agent] 9. System prompt for the agent\nUse the following as a starting system instruction for an LLM-based classifier. Adapt it to the orchestration framework\nand validate it before production.\nYou are an Email Triage and Safety"
+          }
+        ],
+        "rationale": "none of the passages provide concrete facts about the recommended approach, safety principle, limitations, suggested implementation architecture, or privacy, security, and human control aspects of the topic. 0 of 6 retrieved passages contain usable facts. Missing: Recommended approach, Safety principle, Limitations, Suggested implementation architecture. [no retrieved passage contains concrete facts about the topic]",
+        "retrieval_max_score": 0.7414,
+        "llm_status": "unsupported"
+      }
+    ],
+    "acceptance_criteria": [
+      "The assistant will cite the source document for every factual answer.",
+      "The assistant will refuse questions about unsupported topics.",
+      "The assistant will provide explanations for its decisions regarding spam classification.",
+      "The assistant will prioritize 'Needs Review' emails and provide explanations for its decisions.",
+      "The assistant will not delete or quarantine emails without explicit user instruction.",
+      "The assistant will not provide answers about unsupported topics.",
+      "Answers questions about 'Spam detection' using the documents.",
+      "Answers questions about 'Important email prioritization' using the documents.",
+      "Answers questions about 'Email classification' using the documents.",
+      "Every factual answer cites at least one approved knowledge source.",
+      "Questions outside the approved scope or without document evidence are refused."
+    ],
+    "decision_notes": [
+      "dropped proposed refuse topic 'What is the acceptable threshold for false positives in spam detection?': it is a supported topic",
+      "dropped proposed refuse topic 'What is the expected response format for the assistant's output?': documents support it (supported)"
+    ]
+  },
+  "diff": [],
+  "requirements_version": 2
+}

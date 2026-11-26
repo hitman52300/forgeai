@@ -8,7 +8,7 @@ import streamlit as st  # noqa: E402
 from frontend.components import api  # noqa: E402
 from frontend.components.ui import page, run_picker, safe, wait_job  # noqa: E402
 
-page("Reports and Artifacts", "Every saved artifact of a run, available for download.")
+page("Reports and Artifacts", "Every saved artifact of a run, available for download.", eyebrow="Operate")
 run = run_picker()
 if not run:
     st.stop()

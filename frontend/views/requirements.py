@@ -10,7 +10,7 @@ import streamlit as st  # noqa: E402
 from frontend.components import api  # noqa: E402
 from frontend.components.ui import badge, page, run_picker, safe  # noqa: E402
 
-page("Requirements Review", "Mandatory human checkpoint. Agent generation cannot start before approval.")
+page("Requirements Review", "Mandatory human checkpoint. Agent generation cannot start before approval.", eyebrow="Build · Step 3")
 run = run_picker()
 if not run:
     st.stop()
@@ -80,7 +80,7 @@ with tab_req:
                 st.success(f"{res['decision'].capitalize()} by {res['approver']} at {res['timestamp']}. "
                            f"{len(res['diff'])} field(s) changed.")
                 if approve:
-                    st.page_link("pages/4_Factory_Execution.py", label="Go to Factory Execution")
+                    st.page_link("views/execution.py", label="Go to Factory Execution")
     if not can_decide:
         st.caption(f"Decisions are only possible while the run is awaiting approval (now: {run['status']}).")
 

@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "calculator",
+    "selected": false,
+    "reason": "Not needed for email classification tasks"
+  },
+  {
+    "tool": "csv_lookup",
+    "selected": false,
+    "reason": "Not needed for email classification tasks"
+  },
+  {
+    "tool": "current_date",
+    "selected": false,
+    "reason": "Not needed for email classification tasks"
+  },
+  {
+    "tool": "weather_api",
+    "selected": false,
+    "reason": "Not needed for email classification tasks"
+  }
+]

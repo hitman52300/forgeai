@@ -66,7 +66,7 @@ On the development PC, Windows Smart App Control blocks unsigned executables, in
 the locally built `ForgeAI.exe`. `Start-ForgeAI.cmd` runs the same launcher through the
 signed Python interpreter and was verified to start both servers. A code-signing
 certificate would be needed for the .exe to run under Smart App Control. Rebuild the exe
-with `scriptsuild_exe.cmd`.
+with `scripts\build_exe.cmd`.
 
 ### Manually
 
