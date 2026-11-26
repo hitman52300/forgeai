@@ -1,0 +1,25 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# local runtime state (re-creatable)
+data/chroma/
+data/local_db/
+data/uploads/
+data/generated/tmp/
+.pip_install.log
+*.log
+
+# editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
