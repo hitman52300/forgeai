@@ -5,6 +5,7 @@ import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import agents, approvals, evaluations, factory, intake, projects, regression, reports, requirements
 from app.config import get_settings
@@ -24,6 +25,11 @@ async def lifespan(_app):
 app = FastAPI(title="ForgeAI", version="1.0.0", lifespan=lifespan,
               description="The agent that builds agents: intake, groundability, approval, generation, "
                           "evaluation, optimisation and delivery of document-grounded agents.")
+# The Next.js frontend (e.g. on Vercel) calls the API from the browser: allow only configured origins.
+_origins = [o.strip() for o in get_settings().allowed_origins.split(",") if o.strip()]
+if _origins:
+    app.add_middleware(CORSMiddleware, allow_origins=_origins, allow_credentials=False,
+                       allow_methods=["GET", "POST", "DELETE"], allow_headers=["Authorization", "Content-Type"])
 for r in (projects, intake, requirements, approvals, factory, agents, evaluations, reports, regression):
     app.include_router(r.router)
 

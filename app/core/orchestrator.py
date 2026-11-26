@@ -81,17 +81,30 @@ class Factory:
 
     def load(self, run_id: str) -> tuple[FactoryRun, ArtifactManager]:
         slug = _index().get(run_id)
+        project_id = ""
         if not slug:
-            raise KeyError(f"unknown run {run_id}")
-        am = ArtifactManager(slug, "", run_id, self.repo)
+            # not on this machine: restore from the database (stateless deployment)
+            row = self.repo.get_run_row(run_id)
+            if not row or not (row.get("stage_messages") or {}).get("_slug"):
+                raise KeyError(f"unknown run {run_id}")
+            slug, project_id = row["stage_messages"]["_slug"], row["project_id"]
+            _register(run_id, slug)
+        am = ArtifactManager(slug, project_id, run_id, self.repo)
+        if not am.path("run_state.json").exists() and not project_id:
+            row = self.repo.get_run_row(run_id)
+            am.project_id = row["project_id"] if row else ""
         state = am.read_json("run_state.json")
+        if state is None:
+            raise KeyError(f"run state for {run_id} not found")
         run = FactoryRun.model_validate(state["run"])
         am.project_id = run.project_id
         return run, am
 
     def _save(self, run: FactoryRun, am: ArtifactManager) -> None:
         run.updated_at = utcnow()
-        am.write_json("run_state.json", {"run": run.model_dump(mode="json"), "slug": am.slug}, upload=False)
+        # uploaded too, so a stateless server can resume (the Storage path is overwritten in place)
+        am.write_json("run_state.json", {"run": run.model_dump(mode="json"), "slug": am.slug}, kind="run_state",
+                      upload=True, record=False)
         try:
             self.repo.update_run(run)
         except Exception as e:  # noqa: BLE001
@@ -133,6 +146,7 @@ class Factory:
                                                        max_eval_cases=self.s.budget_max_eval_cases))
         run.stage_messages["target_cases"] = str(min(target_cases, run.budget.max_eval_cases))
         slug = slug or f"{slugify(project_name)}_{run.run_id[:8]}"
+        run.stage_messages["_slug"] = slug
         self.repo.create_run(run, owner_id)
         _register(run.run_id, slug)
         am = self._am(run, slug)

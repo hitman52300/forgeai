@@ -52,8 +52,24 @@ def _state_file(project_id: str) -> Path:
     return uploads_dir(project_id) / "_index_state.json"
 
 
+def _remote():
+    """Supabase backend when configured: the index state and raw files are mirrored to Storage so a stateless
+    server (e.g. a restarted container) can restore them."""
+    try:
+        from app.database.supabase_client import get_backend
+        b = get_backend()
+        return b if getattr(b, "name", "") == "supabase" else None
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def load_state(project_id: str) -> dict:
     f = _state_file(project_id)
+    if not f.exists() and (r := _remote()) is not None:
+        try:
+            f.write_bytes(r.download(get_settings().supabase_documents_bucket, f"{project_id}/_index_state.json"))
+        except Exception:  # noqa: BLE001  (no remote state yet)
+            pass
     state = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"documents": {}, "collections": {}}
     if isinstance(state.get("collections"), list):  # older format
         state["collections"] = {}
@@ -61,7 +77,27 @@ def load_state(project_id: str) -> dict:
 
 
 def save_state(project_id: str, state: dict) -> None:
-    _state_file(project_id).write_text(json.dumps(state, indent=1), encoding="utf-8")
+    data = json.dumps(state, indent=1)
+    _state_file(project_id).write_text(data, encoding="utf-8")
+    if (r := _remote()) is not None:
+        try:
+            r.upload(get_settings().supabase_documents_bucket, f"{project_id}/_index_state.json", data.encode(),
+                     "application/json")
+        except Exception as e:  # noqa: BLE001
+            log.warning("index state not mirrored to storage: %s", e)
+
+
+def raw_file(project_id: str, filename: str, info: dict) -> Path:
+    """Local path of an ingested original file, downloading it from Supabase Storage if it is not on disk
+    (stored paths are machine-specific, so the uploads folder of this machine is used)."""
+    p = Path(info["path"])
+    if not p.exists():
+        p = uploads_dir(project_id) / filename
+    if not p.exists() and info.get("storage_path") and (r := _remote()) is not None:
+        bucket, _, key = info["storage_path"].partition("/")
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_bytes(r.download(bucket, key))
+    return p
 
 
 class KnowledgeBase:
@@ -112,7 +148,8 @@ class KnowledgeBase:
             report.changes.append(rec_change)
             report.documents.append(rec)
             known[vf.filename] = {"document_id": rec.document_id, "hash": vf.sha256, "version": version,
-                                  "file_type": rec.file_type, "path": str(self._raw_path(vf.filename))}
+                                  "file_type": rec.file_type, "path": str(self._raw_path(vf.filename)),
+                                  "storage_path": rec.storage_path}
             if self.repo:
                 self.repo.upsert_document(rec, change)
 
@@ -146,7 +183,7 @@ class KnowledgeBase:
                     ostore.delete_hash(ch["old_hash"])
                 if ch["change_type"] != "removed":
                     info = known[ch["filename"]]
-                    vf = validate_file(ch["filename"], Path(info["path"]).read_bytes())
+                    vf = validate_file(ch["filename"], raw_file(self.project_id, ch["filename"], info).read_bytes())
                     ostore.upsert(chunk_document(parse(vf), info["document_id"], vf.sha256, rc, other))
         return report
 
@@ -185,7 +222,7 @@ class KnowledgeBase:
         state = load_state(self.project_id)
         if store.count() == 0 and state["documents"]:
             for fname, info in state["documents"].items():
-                data = Path(info["path"]).read_bytes()
+                data = raw_file(self.project_id, fname, info).read_bytes()
                 vf = validate_file(fname, data)
                 parsed = parse(vf)
                 store.upsert(chunk_document(parsed, info["document_id"], vf.sha256, cfg, col))
@@ -199,4 +236,4 @@ class KnowledgeBase:
         return load_state(self.project_id)["documents"]
 
     def csv_files(self) -> list[Path]:
-        return [Path(i["path"]) for i in self.documents().values() if i["file_type"] == "csv"]
+        return [raw_file(self.project_id, f, i) for f, i in self.documents().items() if i["file_type"] == "csv"]

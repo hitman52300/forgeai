@@ -29,3 +29,9 @@ ForgeAI.exe
 data/generated/pyinstaller_build/
 data/logs/
 .venv/.forgeai_installed
+
+# local toolchain
+.tools/
+web/node_modules/
+web/.next/
+

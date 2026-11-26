@@ -1,0 +1,24 @@
+# ForgeAI backend only (FastAPI + factory), for Hugging Face Spaces / any container host.
+# The Next.js frontend runs on Vercel and calls this API. The container keeps no required state:
+# records and artifacts live in Supabase, vectors in Chroma Cloud (CHROMA_MODE=cloud).
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
+    HF_HOME=/tmp/hf STORAGE_BACKEND=supabase LLM_PROVIDER=openrouter CHROMA_MODE=cloud \
+    CHROMA_DIR=/tmp/forgeai/chroma UPLOADS_DIR=/tmp/forgeai/uploads ARTIFACTS_ROOT=/tmp/forgeai/artifacts
+
+RUN useradd -m -u 1000 forge
+WORKDIR /app
+RUN pip install --index-url https://download.pytorch.org/whl/cpu torch
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY app ./app
+COPY prompts ./prompts
+# download the embedding model at build time so cold starts do not depend on the Hub
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
+RUN chown -R forge /app /tmp
+USER forge
+
+# Secrets (SUPABASE_*, OPENROUTER_API_KEY, CHROMA_*, ALLOWED_ORIGINS) are set in the host's secret settings.
+EXPOSE 7860
+CMD ["sh", "-c", "python -m uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-7860}"]

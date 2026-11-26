@@ -15,7 +15,11 @@ def list_runs(user: User = Depends(current_user)):
     f = get_factory()
     out = []
     owned = {p["id"] for p in f.repo.list_projects(user.id)}
-    for rid in list_run_slugs():
+    # runs known locally plus runs recorded in the database (a stateless server starts with no local index)
+    run_ids = list(list_run_slugs())
+    for pid in owned:
+        run_ids += [r["id"] for r in f.repo.list_runs(pid) if r["id"] not in run_ids]
+    for rid in run_ids:
         try:
             run, am = f.load(rid)
         except Exception:  # noqa: BLE001

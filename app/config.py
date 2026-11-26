@@ -77,6 +77,8 @@ class Settings(BaseSettings):
     quality_target: float = Field(0.85, ge=0, le=1)
 
     api_base_url: str = "http://127.0.0.1:8000"
+    # comma-separated browser origins allowed to call the API (Next.js frontend), e.g. https://forgeai.vercel.app
+    allowed_origins: str = "http://localhost:3000"
     forgeai_operator_email: str = ""
 
     @property

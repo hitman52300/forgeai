@@ -25,14 +25,15 @@ class ArtifactManager:
     def path(self, name: str) -> Path:
         return self.dir / name
 
-    def write_json(self, name: str, obj: Any, kind: str | None = None, upload: bool = True) -> Path:
+    def write_json(self, name: str, obj: Any, kind: str | None = None, upload: bool = True,
+                   record: bool = True) -> Path:
         data = json.dumps(obj, ensure_ascii=False, indent=2, default=str).encode("utf-8")
-        return self.write_bytes(name, data, kind or Path(name).stem, upload)
+        return self.write_bytes(name, data, kind or Path(name).stem, upload, record)
 
     def write_text(self, name: str, text: str, kind: str | None = None, upload: bool = True) -> Path:
         return self.write_bytes(name, text.encode("utf-8"), kind or Path(name).stem, upload)
 
-    def write_bytes(self, name: str, data: bytes, kind: str, upload: bool = True) -> Path:
+    def write_bytes(self, name: str, data: bytes, kind: str, upload: bool = True, record: bool = True) -> Path:
         p = self.path(name)
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_bytes(data)
@@ -42,14 +43,31 @@ class ArtifactManager:
             try:
                 path = self.repo.db.upload(get_settings().supabase_deliverables_bucket, remote, data,
                                            MIME.get(p.suffix, "application/octet-stream"))
-                self.repo.save_artifact(self.project_id, self.run_id, kind, name, path, sha, len(data))
+                if record:
+                    self.repo.save_artifact(self.project_id, self.run_id, kind, name, path, sha, len(data))
             except StorageError as e:
                 log.warning("artifact upload failed for %s: %s", name, e)
         return p
 
+    def _restore(self, name: str) -> bool:
+        """Fetch an artifact from Supabase Storage when it is not on this machine's disk (stateless server)."""
+        p = self.path(name)
+        if p.exists():
+            return True
+        if self.repo is None or getattr(self.repo.db, "name", "") != "supabase" or not self.project_id:
+            return False
+        try:
+            data = self.repo.db.download(get_settings().supabase_deliverables_bucket,
+                                         f"{self.project_id}/{self.run_id or 'project'}/{name}")
+        except Exception:  # noqa: BLE001
+            return False
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_bytes(data)
+        return True
+
     def read_json(self, name: str) -> Any:
         p = self.path(name)
-        return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+        return json.loads(p.read_text(encoding="utf-8")) if self._restore(name) else None
 
     def exists(self, name: str) -> bool:
-        return self.path(name).exists()
+        return self._restore(name)
