@@ -1,0 +1,14 @@
+# ForgeAI backend for Render free (512 MB). Slim: ONNX embeddings, no torch.
+# Vectors go to Chroma Cloud (CHROMA_MODE=cloud) because Render free has no persistent disk.
+FROM python:3.12-slim
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
+    HF_HOME=/app/.hf STORAGE_BACKEND=supabase LLM_PROVIDER=openrouter CHROMA_MODE=cloud \
+    CHROMA_DIR=/tmp/forgeai/chroma UPLOADS_DIR=/tmp/forgeai/uploads ARTIFACTS_ROOT=/tmp/forgeai/artifacts
+WORKDIR /app
+COPY deploy/requirements-render.txt requirements.txt
+RUN pip install -r requirements.txt
+# fetch the ONNX embedding model at build time so cold starts do not hit the Hub
+RUN python -c "from huggingface_hub import hf_hub_download as d; m='sentence-transformers/all-MiniLM-L6-v2'; d(m,'onnx/model.onnx'); d(m,'tokenizer.json')"
+COPY app ./app
+COPY prompts ./prompts
+CMD ["sh", "-c", "python -m uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-10000}"]
