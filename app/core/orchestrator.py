@@ -161,8 +161,8 @@ class Factory:
         am.write_json("document_manifest.json", rep.manifest() | {
             "documents": [d.model_dump() for d in rep.documents]})
         if not rep.documents:
-            self._stage(run, am, "document_analysis", StageStatus.failed,
-                        "no document could be ingested: " + "; ".join(rep.errors))
+            run.stop_reason = "no document could be ingested: " + "; ".join(rep.errors)
+            self._stage(run, am, "document_analysis", StageStatus.failed, run.stop_reason)
             run.status = "failed"
             self._save(run, am)
             return run.run_id

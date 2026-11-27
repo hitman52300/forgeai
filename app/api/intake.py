@@ -18,6 +18,11 @@ def get_interview(ctx=Depends(owned_run)):
     run, am, _ = ctx
     data = am.read_json("interview.json")
     if not data:
+        failed = next((run.stage_messages.get(k) for k, v in run.stages.items()
+                       if getattr(v, "value", v) == "failed" and run.stage_messages.get(k)), None)
+        reason = run.stop_reason or failed
+        if reason:
+            raise HTTPException(404, f"This run has no interview (status={run.status}): {reason}")
         raise HTTPException(
             404,
             f"This run has no interview yet (status={run.status}). If it stopped while the server "
