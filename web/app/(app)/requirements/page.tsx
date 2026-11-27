@@ -79,7 +79,7 @@ export default function Requirements() {
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-sm"><span className="text-muted">Knowledge sources (derived, not editable):</span> {cur.knowledge_sources.join(", ")}</p>
+              <p className="mt-4 text-sm"><span className="text-muted">Knowledge sources (derived, not editable):</span> {(cur.knowledge_sources || []).join(", ")}</p>
               {cur.decision_notes?.length > 0 && <p className="mt-1 text-xs text-muted">Factory notes: {cur.decision_notes.join(" · ")}</p>}
               <div className="card mt-6 grid gap-4 p-5 md:grid-cols-[1fr_1fr_auto]">
                 <div><label className="label">Approver name</label><input className="input" disabled={!can} value={approver} onChange={(e) => setApprover(e.target.value)} /></div>
@@ -98,12 +98,12 @@ export default function Requirements() {
 
           {tab === "ground" && (
             <>
-              <Table head={["Requested topic", "Evidence", "Status", "Best similarity", "Rationale"]} rows={data.groundability.topics.map((t: any) => [
+              <Table head={["Requested topic", "Evidence", "Status", "Best similarity", "Rationale"]} rows={(data.groundability?.topics || []).map((t: any) => [
                 <span className="font-medium text-navy">{t.topic}</span>,
                 t.status === "unsupported" ? "No supporting document" : [...new Set(t.evidence.slice(0, 3).map((e: any) => `${e.source_filename} (${e.location})`))].join(", "),
                 <Badge s={t.status === "supported" ? "completed" : t.status === "unsupported" ? "failed" : "awaiting_approval"} />,
                 t.retrieval_max_score.toFixed(2), <span className="text-xs text-muted">{t.rationale}</span>])} />
-              {data.groundability.topics.some((t: any) => t.status === "unsupported") && (
+              {(data.groundability?.topics || []).some((t: any) => t.status === "unsupported") && (
                 <div className="mt-4"><Alert kind="warn">Unsupported topics are refused by the agent. Upload documents covering them in a new run if they are needed.</Alert></div>
               )}
               <h3 className="mb-2 mt-6 text-sm font-semibold text-navy">Tool decisions</h3>

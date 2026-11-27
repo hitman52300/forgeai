@@ -22,7 +22,7 @@ export default function Reports() {
 
   useEffect(() => {
     if (!run) return;
-    setArts(null); setMd("");
+    setArts(null); setMd(""); setErr(""); setReg(null);
     get(`/runs/${run.run_id}/artifacts`).then((a) => {
       setArts(a);
       if (a.some((x: any) => x.name === "final_report.md"))

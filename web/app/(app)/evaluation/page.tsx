@@ -18,7 +18,7 @@ export default function Evaluation() {
 
   useEffect(() => {
     if (!run) return;
-    setScs(null); setSel(null);
+    setScs(null); setSel(null); setErr(""); setRes([]);
     Promise.all([get(`/runs/${run.run_id}/evaluation/scorecards`), get(`/runs/${run.run_id}/evaluation/dataset`).catch(() => null),
       get(`/runs/${run.run_id}/evaluation/iterations`).catch(() => ({ iterations: [] }))]).then(([s, d, i]) => {
       setScs(s);
