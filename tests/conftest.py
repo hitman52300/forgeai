@@ -14,6 +14,7 @@ os.environ["STORAGE_BACKEND"] = "local"
 os.environ["LOCAL_DB_DIR"] = str(_TMP / "db")
 os.environ["CHROMA_DIR"] = str(_TMP / "chroma")
 os.environ["UPLOADS_DIR"] = str(_TMP / "uploads")
+os.environ["ARTIFACTS_ROOT"] = str(_TMP / "artifacts")  # keep test runs out of the repo's artifacts/
 
 
 @pytest.fixture
