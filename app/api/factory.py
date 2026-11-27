@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from app.api.deps import JOBS, User, current_user, get_factory, owned_run, start_job
+from app.api.deps import JOBS, User, current_user, get_factory, job_active, owned_run, start_job
 from app.core.orchestrator import list_run_slugs
 from app.factory.approval_manager import ApprovalRequired, require_approval
 
@@ -34,7 +34,8 @@ def list_runs(user: User = Depends(current_user)):
 @router.get("/runs/{run_id}")
 def run_status(ctx=Depends(owned_run)):
     run, am, _ = ctx
-    return {"run": run.model_dump(mode="json"), "slug": am.slug,
+    # job_active=False while status is "running" means the job was lost (server restart / redeploy)
+    return {"run": run.model_dump(mode="json"), "slug": am.slug, "job_active": job_active(run.run_id),
             "artifacts": sorted(p.name for p in am.dir.iterdir() if p.is_file())}
 
 
@@ -46,7 +47,9 @@ def execute(ctx=Depends(owned_run)):
         require_approval(f.repo, run.run_id)
     except ApprovalRequired as e:
         raise HTTPException(409, str(e)) from e
-    if run.status not in ("approved",):
+    # a run left "running" by a server restart has no live job: allow running it again
+    interrupted = run.status == "running" and not job_active(run.run_id)
+    if run.status != "approved" and not interrupted:
         raise HTTPException(409, f"run cannot be executed in status {run.status}")
     job = start_job("execute", run.run_id, lambda say: f.execute(run.run_id, progress=say))
     return {"job_id": job.id}

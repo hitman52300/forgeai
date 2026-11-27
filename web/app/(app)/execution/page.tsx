@@ -15,9 +15,9 @@ export default function Execution() {
   const [err, setErr] = useState("");
 
   const refresh = (id: string) => get(`/runs/${id}`).then(setInfo).catch((e) => setErr(e.message));
-  useEffect(() => { if (run) { setInfo(null); refresh(run.run_id); } }, [run]);
+  useEffect(() => { if (run) { setInfo(null); setErr(""); refresh(run.run_id); } }, [run]);
   useEffect(() => {
-    if (!info || info.run.status !== "running") return;
+    if (!info || info.run.status !== "running" || info.job_active === false) return;
     const t = setInterval(() => refresh(info.run.run_id), 8000);
     return () => clearInterval(t);
   }, [info]);
@@ -68,7 +68,13 @@ export default function Execution() {
           {["awaiting_approval", "interviewing"].includes(r.status) && (
             <Alert kind="warn">Awaiting human approval of the requirements. Execution is blocked until then. <Link className="ml-1 font-semibold underline" href="/requirements">Review requirements</Link></Alert>
           )}
-          {r.status === "running" && !log && <Alert>This run is executing. This page refreshes every few seconds.</Alert>}
+          {r.status === "running" && !log && info.job_active !== false && <Alert>This run is executing. This page refreshes every few seconds.</Alert>}
+          {r.status === "running" && !log && info.job_active === false && (
+            <div className="card flex flex-wrap items-center justify-between gap-4 p-5">
+              <div className="text-sm">This run was interrupted (the server restarted while it was running). Run it again to finish.</div>
+              <button className="btn-primary" onClick={execute}>Run factory again</button>
+            </div>
+          )}
         </>
       )}
     </>

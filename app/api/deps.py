@@ -72,6 +72,12 @@ JOBS: dict[str, Job] = {}
 _RUN_LOCKS: dict[str, threading.Lock] = {}
 
 
+def job_active(run_id: str) -> bool:
+    """True while a background job for this run is running in this server process."""
+    lock = _RUN_LOCKS.get(run_id)
+    return bool(lock and lock.locked())
+
+
 def start_job(kind: str, run_id: str, fn: Callable[[Callable[[str], None]], dict]) -> Job:
     lock = _RUN_LOCKS.setdefault(run_id, threading.Lock())
     if not lock.acquire(blocking=False):
