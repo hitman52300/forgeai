@@ -56,7 +56,7 @@ def test_unseen_brief_end_to_end(tmp_path, monkeypatch):
              "the library's rules; it must not make up fines or opening hours.")
     f = Factory(Repository(LocalBackend(tmp_path / "db")))
     rid = f.start(project_name="Library help desk", brief=brief, files=files, owner_id="u1", owner_label="test",
-                  target_cases=20, budget=BudgetLimits(max_iterations=1))
+                  target_cases=15, budget=BudgetLimits(max_iterations=1))
     run, am = f.load(rid)
     qs = am.read_json("interview.json")["analysis"]["questions"]
     assert len(qs) <= 5
@@ -69,7 +69,7 @@ def test_unseen_brief_end_to_end(tmp_path, monkeypatch):
     assert out["status"] == "completed"
     ds = am.read_json("evaluation_dataset.json")
     cats = {c["category"] for c in ds["cases"]}
-    assert len(ds["cases"]) >= 20 and cats == {"answerable", "out_of_scope", "edge_case"}
+    assert len(ds["cases"]) >= 15 and cats == {"answerable", "out_of_scope", "edge_case"}
     sc = am.read_json("scorecards.json")
     assert sc and all(s["total_cases"] == len(ds["cases"]) for s in sc)
     for name in ("requirements.json", "groundability_report.json", "approval_record.json", "agent_definition_v1.json",

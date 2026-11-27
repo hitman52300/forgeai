@@ -17,7 +17,7 @@ the delivery mechanism for the agent the factory built.
 | 6 | Agent Generator | `app/factory/agent_generator.py` | Versioned declarative JSON agent definition; system prompt assembled from LLM-written parts + fixed grounding/citation/refusal/output sections |
 | 7 | Tool Registry | `app/tools/*` | csv_lookup, calculator, weather_api (Open-Meteo, allow-listed), current_date |
 | 8 | RAG Configuration Engine | `derive_retrieval_config` in `agent_generator.py` | Chunk size / overlap / top-k from measured document statistics |
-| 9 | Evaluation Generator | `app/evaluation/eval_generator.py`, `prompts/eval_generator*.txt` | >= 20 cases; every expected fact verified against its source chunk |
+| 9 | Evaluation Generator | `app/evaluation/eval_generator.py`, `prompts/eval_generator*.txt` | >= 15 cases; every expected fact verified against its source chunk |
 | 10 | Agent Runtime | `app/runtime/*` | Generic: loads any valid definition, retrieves, calls only attached tools, validates the output contract |
 | 11 | Evaluation Judge | `app/evaluation/evaluator.py`, `deterministic_checks.py`, `llm_judge.py`, `prompts/judge.txt` | Deterministic checks + a separate judge model with verified quotes |
 | 12 | Critic and Failure Classifier | `app/evaluation/failure_classifier.py`, `app/optimization/critic.py` | Six failure categories via explicit rules; critic writes general rules, leak-checked |

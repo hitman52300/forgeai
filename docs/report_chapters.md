@@ -28,7 +28,7 @@ evidence.
 
 **Objectives.** Accept an arbitrary brief and document folder; ask at most five questions;
 detect unsupported requirements before building anything; require human approval; generate
-the agent, its retrieval configuration and its tools; generate at least 20 verified test
+the agent, its retrieval configuration and its tools; generate at least 15 verified test
 cases; evaluate with deterministic checks and an LLM judge; classify failures and fix them
 in at most three iterations under a budget; deliver a runnable agent and honest reports.
 

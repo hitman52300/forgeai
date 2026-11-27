@@ -7,7 +7,7 @@ Open the UI (http://localhost:8501). In the sidebar, create an account or sign i
 ## 2. Create New Agent
 Enter a project name, a one-paragraph brief, and upload the knowledge documents
 (TXT, PDF, DOCX, CSV; 20 MB per file by default). Choose how many evaluation cases to
-generate (20-40) and press **Start interview**. ForgeAI validates and indexes every file;
+generate (15-40) and press **Start interview**. ForgeAI validates and indexes every file;
 rejected files are listed with the reason (wrong type, empty, too large, not a real PDF,
 password protected, no extractable text).
 

@@ -29,7 +29,7 @@ Brief + docs ──► Ingestion ──► Interviewer (≤5 Qs) ──► Requi
                                          │
              Tool Registry ──► Agent Generator (versioned JSON definition)
                                          │
-                              Evaluation Generator (≥20 cases, facts verified
+                              Evaluation Generator (≥15 cases, facts verified
                                          │            against source chunks)
                      ┌──────► Agent Runtime (generic) ──► Judge (deterministic + LLM)
                      │                                         │

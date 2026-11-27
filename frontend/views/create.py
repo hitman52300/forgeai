@@ -18,7 +18,7 @@ with st.form("new"):
     files = st.file_uploader("Knowledge documents", accept_multiple_files=True,
                              type=[e.strip(".") for e in allowed.split(",")])
     st.caption(f"Supported file types: {allowed}. Maximum {api.S.max_upload_mb} MB per file.")
-    cases = st.slider("Evaluation cases to generate", 20, 40, 30)
+    cases = st.slider("Evaluation cases to generate", 15, 40, 30)
     go = st.form_submit_button("Start interview", type="primary")
 
 if go:

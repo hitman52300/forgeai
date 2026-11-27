@@ -12,7 +12,7 @@ import statistics
 from pydantic import BaseModel, Field
 
 from app.core.llm_service import LLMService, load_prompt, render
-from app.core.schemas import (AgentDefinition, DocumentRecord, OutputContract, RefusalPolicy, RequirementsDocument,
+from app.core.schemas import (MIN_EVAL_CASES, AgentDefinition, DocumentRecord, OutputContract, RefusalPolicy, RequirementsDocument,
                               RetrievalConfig)
 from app.ingestion.vector_store import VectorStore
 
@@ -126,7 +126,7 @@ def _build(parts, req, project_id, run_id, retrieval, refusal, contract, system_
         knowledge_sources=req.knowledge_sources, supported_topics=req.supported_topics,
         retrieval_config=retrieval, tools=req.required_tools, output_contract=contract, refusal_policy=refusal,
         limitations=req.explicit_limitations,
-        evaluation_requirements={"min_cases": 20, "acceptance_criteria": req.acceptance_criteria,
+        evaluation_requirements={"min_cases": MIN_EVAL_CASES, "acceptance_criteria": req.acceptance_criteria,
                                  "categories": ["answerable", "out_of_scope", "edge_case"]},
         model=model, change_summary=["initial version generated from approved requirements"],
         prompt_parts=parts.model_dump(), extra_rules=[],

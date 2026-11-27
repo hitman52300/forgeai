@@ -97,7 +97,7 @@ shown labelled as derived and never instead of the pass rate.
 | A supported question is refused | the retriever did not find the passage above the threshold; this is a *retrieval miss*, the category the optimizer targets with top-k / threshold / chunk-size changes |
 | The agent answers a question it should refuse | a *wrong refusal*; show the refusal policy and the iteration where the threshold or scope rules were adjusted |
 | An answer contains a number not in the documents | caught by the deterministic unsupported-number check, classified as hallucination; `strict_numeric_grounding` is the optimizer's fix |
-| Generation produces fewer than 20 valid cases | small corpora produce fewer verifiable facts; the run fails honestly instead of padding the dataset |
+| Generation produces fewer than 15 valid cases | small corpora produce fewer verifiable facts; the run fails honestly instead of padding the dataset |
 | The run stops early | the stop reason is recorded: target reached, no measurable improvement, budget exhausted or three iterations |
 | Ollama is slow or unreachable | local 3B models on a 4 GB GPU take about 10 s per answer; `/health` shows the problem |
 | The judge disagrees with you | its explanation and verified/unverified quote are shown per case; the judge alone never passes an answer |

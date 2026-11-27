@@ -76,6 +76,6 @@ Each run folder contains `input_brief.md`, `document_manifest.json`, `interview.
 |---|---|
 | `/health` shows Ollama error | start Ollama; `ollama list` must show both models |
 | Run stops with "budget exhausted" | this is the budget manager working; the stop reason is in the run; raise `BUDGET_*` |
-| Evaluation dataset < 20 cases | the generator rejected too many unverifiable candidates (small corpus); the run is marked failed instead of pretending |
+| Evaluation dataset < 15 cases | the generator rejected too many unverifiable candidates (small corpus); the run is marked failed instead of pretending |
 | Slow answers | a 3B model on a 4 GB GPU: about 10 s per answer; evaluation of 35 cases takes 10-15 minutes |
 | A supported question is refused | show the retrieved evidence and similarity; this is a retrieval miss and the optimizer's retrieval fixes target exactly this |

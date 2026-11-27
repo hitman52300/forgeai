@@ -63,8 +63,8 @@ export default function Create() {
         </div>
         <div>
           <label className="label">Evaluation cases to generate: {cases}</label>
-          <input type="range" min={20} max={40} value={cases} onChange={(e) => setCases(Number(e.target.value))} className="w-full accent-[#2f6f73]" />
-          <p className="mt-3 text-xs text-muted">At least 20 cases are always generated. Every expected fact is verified against the source documents.</p>
+          <input type="range" min={15} max={40} value={cases} onChange={(e) => setCases(Number(e.target.value))} className="w-full accent-[#2f6f73]" />
+          <p className="mt-3 text-xs text-muted">At least 15 verified cases are required. Every expected fact is verified against the source documents.</p>
         </div>
         <div className="md:col-span-2">
           <button className="btn-primary" disabled={log !== null}>Start interview</button>

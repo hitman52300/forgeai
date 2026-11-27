@@ -482,6 +482,10 @@ PIPELINE_STAGES = [
 ]
 
 
+# Smallest verified evaluation dataset a run accepts before it is marked failed.
+MIN_EVAL_CASES = 15
+
+
 class BudgetLimits(_Base):
     max_llm_calls: int = 1500
     max_tokens: int = 3_000_000

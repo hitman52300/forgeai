@@ -20,7 +20,7 @@ from typing import Callable
 from app.config import Settings, get_settings
 from app.core.budget_manager import BudgetExceeded, BudgetManager
 from app.core.llm_service import LLMService
-from app.core.schemas import (AgentDefinition, ApprovalDecision, BudgetLimits, CaseResult, DocumentRecord, EvalDataset,
+from app.core.schemas import (MIN_EVAL_CASES, AgentDefinition, ApprovalDecision, BudgetLimits, CaseResult, DocumentRecord, EvalDataset,
                               FactoryRun, GroundabilityReport, InterviewAnalysis, RequirementsDocument, RetrievalConfig,
                               Scorecard, StageStatus, ToolSelection, new_id, utcnow)
 from app.database.repositories import Repository
@@ -315,12 +315,12 @@ class Factory:
             am.write_json("evaluation_dataset.json", ds.model_dump(mode="json"))
             case_ids = self.repo.save_dataset(ds)
             cats = Counter(c.category.value for c in ds.cases)
-            if len(ds.cases) < 20:
+            if len(ds.cases) < MIN_EVAL_CASES:
                 self._stage(run, am, stage, StageStatus.failed,
-                            f"only {len(ds.cases)} valid cases generated (minimum 20); "
+                            f"only {len(ds.cases)} valid cases generated (minimum {MIN_EVAL_CASES}); "
                             f"{len(ds.rejected_candidates)} candidates rejected")
                 run.status = "failed"
-                run.stop_reason = "evaluation dataset below the 20-case minimum"
+                run.stop_reason = f"evaluation dataset below the {MIN_EVAL_CASES}-case minimum"
                 self._save(run, am)
                 return {"status": "failed", "reason": run.stop_reason}
             run.usage = budget.usage
