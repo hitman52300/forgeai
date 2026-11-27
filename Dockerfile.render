@@ -1,9 +1,10 @@
 # ForgeAI backend for Render free (512 MB). Slim: ONNX embeddings, no torch.
-# Vectors go to Chroma Cloud (CHROMA_MODE=cloud) because Render free has no persistent disk.
+# Vectors go to Chroma Cloud (CHROMA_MODE=cloud), or local Chroma (CHROMA_MODE=local) rebuilt from Supabase after restarts.
 FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1 \
     HF_HOME=/app/.hf STORAGE_BACKEND=supabase LLM_PROVIDER=openrouter CHROMA_MODE=cloud \
-    CHROMA_DIR=/tmp/forgeai/chroma UPLOADS_DIR=/tmp/forgeai/uploads ARTIFACTS_ROOT=/tmp/forgeai/artifacts
+    CHROMA_DIR=/tmp/forgeai/chroma UPLOADS_DIR=/tmp/forgeai/uploads ARTIFACTS_ROOT=/tmp/forgeai/artifacts \
+    EMBED_BATCH_SIZE=4 EMBED_THREADS=1 EMBED_LOW_MEMORY=1 MALLOC_ARENA_MAX=2 OMP_NUM_THREADS=1
 WORKDIR /app
 COPY deploy/requirements-render.txt requirements.txt
 RUN pip install -r requirements.txt

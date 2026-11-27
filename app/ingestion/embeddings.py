@@ -9,6 +9,7 @@ identical to the model's sentence-transformers pooling config).
 from __future__ import annotations
 
 import logging
+import os
 from functools import lru_cache
 
 import numpy as np
@@ -52,13 +53,25 @@ class OnnxSentenceEmbedder(Embedder):
         self.tokenizer = Tokenizer.from_file(tok_path)
         self.tokenizer.enable_truncation(max_length=max_len)
         self.tokenizer.enable_padding(pad_id=0, pad_token="[PAD]")
-        self.session = ort.InferenceSession(onnx_path, providers=["CPUExecutionProvider"])
+        # Memory-lean session: on small hosts (Render free = 512 MB) the default
+        # per-core thread pool and the CPU memory arena push RSS over the limit.
+        so = ort.SessionOptions()
+        threads = int(os.getenv("EMBED_THREADS", "0"))
+        if threads > 0:
+            so.intra_op_num_threads = threads
+            so.inter_op_num_threads = 1
+        if os.getenv("EMBED_LOW_MEMORY", "").lower() in ("1", "true", "yes"):
+            so.enable_cpu_mem_arena = False
+            so.enable_mem_pattern = False
+        self.batch_size = max(1, int(os.getenv("EMBED_BATCH_SIZE", "32")))
+        self.session = ort.InferenceSession(onnx_path, so, providers=["CPUExecutionProvider"])
         self._inputs = {i.name for i in self.session.get_inputs()}
 
     def embed(self, texts):
         out: list[list[float]] = []
-        for start in range(0, len(texts), 32):
-            batch = texts[start:start + 32]
+        bs = self.batch_size
+        for start in range(0, len(texts), bs):
+            batch = texts[start:start + bs]
             enc = self.tokenizer.encode_batch(batch)
             ids = np.array([e.ids for e in enc], dtype=np.int64)
             mask = np.array([e.attention_mask for e in enc], dtype=np.int64)
