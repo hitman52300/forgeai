@@ -29,7 +29,9 @@ _SAFE_NAME = re.compile(r"[^A-Za-z0-9._\- ]+")
 
 
 def safe_filename(name: str) -> str:
-    base = Path(name).name  # strips any directory components (path traversal)
+    # strip directory components (path traversal) for both POSIX and Windows separators,
+    # so a Windows-style upload name is handled the same way on a Linux host
+    base = name.replace("\\", "/").rsplit("/", 1)[-1]
     base = _SAFE_NAME.sub("_", base).strip(" .")
     if not base:
         raise IngestionError("file name is empty after sanitising")
