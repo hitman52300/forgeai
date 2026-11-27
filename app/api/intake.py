@@ -15,8 +15,15 @@ class Answers(BaseModel):
 
 @router.get("")
 def get_interview(ctx=Depends(owned_run)):
-    _, am, _ = ctx
-    return am.read_json("interview.json")
+    run, am, _ = ctx
+    data = am.read_json("interview.json")
+    if not data:
+        raise HTTPException(
+            404,
+            f"This run has no interview yet (status={run.status}). If it stopped while the server "
+            "was restarting, create the agent again.",
+        )
+    return data
 
 
 @router.post("/answers")

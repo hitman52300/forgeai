@@ -15,9 +15,14 @@ export default function Interview() {
   useEffect(() => {
     if (!run) return;
     setIv(null);
+    setErr("");
     get(`/runs/${run.run_id}/interview`).then((d) => {
+      if (!d?.analysis) {
+        setErr("This run has no interview yet. If it was interrupted, create the agent again.");
+        return;
+      }
       setIv(d);
-      setAnswers(Object.fromEntries(d.analysis.questions.map((q: any) => [q.question_id, q.answer || ""])));
+      setAnswers(Object.fromEntries((d.analysis.questions || []).map((q: any) => [q.question_id, q.answer || ""])));
     }).catch((e) => setErr(e.message));
   }, [run]);
 
@@ -33,7 +38,7 @@ export default function Interview() {
 
   const a = iv?.analysis;
   const editable = run?.status === "interviewing";
-  const answered = a ? a.questions.filter((q: any) => (answers[q.question_id] || "").trim()).length : 0;
+  const answered = a ? (a.questions || []).filter((q: any) => (answers[q.question_id] || "").trim()).length : 0;
   return (
     <>
       <PageHeader eyebrow="Build · Step 2" title="Interview" subtitle="Up to five clarifying questions generated from the brief and the documents." />
